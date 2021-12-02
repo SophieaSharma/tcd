@@ -12,16 +12,7 @@
     <title>ePortal</title>
 </head>
 <body>
-<!--header-->
-<!--<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 text-center py-4 bg-light h1">
-            TCD CAKE AND BAKE
-        </div>
-    </div>
-</div>-->
-<!--header-->
-<!--main section-->
+
 <div class="container-fluid">
     <!--heading-->
     <div class="row border-bottom">
@@ -33,29 +24,57 @@
         </div>
     </div>
     <!--heading-->
-    <!--raw material-->
-    <div class="row ">
-        <div class="col-12 border border-light ">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <button class="nav-link active" aria-current="page">Raw Material</button>
-                </li>
-            </ul>
-            <table class="table table-border">
-                <tr>
-                    <th>name</th>
-                    <th>class</th>
-                    <th>rno.</th>
-                    <th>number</th>
-                </tr>
-            </table>
+
+    <!--nav-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fs-3 ">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav  mb-2 ">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link  " aria-current="page" href="#">Production</a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <a class="nav-link active" href="#">Sales</a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">Raw Material</a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">Reports</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav mb-2">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">My Account</a>
+                    </li>
+                </ul>
+            </div>
+            <button class="btn btn-primary px-3 btn-lg fs-4">Log Out</button>
         </div>
-    </div>
-    <!--raw material-->
+    </nav>
+    <!--nav-->
+
     <!--sales-->
-    <div class="row bg-light my-5 mx-3 justify-content-evenly">
+    <div class="row  my-5 mx-3 justify-content-evenly">
+        <!--date-->
+        <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
+            <form action="">
+                <div class="mb-3">
+                    <label for="date" class="form-label text-secondary fs-5">Date</label>
+                    <input type="date" class="form-control form-date-input" id="date" required>
+                </div>
+            </form>
+        </div>
+        <!--date-->
         <!--form-->
-        <div class="col-lg-8 border border-light m">
+        <div class="col-lg-8  border border-secondary bg-light border-bottom-0">
             <ul class="nav nav-tabs my-3">
                 <li class="nav-item">
                     <button class="nav-link active" aria-current="page">SALES</button>
@@ -132,11 +151,11 @@
             </form>
         </div>
         <!--form-->
-      <div class="col-lg-8 text-center mt-3">
+      <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-top-0 border-bottom-0">
           <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
       </div>
         <!--Accordion it will keep increasing with every form entry-->
-        <div class="col-lg-8 border border-light mb-3">
+        <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne">
@@ -151,14 +170,12 @@
             </div>
         </div>
         <!--Accordion-->
-        <div class="col-lg-8 display-6 fs-6 my-2 px-3 text-uppercase">
+        <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light  border border-secondary border-top-0 ">
             Total Entries =
         </div>
       </div>
-
     <!--sales-->
 </div>
-<!--main section-->
 <!--footer-->
 <div class="container-fluid">
     <div class="row">

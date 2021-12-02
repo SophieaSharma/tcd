@@ -56,8 +56,20 @@
                             </form>
                         </div>
                         <div id="menu1" class="container tab-pane fade"><br>
-                            <h3>Menu 1</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <form action="" method="post">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="Password" class="form-control" id="password" placeholder="********" required>
+                                </div>
+                                <div class="my-4">
+                                    <input type="submit" class="form-control btn btn-primary" value="Submit">
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -57,19 +57,19 @@
         </div>
         <div class="col"></div>
         <div class="col-6 text-center pt-5">
-            <button type="button" class="btn btn-primary btn-lg">Admin</button>
+            <a href="signup_loginPage.php"  class="btn btn-primary btn-lg">Admin</a>
         </div>
         <div class="col-6 text-center pt-5">
-            <button type="button" class="btn btn-primary btn-lg">User</button>
+            <a href="signup_loginPage.php"  class="btn btn-primary btn-lg">User</a>
         </div>
 
     </div>
 </div>
 
 <!--footer-->
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-12 fixed-bottom p-3 text-center bg-light">
+        <div class="col-12 fixed-bottom p-3 mt-5 text-center bg-light">
           TCD Cake and Bake Copyright
         </div>
     </div>
