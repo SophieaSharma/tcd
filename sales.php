@@ -7,60 +7,57 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="signup_loginPage.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <title>ePortal</title>
 </head>
 <body>
 
+<!--heading-->
 <div class="container-fluid">
-    <!--heading-->
-    <div class="row border-bottom">
-        <div class="col-3 text-center pt-4 pb-3 border-end">
-            <!--<h1 >TCD</h1>-->
-        </div>
-        <div class="col-9 text-center pt-4 pb-3">
-          <h5 class="fs-3">INCOME AND SALES PORTAL</h5>
+    <div class="row border-bottom text-center justify-content-evenly">
+        <div class="col-lg-8 pt-4 pb-3">
+            <h5 class="fs-3">INCOME AND SALES PORTAL</h5>
         </div>
     </div>
-    <!--heading-->
+</div>
+<!--heading-->
 
+<div class="container-fluid p-0">
     <!--nav-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fs-3 ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fs-4">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav  mb-2 ">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link  " aria-current="page" href="#">Production</a>
-                    </li>
-
-                    <li class="nav-item mx-2">
-                        <a class="nav-link active" href="#">Sales</a>
-                    </li>
-
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item mx-2">
                         <a class="nav-link" href="#">Raw Material</a>
                     </li>
-
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">Production</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link active" aria-current="page" href="#">Sales</a>
+                    </li>
                     <li class="nav-item mx-2">
                         <a class="nav-link" href="#">Reports</a>
                     </li>
-
                 </ul>
-                <ul class="navbar-nav mb-2">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="#">My Account</a>
-                    </li>
-                </ul>
+                <form class="d-flex">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" aria-current="page" href="#">My Account</a>
+                        </li>
+                    </ul>
+                </form>
             </div>
-            <button class="btn btn-primary px-3 btn-lg fs-4">Log Out</button>
+            <a href="" class="btn btn-primary fs-5 px-3"> Log Out</a>
         </div>
     </nav>
     <!--nav-->
-
     <!--sales-->
     <div class="row  my-5 mx-3 justify-content-evenly">
         <!--date-->
@@ -68,7 +65,10 @@
             <form action="">
                 <div class="mb-3">
                     <label for="date" class="form-label text-secondary fs-5">Date</label>
-                    <input type="date" class="form-control form-date-input" id="date" required>
+                    <input type="date" class="form-control datepicker" id="date" required>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="form-control btn btn-primary" value="Submit">
                 </div>
             </form>
         </div>
@@ -82,6 +82,11 @@
                 </li>
             </ul>
             <form action="" method="post">
+
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" class="form-control" id="date" required>
+                </div>
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
