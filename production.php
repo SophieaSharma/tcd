@@ -37,10 +37,10 @@
                         <a class="nav-link" href="rawmaterial.php">Raw Material</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" href="production.php">Production</a>
+                        <a class="nav-link active" href="#">Production</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link active" aria-current="page" href="#">Sales</a>
+                        <a class="nav-link " aria-current="page" href="sales.php">Sales</a>
                     </li>
                     <li class="nav-item mx-2">
                         <a class="nav-link" href="reports.php">Reports</a>
@@ -77,8 +77,8 @@
         <div class="col-lg-8  border border-secondary bg-light border-bottom-0">
             <ul class="nav nav-tabs my-3">
                 <li class="nav-item">
-                    <button class="nav-link active" aria-current="page">SALES</button>
-                   <!-- <a class="nav-link active" aria-current="page" href="#">sales</a>-->
+                    <button class="nav-link active" aria-current="page">PRODUCTION</button>
+                    <!-- <a class="nav-link active" aria-current="page" href="#">sales</a>-->
                 </li>
             </ul>
             <form action="" method="post">
@@ -110,6 +110,19 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="items" class="form-label">Items</label>
+                    <select class="form-select" multiple aria-label="multiple select example" id="items">
+                        <option value="1">Flour</option>
+                        <option value="2">Sugar</option>
+                        <option value="3">Butter(fat)</option>
+                        <option value="4">Salt</option>
+                        <option value="5">Milk</option>
+                        <option value="6">Baking Soda</option>
+                        <option value="7">Other</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
                     <label for="flavour" class="form-label">Flavour</label>
                     <select class="form-select" multiple aria-label="multiple select example" id="flavour">
                         <option value="1">Pineapple</option>
@@ -129,20 +142,6 @@
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="price" class="form-label">Price</label>
-                    <input type="number" name="price" class="form-control" id="price" placeholder="Price of the cake" min="0" max="10000" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="amountbycustomer" class="form-label">Amount Paid </label>
-                    <input type="number" name="amount" class="form-control" id="amountbycustomer" placeholder="Amount Paid by Customer" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="left" class="form-label">Amount Left</label>
-                    <input type="email" class="form-control" id="left" placeholder="Amount Left by Customer">
-                </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
@@ -156,9 +155,6 @@
             </form>
         </div>
         <!--form-->
-      <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-top-0 border-bottom-0">
-          <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
-      </div>
         <!--Accordion it will keep increasing with every form entry-->
         <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
             <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -178,7 +174,7 @@
         <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light  border border-secondary border-top-0 ">
             Total Entries =
         </div>
-      </div>
+    </div>
     <!--sales-->
 </div>
 <!--footer-->
