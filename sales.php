@@ -49,12 +49,12 @@
                 <form class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item mx-2">
-                            <a class="nav-link" aria-current="page" href="#">My Account</a>
+                            <a class="nav-link " aria-current="page" href="myAccount.php">My Account</a>
                         </li>
                     </ul>
                 </form>
             </div>
-            <a href="" class="btn btn-primary fs-5 px-3"> Log Out</a>
+            <a href="signup_loginPage.php" class="btn btn-primary fs-5 px-3"> Log Out</a>
         </div>
     </nav>
     <!--nav-->
@@ -62,7 +62,7 @@
     <div class="row  my-5 mx-3 justify-content-evenly">
         <!--date-->
         <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
-            <form action="">
+            <form action="salesEntries.php" method="post">
                 <div class="mb-3">
                     <label for="date" class="form-label text-secondary fs-5">Date</label>
                     <input type="date" class="form-control datepicker" id="date" required>
@@ -176,7 +176,7 @@
         </div>
         <!--Accordion-->
         <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light  border border-secondary border-top-0 ">
-            Total Entries =
+            Total Sales =
         </div>
       </div>
     <!--sales-->

@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,7 +24,6 @@
 </div>
 <!--heading-->
 
-<!--main content-->
 <div class="container-fluid p-0">
     <!--nav-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fs-4">
@@ -34,13 +34,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item mx-2">
-                        <a class="nav-link active" href="#">Raw Material</a>
+                        <a class="nav-link" href="rawmaterial.php">Raw Material</a>
                     </li>
                     <li class="nav-item mx-2">
                         <a class="nav-link" href="production.php">Production</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link " aria-current="page" href="sales.php">Sales</a>
+                        <a class="nav-link active" aria-current="page" href="sales.php">Sales</a>
                     </li>
                     <li class="nav-item mx-2">
                         <a class="nav-link" href="reports.php">Reports</a>
@@ -49,8 +49,7 @@
                 <form class="d-flex">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item mx-2">
-                            <a class="nav-link more" aria-current="page" href="myAccount.php">My Account
-                            </a>
+                            <a class="nav-link " aria-current="page" href="myAccount.php">My Account</a>
                         </li>
                     </ul>
                 </form>
@@ -61,64 +60,28 @@
     <!--nav-->
     <!--sales-->
     <div class="row  my-5 mx-3 justify-content-evenly">
-        <!--date-->
-        <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
-            <form action="rawmaterialEntries.php">
-                <div class="mb-3">
-                    <label for="date" class="form-label text-secondary fs-5">Date</label>
-                    <input type="date" class="form-control datepicker" id="date" required>
-                </div>
-                <div class="mb-3">
-                    <input type="submit" class="form-control btn btn-primary" value="Submit">
-                </div>
-            </form>
-        </div>
-        <!--date-->
-        <div class="col-lg-8 border border-secondary mb-5 py-2">
-            <ul class="nav nav-tabs my-3">
-                <li class="nav-item">
-                    <button class="nav-link active" aria-current="page">RAW MATERIAL</button>
-                    <!-- <a class="nav-link active" aria-current="page" href="#">sales</a>-->
-                </li>
-            </ul>
-            <form action=""method="post">
-                <div class="mb-3">
-                    <label for="items" class="form-label">ITEMS</label>
-                    <select class="form-select" aria-label="Default select example" id="items" multiple>
-                        <option value="1">Sugar</option>
-                        <option value="2">Flour</option>
-                        <option value="3">Butter</option>
-                        <option value="4">Baking Soda</option>
-                        <option value="5">Other</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <input type="submit" class=" btn btn-primary form-control" value="Submit">
-                </div>
-            </form>
-        </div>
-        <div class="col-lg-8 border border-secondary mb-5 py-2">
-            <div class="col-12 table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">S.NO.</th>
-                        <th scope="col">ITEMS</th>
-                        <th scope="col">AMOUNT</th>
-                        <th scope="col">PRICE/KG</th>
-                        <th scope="col">PRICE</th>
-                    </tr>
-                    </thead>
-                    <tbody>
 
-                    </tbody>
-                </table>
+        <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-top-0 border-bottom-0">
+            <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
+        </div>
+        <!--Accordion it will keep increasing with every form entry-->
+        <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Title in the form
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                    </div>
+                </div>
             </div>
         </div>
+        <!--Accordion-->
     </div>
-</div>
-<!--main content-->
-
+    <!--sales-->
 </div>
 <!--footer-->
 <div class="container-fluid">

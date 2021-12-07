@@ -49,3 +49,13 @@ table {
     width: 100%;
     height: 55vh;
 }
+.more{
+    position: relative;
+}
+.more-content{
+    position: absolute;
+    display: none;
+}
+.more:hover.more-content{
+    display: block;
+}
