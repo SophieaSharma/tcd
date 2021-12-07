@@ -55,7 +55,21 @@ table {
 .more-content{
     position: absolute;
     display: none;
+    width: 120%;
+    height: 120px;
+    background-color: white;
+  /*  left: 0;*/
+    margin-top: 8%;
 }
-.more:hover.more-content{
+.more-content li {
+    color: black;
     display: block;
+    padding: 5%;
+}
+.more:hover .more-content{
+    display: block;
+}
+.more-content li:hover{
+    background-color: lightgrey;
+    color: black;
 }
