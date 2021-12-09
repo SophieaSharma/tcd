@@ -14,13 +14,9 @@
 <body>
 
 <!--heading-->
-<div class="container-fluid">
-    <div class="row border-bottom text-center justify-content-evenly">
-        <div class="col-lg-8 pt-4 pb-3">
-            <h5 class="fs-3">INCOME AND SALES PORTAL</h5>
-        </div>
-    </div>
-</div>
+<?php
+require_once "header.php";
+?>
 <!--heading-->
 
 <!--main content-->
@@ -46,16 +42,8 @@
                         <a class="nav-link" href="reports.php">Reports</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                        <li class="nav-item mx-2">
-                            <a class="nav-link more" aria-current="page" href="myAccount.php">My Account
-                            </a>
-                        </li>
-                    </ul>
-                </form>
             </div>
-            <a href="signup_loginPage.php" class="btn btn-primary fs-5 px-3"> Log Out</a>
+            <a href="signup_loginPage.php" class="btn btn-primary fs-5 px-3 mx-1"> Log Out</a>
         </div>
     </nav>
     <!--nav-->
@@ -121,13 +109,7 @@
 
 </div>
 <!--footer-->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 fixed-bottom p-3 text-center bg-light">
-            TCD Cake and Bake Copyright
-        </div>
-    </div>
-</div>
+<?php require_once "footer.php"?>
 <!--footer-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

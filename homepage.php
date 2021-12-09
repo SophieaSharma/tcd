@@ -10,16 +10,9 @@
     <title>ePortal</title>
 </head>
 <body>
-<!--header-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 bg-light p-4 text-center h1">
-                TCD CAKE AND BAKE
-            </div>
-            </div>
-        </div>
-<!--header-->
-
+<?php
+require_once "header.php";
+?>
 <div class="container">
     <div class="row">
             <div class="col-12">
@@ -57,23 +50,17 @@
         </div>
         <div class="col"></div>
         <div class="col-6 text-center pt-5">
-            <a href="signup_loginPage.php"  class="btn btn-primary btn-lg">Admin</a>
+            <a href="signup_loginPage.php" class="btn btn-primary btn-lg">Admin</a>
         </div>
         <div class="col-6 text-center pt-5">
-            <a href="signup_loginPage.php"  class="btn btn-primary btn-lg">User</a>
+            <a href="signup_loginPage.php" class="btn btn-primary btn-lg">User</a>
         </div>
 
     </div>
 </div>
 
 <!--footer-->
-<div class="container-fluid mt-5">
-    <div class="row">
-        <div class="col-12 fixed-bottom p-3 mt-5 text-center bg-light">
-          TCD Cake and Bake Copyright
-        </div>
-    </div>
-</div>
+<?php require_once "footer.php"?>
 <!--footer-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
