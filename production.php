@@ -124,14 +124,6 @@ require_once "header.php";
                     </select>
                 </div>
 
-                <div class="mb-3">
-                    <label for="file" class="form-label">File</label>
-                    <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="file">
-                        <label class="input-group-text" for="file">Upload</label>
-                    </div>
-                </div>
-
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
@@ -155,7 +147,7 @@ require_once "header.php";
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet consequatur dolore iste magni nulla quas quasi quidem, sit voluptatem! Blanditiis culpa explicabo facere fuga nihil odit placeat, vel vitae!</div>
                     </div>
                 </div>
             </div>

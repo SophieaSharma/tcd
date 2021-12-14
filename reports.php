@@ -73,13 +73,6 @@ require_once "header.php";
                     </li>
                 </ul>
                 <form action="" method="post">
-
-                    <div class="mb-3">
-                        <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date" required>
-                    </div>
-
-
                     <div class="mb-3">
                         <input type="submit" class="form-control btn btn-primary" value="Evaluate">
                     </div>
