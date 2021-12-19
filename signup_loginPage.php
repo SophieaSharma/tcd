@@ -20,16 +20,16 @@
                 <div class="col-md-6 border border-light">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#home">Signup</a>
+                            <a class="nav-link " data-bs-toggle="tab" href="#signup">Signup</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#menu1">Login</a>
+                            <a class="nav-link active" data-bs-toggle="tab" href="#login">Login</a>
                         </li>
                     </ul>
 
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div id="home" class="container tab-pane active"><br>
+                        <div id="signup" class="container tab-pane fade"><br>
                             <form action="rawmaterial.php" method="post">
                                 <div class="mb-3">
                                     <label for="Name" class="form-label">Name</label>
@@ -61,11 +61,11 @@
 
                             </form>
                         </div>
-                        <div id="menu1" class="container tab-pane fade "><br>
+                        <div id="login" class="container tab-pane active"><br>
                             <form action="rawmaterial.php" method="post">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your Email Id" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
