@@ -1,3 +1,7 @@
+<?php
+require_once "errors.php";
+require_once "SQL_queries/signup_query.php";
+?>
 
 <!doctype html>
 <html lang="en">
@@ -32,7 +36,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div id="signup" class="container tab-pane fade"><br>
-                            <form action="rawmaterial.php" method="post">
+                            <form action="signup_loginPage.php" method="post">
                                 <div class="mb-3">
                                     <label for="Name" class="form-label">Name</label>
                                     <input name="nameSignup" type="text" class="form-control" id="Name" placeholder="Name" required>
@@ -61,7 +65,7 @@
                                     <input name="submitSignup" type="submit" class="form-control btn btn-primary" value="Submit">
                                 </div>
                             </form>
-                        </div>
+                       </div>
                         <div id="login" class="container tab-pane active"><br>
                             <form action="rawmaterial.php" method="post">
                                 <div class="mb-3">

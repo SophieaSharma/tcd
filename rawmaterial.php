@@ -48,7 +48,10 @@ require_once "header.php";
     </nav>
     <!--nav-->
     <!--sales-->
-    <div class="row  my-5 mx-3 justify-content-evenly">
+    <div class="row mx-3 justify-content-evenly">
+        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: cursive; font-size: 25px;">
+            raw material
+        </h1>
         <!--date-->
         <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
             <form action="rawmaterialEntries.php">

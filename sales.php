@@ -1,4 +1,7 @@
-
+<?php
+require_once "errors.php";
+require_once "SQL_queries/sales_query.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -46,13 +49,16 @@
     </nav>
     <!--nav-->
     <!--sales-->
-    <div class="row  my-5 mx-3 justify-content-evenly">
+    <div class="row mx-3 justify-content-evenly">
+        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: cursive; font-size: 25px;">
+            sales
+        </h1>
         <!--date-->
         <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
             <form action="salesEntries.php" method="post">
                 <div class="mb-3">
                     <label for="date" class="form-label text-secondary fs-5">Date</label>
-                    <input type="date" class="form-control datepicker" id="date" required>
+                    <input type="date" class="form-control" id="date" required>
                 </div>
                 <div class="mb-3">
                     <input type="submit" class="form-control btn btn-primary" value="Submit">
@@ -65,32 +71,30 @@
             <ul class="nav nav-tabs my-3">
                 <li class="nav-item">
                     <button class="nav-link active" aria-current="page">SALES</button>
-                   <!-- <a class="nav-link active" aria-current="page" href="#">sales</a>-->
                 </li>
             </ul>
-            <form action="" method="post">
+            <form action="sales.php" method="post">
 
                 <div class="mb-3">
                     <label for="date" class="form-label">Date</label>
-                    <input type="date" class="form-control" id="date" required>
+                    <input name="dateSales" type="date" class="form-control" id="date" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Title" required>
+                    <input name="titleSales" type="text" class="form-control" id="title" placeholder="Title" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="typeofcake" class="form-label">Type of Cake</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="typeofcake" required>
-                        <label class="form-check-label" for="typeofcake">
+                        <input name="type_of_cake" value="shop_cake" class="form-check-input" type="radio" id="typeofcake" required>
+                        <label class="form-check-label mt-1" for="typeofcake" >
                             Shop Cake
                         </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="typeofcake" required>
-                        <label class="form-check-label" for="typeofcake">
+                        <br>
+                        <input name="type_of_cake" value="customer_cake" class="form-check-input" type="radio" id="typeofcake" required>
+                        <label class="form-check-label mt-1" for="typeofcake">
                             Customer Order Cake
                         </label>
                     </div>
@@ -98,46 +102,46 @@
 
                 <div class="mb-3">
                     <label for="flavour" class="form-label">Flavour</label>
-                    <select class="form-select" multiple aria-label="multiple select example" id="flavour">
-                        <option value="1">Pineapple</option>
-                        <option value="2">Chocolate</option>
-                        <option value="3">Butterscotch</option>
-                        <option value="4">Redvelvet</option>
-                        <option value="5">Blueberry</option>
-                        <option value="6">Other</option>
+                    <select name="flavourSales" class="form-select" multiple aria-label="multiple select example" id="flavour" >
+                        <option value="Pineapple">Pineapple</option>
+                        <option value="Chocolate">Chocolate</option>
+                        <option value="Butterscotch">Butterscotch</option>
+                        <option value="Redvelvet">Redvelvet</option>
+                        <option value="Blueberry">Blueberry</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
 
                 <div class="mb-3">
                     <label for="file" class="form-label">File</label>
                     <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="file">
+                        <input name="imageSales" type="file" class="form-control" id="file">
                         <label class="input-group-text" for="file">Upload</label>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
-                    <input type="number" name="price" class="form-control" id="price" placeholder="Price of the cake" min="0" max="10000" required>
+                    <input name="priceSales" type="number" class="form-control" id="price" placeholder="Price of the cake" min="0" max="10000" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="amountbycustomer" class="form-label">Amount Paid </label>
-                    <input type="number" name="amount" class="form-control" id="amountbycustomer" placeholder="Amount Paid by Customer" required>
+                    <label for="amount_by_customer" class="form-label">Amount Paid </label>
+                    <input name="amountSales" type="number"  class="form-control" id="amount_by_customer" placeholder="Amount Paid by Customer" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="left" class="form-label">Amount Left</label>
-                    <input type="email" class="form-control" id="left" placeholder="Amount Left by Customer">
+                    <input name="amount_leftSales" type="number" class="form-control" id="left" placeholder="Amount Left by Customer" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" rows="4"></textarea>
+                    <textarea name="descriptionSales" class="form-control" id="description" rows="4"></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <input type="submit" class="form-control btn btn-primary" value="Submit">
+                    <input name="submitSales" type="submit" class="form-control btn btn-primary" value="Submit">
                 </div>
 
             </form>

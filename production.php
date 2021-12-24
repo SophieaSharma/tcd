@@ -1,4 +1,7 @@
-
+<?php
+require_once "errors.php";
+require_once "SQL_queries/production_query.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -48,8 +51,11 @@ require_once "header.php";
         </div>
     </nav>
     <!--nav-->
-    <!--sales-->
-    <div class="row  my-5 mx-3 justify-content-evenly">
+    <!--production-->
+    <div class="row mx-3 justify-content-evenly">
+        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: cursive; font-size: 25px;">
+            production
+        </h1>
         <!--date-->
         <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
             <form action="productionEntries.php">
@@ -68,32 +74,29 @@ require_once "header.php";
             <ul class="nav nav-tabs my-3">
                 <li class="nav-item">
                     <button class="nav-link active" aria-current="page">PRODUCTION</button>
-                    <!-- <a class="nav-link active" aria-current="page" href="#">sales</a>-->
                 </li>
             </ul>
-            <form action="" method="post">
+            <form action="production.php" method="post">
 
                 <div class="mb-3">
                     <label for="date" class="form-label">Date</label>
-                    <input type="date" class="form-control" id="date" required>
+                    <input name="dateProduction" type="date" class="form-control" id="date" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Title" required>
+                    <input name="titleProduction" type="text" class="form-control" id="title" placeholder="Title" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="typeofcake" class="form-label">Type of Cake</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="typeofcake" required>
-                        <label class="form-check-label" for="typeofcake">
+                        <input class="form-check-input" type="radio" name="type_of_cake" value="shop_cake" id="typeofcake" required>
+                        <label class="form-check-label mt-1" for="typeofcake">
                             Shop Cake
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="typeofcake" required>
-                        <label class="form-check-label" for="typeofcake">
+                        </label> <br>
+                        <input class="form-check-input" type="radio" name="type_of_cake" value="customer_cake" id="typeofcake" required>
+                        <label class="form-check-label mt-1" for="typeofcake">
                             Customer Order Cake
                         </label>
                     </div>
@@ -101,7 +104,7 @@ require_once "header.php";
 
                 <div class="mb-3">
                     <label for="items" class="form-label">Items</label>
-                    <select class="form-select" multiple aria-label="multiple select example" id="items">
+                    <select name="item" class="form-select" multiple aria-label="multiple select example" id="items">
                         <option value="1">Flour</option>
                         <option value="2">Sugar</option>
                         <option value="3">Butter(fat)</option>
@@ -114,7 +117,7 @@ require_once "header.php";
 
                 <div class="mb-3">
                     <label for="flavour" class="form-label">Flavour</label>
-                    <select class="form-select" multiple aria-label="multiple select example" id="flavour">
+                    <select name="flavour" class="form-select" multiple aria-label="multiple select example" id="flavour">
                         <option value="1">Pineapple</option>
                         <option value="2">Chocolate</option>
                         <option value="3">Butterscotch</option>
@@ -127,11 +130,11 @@ require_once "header.php";
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" rows="4"></textarea>
+                    <textarea name="descriptionProduction" class="form-control" id="description" rows="4"></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <input type="submit" class="form-control btn btn-primary" value="Submit">
+                    <input name="submitProduction" type="submit" class="form-control btn btn-primary" value="Submit">
                 </div>
 
             </form>
