@@ -9,7 +9,6 @@ if(isset($_POST['submitSales'])){
     $amountSales=$_POST['amountSales'];
     $amount_leftSales=$_POST['amount_leftSales'];
     $descriptionSales=$_POST['descriptionSales'];
-
     //connection
     GLOBAL $connection;
     require_once "db_connection.php";

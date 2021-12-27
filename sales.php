@@ -152,47 +152,105 @@ require_once "SQL_queries/sales_query.php";
           <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
       </div>
 
-      <!--  --><?php
-/*        if(isset($_POST['submitSales'])){
-            require_once "SQL_queries/db_connection.php";
-        $query="SELECT * FROM sales";
-        $result=mysqli_query($connection,$query);
-        if(!$result){
-            die("not" . mysqli_error($connection));
-        }
-        while ($row=mysqli_fetch_assoc($result)){
-            $dateSalesEntries=$row['date'];
-            $titleSalesEntries=$row['title'];
-            */?>
-            <!--Accordion it will keep increasing with every form entry-->
-            <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                title
-                            </button>
-                        </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
+            <?php
+            //if($_SERVER["REQUEST_METHOD"]=="POST"){
+                require_once "SQL_queries/db_connection.php";
+                $query="SELECT * FROM sales";
+                $result=mysqli_query($connection,$query);
+                if(!$result){
+                    die("no".mysqli_error($connection));
+                }
+                while ($row=mysqli_fetch_assoc($result)){
 
+                    $date=$row['date'];
+                    $date=strtotime($date);
+                    $date=date('d-M-Y');
+                    $title=$row['title'];
+                    $type_of_cake=$row['type_of_cake'];
+                    $flavour=$row['flavour'];
+                    $image=$row['image'];
+                    $price=$row['price'];
+                    $amount_paid=$row['amount_paid'];
+                    $amount_left=$row['amount_left'];
+                    $description=$row['description'];
+                    if(empty($description)){
+                        $description="-";
+                    }
+                    if(empty($image)){
+                        $image="null";
+                    }
+                    ?>
+                    <!-- Accordion it will keep increasing with every form entry-->
+                    <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        <?php echo $title; ?>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <ul>
+                                                    <li class="fs-6 my-2 ">DATE</li>
+                                                    <li class="fs-6 my-2 ">TYPE OF CAKE</li>
+                                                    <li class="fs-6 my-2 ">FLAVOUR</li>
+                                                    <li class="fs-6 my-2 ">TOTAL PRICE</li>
+                                                    <li class="fs-6 my-2 ">AMOUNT PAID</li>
+                                                    <li class="fs-6 my-2 ">AMOUNT LEFT</li>
+                                                    <li class="fs-6 my-2 ">DESCRIPTION</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-6">
+                                                <ul>
+                                                     <?php  echo "<li class='fs-6 my-2'>{$date}</li>" ?>
+                                                     <?php  echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" ?>
+                                                     <?php  echo "<li class='fs-6 my-2'>{$flavour}</li>" ?>
+                                                     <?php  echo "<li class='fs-6 my-2'>{$price}</li>" ?>
+                                                     <?php  echo "<li class='fs-6 my-2'>{$amount_paid}</li>" ?>
+                                                     <?php  echo "<li class='fs-6 my-2'>{$amount_left}</li>" ?>
+                                                     <?php  echo "<li class='fs-6 my-2'>{$description}</li>" ?>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <!--<img src="img/cake1.jpeg" alt="cake">-->
+                                        <!--<h3 class="mt-2">DATE = <?php
+/*
+                                            echo date("d-M-Y",$date);
+                                        */?></h3>
+                                        <h3 class="mt-2">TYPE OF CAKE = <?php /*echo $type_of_cake; */?></h3>
+                                        <h3 class="mt-2">FLAVOUR = <?php /*echo $flavour; */?></h3>
+                                        <h3 class="mt-2">TOTAL PRICE = <?php /*echo $price; */?></h3>
+                                        <h3 class="mt-2">AMOUNT PAID BY CUSTOMER = <?php /*echo $amount_paid; */?></h3>
+                                        <h3 class="mt-2">AMOUNT LEFT = <?php /*echo $amount_left; */?></h3>
+                                        <h3 class="mt-2">DESCRIPTION = <?php /*echo $description; */?></h3>
+-->
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!--Accordion-->
+                    <!--Accordion-->
 
+               <?php } ?>
 
+        <!--for count the total entries-->
+           <?php
+           $count=mysqli_num_rows($result);
+           ?>
 
         <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light  border border-secondary border-top-0 ">
-            Total Sales =
+            Total Sale = <?php echo $count;?>
         </div>
       </div>
     <!--sales-->
 </div>
 <!--footer-->
-<?php require_once "footer.php"?>
+<!--<?php require_once "footer.php"?>-->
 <!--footer-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
