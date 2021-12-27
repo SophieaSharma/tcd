@@ -1,5 +1,6 @@
 <?php
 require_once "errors.php";
+GLOBAL $connection;
 require_once "SQL_queries/sales_query.php";
 ?>
 <!doctype html>
@@ -10,7 +11,7 @@ require_once "SQL_queries/sales_query.php";
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <title>ePortal</title>
@@ -50,7 +51,7 @@ require_once "SQL_queries/sales_query.php";
     <!--nav-->
     <!--sales-->
     <div class="row mx-3 justify-content-evenly">
-        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: cursive; font-size: 25px;">
+        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
             sales
         </h1>
         <!--date-->
@@ -116,7 +117,7 @@ require_once "SQL_queries/sales_query.php";
                     <label for="file" class="form-label">File</label>
                     <div class="input-group mb-3">
                         <input name="imageSales" type="file" class="form-control" id="file">
-                        <label class="input-group-text" for="file">Upload</label>
+                        <!--<label class="input-group-text" for="file">Upload</label>-->
                     </div>
                 </div>
 
@@ -150,22 +151,40 @@ require_once "SQL_queries/sales_query.php";
       <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-top-0 border-bottom-0">
           <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
       </div>
-        <!--Accordion it will keep increasing with every form entry-->
-        <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Title in the form
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+
+      <!--  --><?php
+/*        if(isset($_POST['submitSales'])){
+            require_once "SQL_queries/db_connection.php";
+        $query="SELECT * FROM sales";
+        $result=mysqli_query($connection,$query);
+        if(!$result){
+            die("not" . mysqli_error($connection));
+        }
+        while ($row=mysqli_fetch_assoc($result)){
+            $dateSalesEntries=$row['date'];
+            $titleSalesEntries=$row['title'];
+            */?>
+            <!--Accordion it will keep increasing with every form entry-->
+            <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                title
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--Accordion-->
+            <!--Accordion-->
+
+
+
         <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light  border border-secondary border-top-0 ">
             Total Sales =
         </div>
