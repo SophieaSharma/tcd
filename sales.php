@@ -150,12 +150,10 @@ require_once "SQL_queries/sales_query.php";
                     if(empty($description)){
                         $description="-";
                     }
-                    if(empty($image)){
-                        $image="null";
-                    }
                     ?>
                     <!-- Accordion it will keep increasing with every form entry-->
-                                            <div class="accordion my-2 accordion-flush border border-secondary" id="accordionFlushExample">
+                    <div class="accordion my-2 accordion-flush border border-secondary" id="accordionFlushExample">
+
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -193,12 +191,7 @@ require_once "SQL_queries/sales_query.php";
                                 </div>
                             </div>
                         </div>
-
                     <!--Accordion-->
-
-
-
-
                 <?php  } ?>
 
             <!--for count the total entries-->

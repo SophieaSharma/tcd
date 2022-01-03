@@ -1,5 +1,6 @@
 <?php
 require_once "errors.php";
+GLOBAL $connection;
 require_once "SQL_queries/production_query.php";
 ?>
 <!doctype html>
@@ -18,18 +19,16 @@ require_once "SQL_queries/production_query.php";
 <body>
 
 <!--heading-->
-<?php
-require_once "header.php";
-?>
+<?php require_once "header.php"; ?>
 <!--heading-->
 
+<!--production-->
 <div class="container-fluid p-0">
-
     <!--nav-->
     <?php  require_once "navbarFunctions/navbar_production.php"; ?>
     <!--nav-->
 
-    <!--production-->
+    <!--form-->
     <div class="row mx-3 justify-content-evenly">
         <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
             production
@@ -48,7 +47,7 @@ require_once "header.php";
         </div>
         <!--date-->
         <!--form-->
-        <div class="col-lg-8  border border-secondary bg-light border-bottom-0">
+        <div class="col-lg-8 mb-5 border border-secondary bg-light ">
             <ul class="nav nav-tabs my-3">
                 <li class="nav-item">
                     <button class="nav-link active" aria-current="page">PRODUCTION</button>
@@ -56,10 +55,10 @@ require_once "header.php";
             </ul>
             <form action="production.php" method="post">
 
-                <div class="mb-3">
+                <!--<div class="mb-3">
                     <label for="date" class="form-label">Date</label>
                     <input name="dateProduction" type="date" class="form-control" id="date" required>
-                </div>
+                </div>-->
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -114,32 +113,77 @@ require_once "header.php";
                 <div class="mb-3">
                     <input name="submitProduction" type="submit" class="form-control btn btn-primary" value="Submit">
                 </div>
-
             </form>
-        </div>
-        <!--form-->
-        <!--Accordion it will keep increasing with every form entry-->
-        <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Title in the form
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet consequatur dolore iste magni nulla quas quasi quidem, sit voluptatem! Blanditiis culpa explicabo facere fuga nihil odit placeat, vel vitae!</div>
+            <?php
+            require_once "SQL_queries/db_connection.php";
+            $query="SELECT * FROM production";
+            $result=mysqli_query($connection,$query);
+            while ($row = mysqli_fetch_assoc($result)){
+                $date=$row['date'];
+                $date=strtotime($date);
+                $date=date('d-M-Y',$date);
+                $title=$row['title'];
+                $type_of_cake=$row['type_of_cake'];
+                $items=$row['items'];
+                $flavours=$row['flavours'];
+                $description=$row['description'];
+                if(empty($description)){
+                    $description="-";
+                }
+            ?>
+            <!--Accordion it will keep increasing with every form entry-->
+                <div class="accordion my-2 accordion-flush border border-secondary" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <?php echo $title;?>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <ul>
+                                            <li class="fs-6 my-2 ">DATE</li>
+                                            <li class="fs-6 my-2 ">TYPE OF CAKE</li>
+                                            <li class="fs-6 my-2 ">ITEMS</li>
+                                            <li class="fs-6 my-2 ">FLAVOURS</li>
+                                            <li class="fs-6 my-2 ">DESCRIPTION</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-6">
+                                        <ul>
+                                            <?php  echo "<li class='fs-6 my-2'>{$date}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$items}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$flavours}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$description}</li>" ?>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            <!--Accordion-->
+            <?php } ?>
+            <!--to count the total num of entries-->
+            <?php
+            $count=mysqli_num_rows($result);
+            ?>
+            <!--to count the total num of entries-->
+
+            <!--total sales-->
+            <div class="col-lg-8 py-3 display-6 fs-6 px-1 text-uppercase bg-light ">
+                Total Production = <?php echo $count; ?>
             </div>
+            <!--total sales-->
         </div>
-        <!--Accordion-->
-        <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light  border border-secondary border-top-0 ">
-            Total Production =
         </div>
-    </div>
-    <!--production-->
+    <!--form-->
 </div>
+<!--production-->
 
 <!--footer-->
 <?php require_once "footer.php"?>
