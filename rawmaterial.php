@@ -22,32 +22,9 @@ require_once "header.php";
 <!--main content-->
 <div class="container-fluid p-0">
     <!--nav-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fs-4">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link active" href="#">Raw Material</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="production.php">Production</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link " aria-current="page" href="sales.php">Sales</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="reports.php">Reports</a>
-                    </li>
-                </ul>
-            </div>
-            <a href="signup_loginPage.php" class="btn btn-primary fs-5 px-3 mx-1"> Log Out</a>
-        </div>
-    </nav>
+    <?php require_once "navbarFunctions/navbar_rawmaterial.php";?>
     <!--nav-->
-    <!--sales-->
+    <!--raw material-->
     <div class="row mx-3 justify-content-evenly">
         <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
             raw material
@@ -107,10 +84,11 @@ require_once "header.php";
             </div>
         </div>
     </div>
+    <!--raw material-->
+
 </div>
 <!--main content-->
 
-</div>
 <!--footer-->
 <?php require_once "footer.php"?>
 <!--footer-->

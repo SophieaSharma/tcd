@@ -24,36 +24,18 @@ require_once "SQL_queries/sales_query.php";
 
 <div class="container-fluid p-0">
     <!--nav-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fs-4">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="rawmaterial.php">Raw Material</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="production.php">Production</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link active" aria-current="page" href="#">Sales</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="reports.php">Reports</a>
-                    </li>
-                </ul>
-            </div>
-            <a href="signup_loginPage.php" class="btn btn-primary fs-5 px-3 mx-1"> Log Out</a>
-        </div>
-    </nav>
+    <?php require_once "navbarFunctions/navbar_sales.php";?>
     <!--nav-->
+
     <!--sales-->
     <div class="row mx-3 justify-content-evenly">
+
+        <!-- heading sales-->
         <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
             sales
         </h1>
+        <!-- heading sales-->
+
         <!--date-->
         <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
             <form action="salesEntries.php" method="post">
@@ -67,19 +49,15 @@ require_once "SQL_queries/sales_query.php";
             </form>
         </div>
         <!--date-->
+
         <!--form-->
-        <div class="col-lg-8  border border-secondary bg-light border-bottom-0">
+        <div class="col-lg-8 mb-5 border border-secondary bg-light ">
             <ul class="nav nav-tabs my-3">
                 <li class="nav-item">
                     <button class="nav-link active" aria-current="page">SALES</button>
                 </li>
             </ul>
             <form action="sales.php" method="post">
-
-                <div class="mb-3">
-                    <label for="date" class="form-label">Date</label>
-                    <input name="dateSales" type="date" class="form-control" id="date" required>
-                </div>
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -144,16 +122,12 @@ require_once "SQL_queries/sales_query.php";
                 <div class="mb-3">
                     <input name="submitSales" type="submit" class="form-control btn btn-primary" value="Submit">
                 </div>
-
             </form>
-        </div>
-        <!--form-->
-      <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-top-0 border-bottom-0">
-          <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
-      </div>
 
-            <?php
-            //if($_SERVER["REQUEST_METHOD"]=="POST"){
+
+                <h3 class="display-6 fs-5 text-uppercase text-center">Entries</h3>
+                <?php
+                //if($_SERVER["REQUEST_METHOD"]=="POST"){
                 require_once "SQL_queries/db_connection.php";
                 $query="SELECT * FROM sales";
                 $result=mysqli_query($connection,$query);
@@ -181,8 +155,7 @@ require_once "SQL_queries/sales_query.php";
                     }
                     ?>
                     <!-- Accordion it will keep increasing with every form entry-->
-                    <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                                            <div class="accordion my-2 accordion-flush border border-secondary" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -205,52 +178,50 @@ require_once "SQL_queries/sales_query.php";
                                             </div>
                                             <div class="col-6">
                                                 <ul>
-                                                     <?php  echo "<li class='fs-6 my-2'>{$date}</li>" ?>
-                                                     <?php  echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" ?>
-                                                     <?php  echo "<li class='fs-6 my-2'>{$flavour}</li>" ?>
-                                                     <?php  echo "<li class='fs-6 my-2'>{$price}</li>" ?>
-                                                     <?php  echo "<li class='fs-6 my-2'>{$amount_paid}</li>" ?>
-                                                     <?php  echo "<li class='fs-6 my-2'>{$amount_left}</li>" ?>
-                                                     <?php  echo "<li class='fs-6 my-2'>{$description}</li>" ?>
+                                                    <?php  echo "<li class='fs-6 my-2'>{$date}</li>" ?>
+                                                    <?php  echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" ?>
+                                                    <?php  echo "<li class='fs-6 my-2'>{$flavour}</li>" ?>
+                                                    <?php  echo "<li class='fs-6 my-2'>{$price}</li>" ?>
+                                                    <?php  echo "<li class='fs-6 my-2'>{$amount_paid}</li>" ?>
+                                                    <?php  echo "<li class='fs-6 my-2'>{$amount_left}</li>" ?>
+                                                    <?php  echo "<li class='fs-6 my-2'>{$description}</li>" ?>
 
                                                 </ul>
                                             </div>
                                         </div>
-
-                                        <!--<img src="img/cake1.jpeg" alt="cake">-->
-                                        <!--<h3 class="mt-2">DATE = <?php
-/*
-                                            echo date("d-M-Y",$date);
-                                        */?></h3>
-                                        <h3 class="mt-2">TYPE OF CAKE = <?php /*echo $type_of_cake; */?></h3>
-                                        <h3 class="mt-2">FLAVOUR = <?php /*echo $flavour; */?></h3>
-                                        <h3 class="mt-2">TOTAL PRICE = <?php /*echo $price; */?></h3>
-                                        <h3 class="mt-2">AMOUNT PAID BY CUSTOMER = <?php /*echo $amount_paid; */?></h3>
-                                        <h3 class="mt-2">AMOUNT LEFT = <?php /*echo $amount_left; */?></h3>
-                                        <h3 class="mt-2">DESCRIPTION = <?php /*echo $description; */?></h3>
--->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                     <!--Accordion-->
 
-               <?php } ?>
 
-        <!--for count the total entries-->
-           <?php
-           $count=mysqli_num_rows($result);
-           ?>
 
-        <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light  border border-secondary border-top-0 ">
-            Total Sale = <?php echo $count;?>
+
+                <?php  } ?>
+
+            <!--for count the total entries-->
+            <?php
+            $count=mysqli_num_rows($result);
+            ?>
+            <!--for count the total entries-->
+
+            <!--total sales-->
+            <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light ">
+                Total Sale = <?php echo $count;?>
+            </div>
+            <!--total sales-->
         </div>
+        <!--form-->
+
+
       </div>
     <!--sales-->
 </div>
+
 <!--footer-->
-<!--<?php require_once "footer.php"?>-->
+<?php require_once "footer.php"?>
 <!--footer-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
