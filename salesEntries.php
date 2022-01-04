@@ -1,4 +1,9 @@
+<?php
+require_once "errors.php";
+require_once "SQL_queries/db_connection.php";
+GLOBAL $connection;
 
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,59 +23,102 @@
 <?php require_once "header.php"; ?>
 <!--heading-->
 
+<!--salesEntries-->
 <div class="container-fluid p-0">
-    <!--nav-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fs-4">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="rawmaterial.php">Raw Material</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="production.php">Production</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link active" aria-current="page" href="sales.php">Sales</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="reports.php">Reports</a>
-                    </li>
-                </ul>
 
-            </div>
-            <a href="signup_loginPage.php" class="btn btn-primary fs-5 px-3 mx-1"> Log Out</a>
-        </div>
-    </nav>
     <!--nav-->
-    <!--sales-->
-    <div class="row  my-5 mx-3 justify-content-evenly">
+    <?php require_once "navbarFunctions/navbar_salesEntries.php"?>
+    <!--nav-->
 
-        <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-top-0 border-bottom-0">
+    <!-- heading sales-->
+    <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
+        sales
+    </h1>
+    <!-- heading sales-->
+
+    <!--data-->
+    <div class="row  my-3 mx-3 justify-content-evenly">
+
+        <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-bottom-0">
             <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
         </div>
         <!--Accordion it will keep increasing with every form entry-->
-        <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Title in the form
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+        <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 ">
+            <?php
+            require_once "SQL_queries/db_connection.php";
+            $query="SELECT * FROM sales";
+            $result=mysqli_query($connection,$query);
+            if(!$result){
+                die("no".mysqli_error($connection));
+            }
+            while ($row=mysqli_fetch_assoc($result)){
+                $id=$row['id'];
+                $date=$row['date'];
+                $date=strtotime($date);
+                $date=date('d-M-Y');
+                $title=$row['title'];
+                $type_of_cake=$row['type_of_cake'];
+                $flavour=$row['flavour'];
+                $image=$row['image'];
+                $price=$row['price'];
+                $amount_paid=$row['amount_paid'];
+                $amount_left=$row['amount_left'];
+                $description=$row['description'];
+                if(empty($description)){
+                    $description="-";
+                }
+                ?>
+                <!-- Accordion it will keep increasing with every form entry-->
+                <div class="accordion my-2 accordion-flush border border-secondary" id="accordionFlushExample">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne<?php echo $id; ?>">
+                            <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <?php echo $id .". ". $title; ?>
+                            </button>
+                        </h2>
+                        <div id="collapse<?php echo $id ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne<?php echo $id; ?>" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <ul>
+                                            <li class="fs-6 my-2 ">DATE</li>
+                                            <li class="fs-6 my-2 ">TYPE OF CAKE</li>
+                                            <li class="fs-6 my-2 ">FLAVOUR</li>
+                                            <li class="fs-6 my-2 ">TOTAL PRICE</li>
+                                            <li class="fs-6 my-2 ">AMOUNT PAID</li>
+                                            <li class="fs-6 my-2 ">AMOUNT LEFT</li>
+                                            <li class="fs-6 my-2 ">DESCRIPTION</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-6">
+                                        <ul>
+                                            <?php  echo "<li class='fs-6 my-2'>{$date}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$flavour}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$price}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$amount_paid}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$amount_left}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$description}</li>" ?>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <!--Accordion-->
+            <?php  } ?>
+
         </div>
         <!--Accordion-->
     </div>
-    <!--sales-->
+    <!--data-->
+
 </div>
+<!--salesEntries-->
+
 <!--footer-->
 <?php require_once "footer.php"?>
 <!--footer-->

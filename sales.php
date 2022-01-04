@@ -41,10 +41,10 @@ require_once "SQL_queries/sales_query.php";
             <form action="salesEntries.php" method="post">
                 <div class="mb-3">
                     <label for="date" class="form-label text-secondary fs-5">Date</label>
-                    <input type="date" class="form-control" id="date" required>
+                    <input name="salesEntriesDate" type="date" class="form-control" id="date" required>
                 </div>
                 <div class="mb-3">
-                    <input type="submit" class="form-control btn btn-primary" value="Submit">
+                    <input type="submit" class="form-control btn btn-primary" value="Submit" name="salesEntriesSubmit">
                 </div>
             </form>
         </div>
@@ -127,7 +127,6 @@ require_once "SQL_queries/sales_query.php";
 
                 <h3 class="display-6 fs-5 text-uppercase text-center">Entries</h3>
                 <?php
-                //if($_SERVER["REQUEST_METHOD"]=="POST"){
                 require_once "SQL_queries/db_connection.php";
                 $query="SELECT * FROM sales";
                 $result=mysqli_query($connection,$query);
