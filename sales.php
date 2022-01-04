@@ -135,7 +135,7 @@ require_once "SQL_queries/sales_query.php";
                     die("no".mysqli_error($connection));
                 }
                 while ($row=mysqli_fetch_assoc($result)){
-
+                    $id=$row['id'];
                     $date=$row['date'];
                     $date=strtotime($date);
                     $date=date('d-M-Y');
@@ -155,12 +155,12 @@ require_once "SQL_queries/sales_query.php";
                     <div class="accordion my-2 accordion-flush border border-secondary" id="accordionFlushExample">
 
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        <?php echo $title; ?>
+                                <h2 class="accordion-header" id="flush-headingOne<?php echo $id; ?>">
+                                    <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        <?php echo $id .". ". $title; ?>
                                     </button>
                                 </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div id="collapse<?php echo $id ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne<?php echo $id; ?>" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
                                         <div class="row">
                                             <div class="col-6">
@@ -190,7 +190,7 @@ require_once "SQL_queries/sales_query.php";
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                    </div>
                     <!--Accordion-->
                 <?php  } ?>
 

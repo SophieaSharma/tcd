@@ -14,8 +14,8 @@ if(isset($_POST['submitSales'])){
     require_once "db_connection.php";
 
     //query
-        $query = "INSERT INTO sales
-            VALUES('$dateSales','$titleSales','$type_of_cakeSales','$flavourSales',
+        $query = "INSERT INTO sales(date,title,type_of_cake,flavour,image,price,amount_paid,amount_left,description)
+                  VALUES('$dateSales','$titleSales','$type_of_cakeSales','$flavourSales',
                    '$imageSales','$priceSales','$amountSales','$amount_leftSales','$descriptionSales')";
 
         $result = mysqli_query($connection, $query);
