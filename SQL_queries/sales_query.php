@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['submitSales'])){
-    $dateSales=date('y-m-d');
+    $dateSales=date('Y-m-d');
     $titleSales=$_POST['titleSales'];
     $type_of_cakeSales=$_POST['type_of_cake'];
     $flavourSales=$_POST['flavourSales'];

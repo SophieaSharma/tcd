@@ -1,8 +1,9 @@
 <?php
 require_once "errors.php";
-GLOBAL $connection;
 require_once "SQL_queries/sales_query.php";
-GLOBAL $dateSales;
+$today=date('Y-m-d');
+GLOBAL $connection;
+GLOBAL $today;
 ?>
 <!doctype html>
 <html lang="en">
@@ -142,7 +143,7 @@ GLOBAL $dateSales;
                 <h3 class="display-6 fs-5 text-uppercase text-center">Entries</h3>
                 <?php
                 require_once "SQL_queries/db_connection.php";
-                $query="SELECT * FROM sales";
+                $query="SELECT * FROM sales WHERE date='$today'";
 
                 $result=mysqli_query($connection,$query);
                 if(!$result){
