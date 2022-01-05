@@ -93,8 +93,45 @@ GLOBAL $today;
                         </label>
                     </div>
                 </div>
+                
+                 <div class="mb-3">
+                    <label for="flavour" class="form-label">Flavour</label>
+                    <div class="form-check">
 
-                <div class="mb-3">
+                        <input class="form-check-input " type="checkbox" value="Pineapple" id="pineapple" name="flavourSales[]">
+                        <label class="form-check-label my-1" for="pineapple">
+                            Pineapple
+                        </label>
+                     <br>
+
+                      <input class="form-check-input" type="checkbox" value="Chocolate" id="chocolate" name="flavourSales[]">
+                      <label class="form-check-label my-1" for="chocolate">
+                          Chocolate
+                      </label> <br>
+
+                      <input class="form-check-input" type="checkbox" value="Redvelvet" id="redvelvet" name="flavourSales[]">
+                      <label class="form-check-label my-1" for="redvelvet">
+                          Red Velvet
+                      </label> <br>
+
+                       <input class="form-check-input" type="checkbox" value="Butterscotch" id="butterscotch" name="flavourSales[]">
+                        <label class="form-check-label my-1" for="butterscotch">
+                           Butterscotch
+                        </label> <br>
+
+                        <input class="form-check-input" type="checkbox" value="Blueberry" id="blueberry" name="flavourSales[]">
+                        <label class="form-check-label my-1" for="blueberry">
+                            Blueberry
+                        </label> <br>
+
+                        <input class="form-check-input" type="checkbox" value="Other" id="other" name="flavourSales[]">
+                        <label class="form-check-label my-1" for="other">
+                            Other
+                        </label> <br>
+                  </div>
+                </div>
+
+               <!-- <div class="mb-3">
                     <label for="flavour" class="form-label">Flavour</label>
                     <select name="flavourSales" class="form-select" multiple aria-label="multiple select example" id="flavour" >
                         <option value="Pineapple">Pineapple</option>
@@ -104,7 +141,7 @@ GLOBAL $today;
                         <option value="Blueberry">Blueberry</option>
                         <option value="Other">Other</option>
                     </select>
-                </div>
+                </div> -->
 
                 <div class="mb-3">
                     <label for="file" class="form-label">File</label>
