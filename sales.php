@@ -140,16 +140,19 @@ GLOBAL $today;
             </form>
 
 
-                <h3 class="display-6 fs-5 text-uppercase text-center">Entries</h3>
-                <?php
-                require_once "SQL_queries/db_connection.php";
-                $query="SELECT * FROM sales WHERE date='$today'";
+            <h3 class="display-6 fs-5 text-uppercase text-center">Entries</h3>
 
-                $result=mysqli_query($connection,$query);
-                if(!$result){
-                    die("no".mysqli_error($connection));
-                }
-                while ($row=mysqli_fetch_assoc($result)){
+                <!-- Accordion it will keep increasing with every form entry-->
+                <div class="accordion  accordion-flush " id="accordionFlushExample">
+                    <?php
+                    require_once "SQL_queries/db_connection.php";
+                    $query="SELECT * FROM sales WHERE date='$today'";
+
+                    $result=mysqli_query($connection,$query);
+                    if(!$result){
+                        die("no".mysqli_error($connection));
+                    }
+                    while ($row=mysqli_fetch_assoc($result)){
                     $id=$row['id'];
                     $date=$row['date'];
                     $date=strtotime($date);
@@ -166,48 +169,49 @@ GLOBAL $today;
                         $description="-";
                     }
                     ?>
-                    <!-- Accordion it will keep increasing with every form entry-->
-                    <div class="accordion my-2 accordion-flush border border-secondary" id="accordionFlushExample">
 
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne<?php echo $id; ?>">
-                                    <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        <?php echo $title; ?>
-                                    </button>
-                                </h2>
-                                <div id="collapse<?php echo $id ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne<?php echo $id; ?>" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <ul>
-                                                    <li class="fs-6 my-2 ">DATE</li>
-                                                    <li class="fs-6 my-2 ">TYPE OF CAKE</li>
-                                                    <li class="fs-6 my-2 ">FLAVOUR</li>
-                                                    <li class="fs-6 my-2 ">TOTAL PRICE</li>
-                                                    <li class="fs-6 my-2 ">AMOUNT PAID</li>
-                                                    <li class="fs-6 my-2 ">AMOUNT LEFT</li>
-                                                    <li class="fs-6 my-2 ">DESCRIPTION</li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-6">
-                                                <ul>
-                                                    <?php  echo "<li class='fs-6 my-2'>{$date}</li>" ?>
-                                                    <?php  echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" ?>
-                                                    <?php  echo "<li class='fs-6 my-2'>{$flavour}</li>" ?>
-                                                    <?php  echo "<li class='fs-6 my-2'>{$price}</li>" ?>
-                                                    <?php  echo "<li class='fs-6 my-2'>{$amount_paid}</li>" ?>
-                                                    <?php  echo "<li class='fs-6 my-2'>{$amount_left}</li>" ?>
-                                                    <?php  echo "<li class='fs-6 my-2'>{$description}</li>" ?>
+                    <div class="accordion-item  border border-secondary my-2 ">
+                        <h2 class="accordion-header " id="flush-headingOne<?php echo $id; ?>">
+                            <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <?php echo $title; ?>
+                            </button>
+                        </h2>
+                        <div id="collapse<?php echo $id ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne<?php echo $id; ?>" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <ul>
+                                            <li class="fs-6 my-2 ">DATE</li>
+                                            <li class="fs-6 my-2 ">TYPE OF CAKE</li>
+                                            <li class="fs-6 my-2 ">FLAVOUR</li>
+                                            <li class="fs-6 my-2 ">TOTAL PRICE</li>
+                                            <li class="fs-6 my-2 ">AMOUNT PAID</li>
+                                            <li class="fs-6 my-2 ">AMOUNT LEFT</li>
+                                            <li class="fs-6 my-2 ">DESCRIPTION</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-6">
+                                        <ul>
+                                            <?php  echo "<li class='fs-6 my-2'>{$date}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$flavour}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$price}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$amount_paid}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$amount_left}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$description}</li>" ?>
 
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
-                    <!--Accordion-->
-                <?php  } ?>
+                    <?php  } ?>
+                </div>
+
+            <!--Accordion-->
+
+
 
             <!--for count the total entries-->
             <?php

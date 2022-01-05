@@ -46,34 +46,35 @@ GLOBAL $connection;
         </div>
         <!--Accordion it will keep increasing with every form entry-->
         <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 ">
-            <?php
-            require_once "SQL_queries/db_connection.php";
-            $query="SELECT * FROM sales WHERE date='$salesEntriesDate'";
-            $result=mysqli_query($connection,$query);
-            if(!$result){
-                die("no".mysqli_error($connection));
-            }
-            while ($row=mysqli_fetch_assoc($result)){
-                $id=$row['id'];
-                $date=$row['date'];
-                $date=strtotime($date);
-                $date=date('d-M-Y');
-                $title=$row['title'];
-                $type_of_cake=$row['type_of_cake'];
-                $flavour=$row['flavour'];
-                $image=$row['image'];
-                $price=$row['price'];
-                $amount_paid=$row['amount_paid'];
-                $amount_left=$row['amount_left'];
-                $description=$row['description'];
-                if(empty($description)){
-                    $description="-";
-                }
-                ?>
-                <!-- Accordion it will keep increasing with every form entry-->
-                <div class="accordion my-2 accordion-flush border border-secondary" id="accordionFlushExample">
 
-                    <div class="accordion-item">
+                <!-- Accordion it will keep increasing with every form entry-->
+                <div class="accordion accordion-flush " id="accordionFlushExample">
+                    <?php
+                    require_once "SQL_queries/db_connection.php";
+                    $query="SELECT * FROM sales WHERE date='$salesEntriesDate'";
+                    $result=mysqli_query($connection,$query);
+                    if(!$result){
+                        die("no".mysqli_error($connection));
+                    }
+                    while ($row=mysqli_fetch_assoc($result)){
+                    $id=$row['id'];
+                    $date=$row['date'];
+                    $date=strtotime($date);
+                    $date=date('d-M-Y');
+                    $title=$row['title'];
+                    $type_of_cake=$row['type_of_cake'];
+                    $flavour=$row['flavour'];
+                    $image=$row['image'];
+                    $price=$row['price'];
+                    $amount_paid=$row['amount_paid'];
+                    $amount_left=$row['amount_left'];
+                    $description=$row['description'];
+                    if(empty($description)){
+                        $description="-";
+                    }
+                    ?>
+
+                    <div class="accordion-item  border border-secondary my-2">
                         <h2 class="accordion-header" id="flush-headingOne<?php echo $id; ?>">
                             <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
                                 <?php echo $title; ?>
@@ -109,12 +110,27 @@ GLOBAL $connection;
                             </div>
                         </div>
                     </div>
+                    <?php  } ?>
                 </div>
                 <!--Accordion-->
-            <?php  } ?>
+
+
+            <!--for count the total entries-->
+            <?php
+            $count=mysqli_num_rows($result);
+            ?>
+            <!--for count the total entries-->
+
+            <!--total sales-->
+            <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light ">
+                Total Sale = <?php echo $count;?>
+            </div>
+            <!--total sales-->
 
         </div>
         <!--Accordion-->
+
+
     </div>
     <!--data-->
 
