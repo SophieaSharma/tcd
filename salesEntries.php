@@ -1,6 +1,8 @@
 <?php
 require_once "errors.php";
 require_once "SQL_queries/db_connection.php";
+require_once "shortcuts/salesEntriesDateShortcut.php";
+GLOBAL $salesEntriesDate;
 GLOBAL $connection;
 
 ?>
@@ -46,7 +48,7 @@ GLOBAL $connection;
         <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 ">
             <?php
             require_once "SQL_queries/db_connection.php";
-            $query="SELECT * FROM sales";
+            $query="SELECT * FROM sales WHERE date='$salesEntriesDate'";
             $result=mysqli_query($connection,$query);
             if(!$result){
                 die("no".mysqli_error($connection));
@@ -74,7 +76,7 @@ GLOBAL $connection;
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne<?php echo $id; ?>">
                             <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
-                                <?php echo $id .". ". $title; ?>
+                                <?php echo $title; ?>
                             </button>
                         </h2>
                         <div id="collapse<?php echo $id ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne<?php echo $id; ?>" data-bs-parent="#accordionFlushExample">

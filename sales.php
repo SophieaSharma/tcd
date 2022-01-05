@@ -2,6 +2,7 @@
 require_once "errors.php";
 GLOBAL $connection;
 require_once "SQL_queries/sales_query.php";
+GLOBAL $dateSales;
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,6 +37,12 @@ require_once "SQL_queries/sales_query.php";
         </h1>
         <!-- heading sales-->
 
+        <!--detailed heading-->
+        <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
+            <p>Entries for Specific Date</p>
+        </div>
+        <!--detailed heading-->
+
         <!--date-->
         <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
             <form action="salesEntries.php" method="post">
@@ -48,7 +55,14 @@ require_once "SQL_queries/sales_query.php";
                 </div>
             </form>
         </div>
+         <?php require_once "shortcuts/salesEntriesDateShortcut.php";?>
         <!--date-->
+
+        <!--detailed heading-->
+        <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
+            <p>Today's Entries</p>
+        </div>
+        <!--detailed heading-->
 
         <!--form-->
         <div class="col-lg-8 mb-5 border border-secondary bg-light ">
@@ -129,6 +143,7 @@ require_once "SQL_queries/sales_query.php";
                 <?php
                 require_once "SQL_queries/db_connection.php";
                 $query="SELECT * FROM sales";
+
                 $result=mysqli_query($connection,$query);
                 if(!$result){
                     die("no".mysqli_error($connection));
@@ -156,7 +171,7 @@ require_once "SQL_queries/sales_query.php";
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne<?php echo $id; ?>">
                                     <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        <?php echo $id .". ". $title; ?>
+                                        <?php echo $title; ?>
                                     </button>
                                 </h2>
                                 <div id="collapse<?php echo $id ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne<?php echo $id; ?>" data-bs-parent="#accordionFlushExample">
