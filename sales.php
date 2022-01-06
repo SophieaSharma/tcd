@@ -131,17 +131,6 @@ GLOBAL $today;
                   </div>
                 </div>
 
-               <!-- <div class="mb-3">
-                    <label for="flavour" class="form-label">Flavour</label>
-                    <select name="flavourSales" class="form-select" multiple aria-label="multiple select example" id="flavour" >
-                        <option value="Pineapple">Pineapple</option>
-                        <option value="Chocolate">Chocolate</option>
-                        <option value="Butterscotch">Butterscotch</option>
-                        <option value="Redvelvet">Redvelvet</option>
-                        <option value="Blueberry">Blueberry</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div> -->
 
                 <div class="mb-3">
                     <label for="file" class="form-label">File</label>

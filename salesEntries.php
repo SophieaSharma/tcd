@@ -112,8 +112,6 @@ GLOBAL $connection;
                     </div>
                     <?php  } ?>
                 </div>
-                <!--Accordion-->
-
 
             <!--for count the total entries-->
             <?php
