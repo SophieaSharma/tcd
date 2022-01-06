@@ -1,3 +1,10 @@
+<?php
+require_once "errors.php";
+require_once "SQL_queries/rawmaterial_query.php";
+$today=date('Y-m-d');
+GLOBAL $connection;
+GLOBAL $today;
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -34,7 +41,7 @@ require_once "header.php";
             <form action="rawmaterialEntries.php">
                 <div class="mb-3">
                     <label for="date" class="form-label text-secondary fs-5">Date</label>
-                    <input type="date" class="form-control datepicker" id="date" required>
+                    <input type="date" class="form-control" id="date" required>
                 </div>
                 <div class="mb-3">
                     <input type="submit" class="form-control btn btn-primary" value="Submit">
@@ -49,25 +56,55 @@ require_once "header.php";
                     <!-- <a class="nav-link active" aria-current="page" href="#">sales</a>-->
                 </li>
             </ul>
-            <form action=""method="post">
-                <div class="mb-3">
-                    <label for="items" class="form-label">ITEMS</label>
-                    <select class="form-select" aria-label="Default select example" id="items" multiple>
-                        <option value="1">Sugar</option>
-                        <option value="2">Flour</option>
-                        <option value="3">Butter</option>
-                        <option value="4">Baking Soda</option>
-                        <option value="5">Other</option>
-                    </select>
+            <form action="rawmaterial.php" method="post">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                        <label for="amount" class="form-label m-0 p-1">Items</label>
+                        <select class="form-select" aria-label="Default select example" name="select_items" required>
+                            <option selected>Select Items</option>
+                            <option value="Sugar">Sugar</option>
+                            <option value="Flour">Flour</option>
+                            <option value="butter">butter</option>
+                            <option value="Baking_Soda">Baking Soda</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label for="amount" class="form-label m-0 p-1">Amount (Kg)</label>
+                            <input type="number" class="form-control" id="amount" name="select_amount" required>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <input type="submit" class=" btn btn-primary form-control" value="Submit">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label for="price_per_kg" class="form-label m-0 p-1">Price/Kg</label>
+                            <input type="number" class="form-control" id="price_per_kg" name="select_price_per_kg" required>
+                        </div>
+                    </div>
+
                 </div>
+
+                    <div class="mb-3">
+                        <input name="add_values" type="submit" class="form-control btn btn-primary" value="Add Values">
+                    </div>
+
+
+
+
+
+
+
             </form>
         </div>
         <div class="col-lg-8 border border-secondary mb-5 py-2">
             <div class="col-12 table-responsive">
                 <table class="table table-striped">
+
                     <thead>
                     <tr>
                         <th scope="col">S.NO.</th>
@@ -77,9 +114,37 @@ require_once "header.php";
                         <th scope="col">PRICE</th>
                     </tr>
                     </thead>
-                    <tbody>
 
+                    <tbody>
+                    <?php
+                    require_once "SQL_queries/db_connection.php";
+                    GLOBAL $connection;
+                    $query="SELECT * FROM rawmaterial where date = '$today'";
+                    $result=mysqli_query($connection,$query);
+
+                    while($row=mysqli_fetch_assoc($result)){
+                        $i=1;
+                    $id=$row['id'];
+                    $items=$row['items'];
+                    $amount=$row['amount'];
+                    $price_per_kg=$row['price_per_kg'];
+                    $totalPrice=$row['totalPrice'];
+
+                    ?>
+                    <tr>
+                        <td><?php echo $i; ?></td>
+                        <td><?php echo $items; ?></td>
+                        <td><?php echo $amount; ?></td>
+                        <td><?php echo $price_per_kg; ?></td>
+                        <td><?php echo $totalPrice; ?></td>
+                    </tr>
                     </tbody>
+
+                    <?php
+                    $i++;
+
+                    }
+                    ?>
                 </table>
             </div>
         </div>
