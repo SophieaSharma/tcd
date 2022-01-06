@@ -33,9 +33,11 @@ GLOBAL $connection;
     <!--nav-->
 
     <!-- heading sales-->
+    <a href="sales.php" style="text-decoration: none; color:#131313">
     <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
         sales
     </h1>
+    </a>
     <!-- heading sales-->
 
     <!--data-->

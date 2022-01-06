@@ -33,9 +33,11 @@ require_once "header.php";
     <!--nav-->
 
     <!--heading-->
-    <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
-        production
-    </h1>
+    <a href="production.php" style="text-decoration: none; color:#131313">
+        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
+            production
+        </h1>
+    </a>
     <!--heading-->
 
 
