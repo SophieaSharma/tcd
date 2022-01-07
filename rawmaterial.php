@@ -3,7 +3,7 @@ require_once "errors.php";
 require_once "SQL_queries/rawmaterial_query.php";
 $today=date('Y-m-d');
 GLOBAL $connection;
-GLOBAL $today;
+GLOBAL $today,$total_price_of_all_items;
 ?>
 <!doctype html>
 <html lang="en">
@@ -85,7 +85,7 @@ require_once "header.php";
                             <option selected disabled>Select Items</option>
                             <option value="Sugar">Sugar</option>
                             <option value="Flour">Flour</option>
-                            <option value="butter">butter</option>
+                            <option value="Butter">Butter</option>
                             <option value="Baking Soda">Baking Soda</option>
                             <option value="Other">Other</option>
                         </select>
@@ -124,8 +124,10 @@ require_once "header.php";
                         <th scope="col">S.NO.</th>
                         <th scope="col">ITEMS</th>
                         <th scope="col">AMOUNT</th>
-                        <th scope="col">PRICE/KG</th>
-                        <th scope="col">TOTAL PRICE</th>
+                        <th scope="col">PRICE/
+                                         KG</th>
+                        <th scope="col">PRICE/
+                                        AMOUNT</th>
                     </tr>
                     </thead>
 
@@ -140,25 +142,34 @@ require_once "header.php";
                         $amount=$row['amount'];
                         $price_per_kg=$row['price_per_kg'];
                         $totalPrice=$row['totalPrice'];
+                        $total_price_of_all_items+=$totalPrice;
 
 
                         ?>
                         <tr>
-                            <td><?php echo $i++; ?></td>
-                            <td><?php echo $items; ?></td>
-                            <td><?php echo $amount; ?></td>
-                            <td><?php echo $price_per_kg; ?></td>
-                            <td><?php echo $totalPrice; ?></td>
+                            <td class="px-2 py-3"><?php echo $i++; ?></td>
+                            <td class="px-2 py-3"><?php echo $items; ?></td>
+                            <td class="px-2 py-3"><?php echo $amount; ?><span style="text-transform: none"> Kg</span></td>
+                            <td class="px-2 py-3"><?php echo $price_per_kg; ?><span style="text-transform: none"> Rs</span></td>
+                            <td class="px-2 py-3"><?php echo $totalPrice; ?><span style="text-transform: none"> Rs</span></td>
                         </tr>
+
                         <?php
+
                     }
                     ?>
                     </tbody>
                 </table>
             </div>
+            <?php
+            $count=mysqli_num_rows($result);
+            ?>
+            <p class="pt-3" style=" text-transform: uppercase;">total items = <?php echo $count; ?> </p> <br>
+            <p style=" text-transform: uppercase;">Total Price = <?php echo $total_price_of_all_items; ?><span style="text-transform: none"> Rs</span></p>
         </div>
     </div>
     <!--raw material-->
+
 
 </div>
 <!--main content-->

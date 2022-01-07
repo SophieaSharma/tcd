@@ -83,12 +83,12 @@ GLOBAL $today;
                 <div class="mb-3">
                     <label for="typeofcake" class="form-label">Type of Cake</label>
                     <div class="form-check">
-                        <input name="type_of_cake" value="shop_cake" class="form-check-input" type="radio" id="typeofcake" required>
+                        <input name="type_of_cake" value="Shop Cake" class="form-check-input" type="radio" id="typeofcake" required>
                         <label class="form-check-label mt-1" for="typeofcake" >
                             Shop Cake
                         </label>
                         <br>
-                        <input name="type_of_cake" value="customer_cake" class="form-check-input" type="radio" id="typeofcake" required>
+                        <input name="type_of_cake" value="Customer Cake" class="form-check-input" type="radio" id="typeofcake" required>
                         <label class="form-check-label mt-1" for="typeofcake">
                             Customer Order Cake
                         </label>
@@ -137,7 +137,7 @@ GLOBAL $today;
                     <label for="file" class="form-label">File</label>
                     <div class="input-group mb-3">
                         <input name="imageSales" type="file" class="form-control" id="file">
-                        <!--<label class="input-group-text" for="file">Upload</label>-->
+                        <label class="input-group-text" for="file">Upload</label>
                     </div>
                 </div>
 

@@ -84,11 +84,11 @@ GLOBAL $today;
                 <div class="mb-3">
                     <label for="typeofcake" class="form-label">Type of Cake</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="type_of_cake" value="shop_cake" id="typeofcake" required>
+                        <input class="form-check-input" type="radio" name="type_of_cake" value="Shop Cake" id="typeofcake" required>
                         <label class="form-check-label mt-1" for="typeofcake">
                             Shop Cake
                         </label> <br>
-                        <input class="form-check-input" type="radio" name="type_of_cake" value="customer_cake" id="typeofcake" required>
+                        <input class="form-check-input" type="radio" name="type_of_cake" value="Customer Order Cake" id="typeofcake" required>
                         <label class="form-check-label mt-1" for="typeofcake">
                             Customer Order Cake
                         </label>
@@ -108,9 +108,9 @@ GLOBAL $today;
                                 <label class="form-check-label my-1" for="sugar">
                                     Sugar
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Fat" id="fat" name="itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Butter/Fat" id="fat" name="itemProduction[]">
                                 <label class="form-check-label my-1" for="fat">
-                                    Butter(fat)
+                                    Butter/Fat
                                 </label> <br>
                                 <input class="form-check-input" type="checkbox" value="Salt" id="salt" name="itemProduction[]">
                                 <label class="form-check-label my-1" for="salt">
@@ -126,7 +126,7 @@ GLOBAL $today;
                                 <label class="form-check-label my-1" for="milk">
                                     Milk
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Baking_Soda" id="baking_soda" name="itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Baking Soda" id="baking_soda" name="itemProduction[]">
                                 <label class="form-check-label my-1" for="baking_soda">
                                     Baking Soda
                                 </label> <br>
