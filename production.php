@@ -99,19 +99,19 @@ require_once "SQL_queries/production_query.php";
                     <div class="col-6">
                         <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Flour" id="flour" name="$itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Flour" id="flour" name="itemProduction[]">
                                 <label class="form-check-label my-1" for="flour">
                                     Flour
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Sugar" id="sugar" name="$itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Sugar" id="sugar" name="itemProduction[]">
                                 <label class="form-check-label my-1" for="sugar">
                                     Sugar
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Fat" id="fat" name="$itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Fat" id="fat" name="itemProduction[]">
                                 <label class="form-check-label my-1" for="fat">
                                     Butter(fat)
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Salt" id="salt" name="$itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Salt" id="salt" name="itemProduction[]">
                                 <label class="form-check-label my-1" for="salt">
                                     Salt
                                 </label> <br>
@@ -121,15 +121,15 @@ require_once "SQL_queries/production_query.php";
                     <div class="col-6">
                         <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Milk" id="milk" name="$itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Milk" id="milk" name="itemProduction[]">
                                 <label class="form-check-label my-1" for="milk">
                                     Milk
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Baking_Soda" id="baking_soda" name="$itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Baking_Soda" id="baking_soda" name="itemProduction[]">
                                 <label class="form-check-label my-1" for="baking_soda">
                                     Baking Soda
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Other" id="other" name="$itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Other" id="other" name="itemProduction[]">
                                 <label class="form-check-label my-1" for="other">
                                     Other
                                 </label> <br>
