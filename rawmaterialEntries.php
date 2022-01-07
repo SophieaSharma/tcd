@@ -1,4 +1,10 @@
-
+<?php
+require_once "errors.php";
+require_once "SQL_queries/db_connection.php";
+require_once "shortcuts/rawmaterialEntriesDateShortcut.php";
+GLOBAL $connection;
+GLOBAL $rawmaterialEntriesDate;
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -39,6 +45,48 @@ require_once "header.php";
 
         <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-top-0 border-bottom-0">
             <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
+        </div>
+
+        <div class="col-lg-8 border border-secondary mb-5 py-2">
+            <div class="col-12 table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+
+                    <thead>
+                    <tr>
+                        <th scope="col">S.NO.</th>
+                        <th scope="col">ITEMS</th>
+                        <th scope="col">AMOUNT</th>
+                        <th scope="col">PRICE/KG</th>
+                        <th scope="col">TOTAL PRICE</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <?php
+                    require_once "SQL_queries/db_connection.php";
+                   $query="SELECT * FROM rawmaterial WHERE date='$rawmaterialEntriesDate';";
+                   $result=mysqli_query($connection,$query);
+                   while ($row = mysqli_fetch_assoc($result)){
+                       $items=$row['items'];
+                       $amount=$row['amount'];
+                       $price_per_kg=$row['price_per_kg'];
+                       $totalPrice=$row['totalPrice'];
+
+                    ?>
+                    <tr>
+                        <td><?php echo 1; ?></td>
+                        <td><?php echo $items; ?></td>
+                        <td><?php echo $amount; ?></td>
+                        <td><?php echo $price_per_kg; ?></td>
+                        <td><?php echo $totalPrice; ?></td>
+                    </tr>
+                    </tbody>
+
+                    <?php
+                    }
+                    ?>
+                </table>
+            </div>
         </div>
 
     </div>

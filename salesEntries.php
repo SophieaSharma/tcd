@@ -2,9 +2,8 @@
 require_once "errors.php";
 require_once "SQL_queries/db_connection.php";
 require_once "shortcuts/salesEntriesDateShortcut.php";
-GLOBAL $salesEntriesDate;
 GLOBAL $connection;
-
+GLOBAL $salesEntriesDate;
 ?>
 <!doctype html>
 <html lang="en">

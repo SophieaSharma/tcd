@@ -28,6 +28,6 @@ if(isset($_POST['submitSales'])){
             die("query,not connected " . mysqli_error($connection));
         }
 
-       header('Location: reports.php');
+        header('Location: reports.php');
         exit;
 }

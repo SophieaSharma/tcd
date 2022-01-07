@@ -58,6 +58,7 @@ require_once "header.php";
                     <input type="submit" name="rawmaterialEntriesSubmit" class="form-control btn btn-primary" value="Submit">
                 </div>
             </form>
+            <?php require_once "shortcuts/rawmaterialEntriesDateShortcut.php";?>
         </div>
 
         <!--date-->
@@ -111,13 +112,6 @@ require_once "header.php";
                     <div class="mb-3">
                         <input name="add_values" type="submit" class="form-control btn btn-primary" value="Add Values">
                     </div>
-
-
-
-
-
-
-
             </form>
         </div>
         <div class="col-lg-8 border border-secondary mb-5 py-2">
@@ -137,21 +131,17 @@ require_once "header.php";
                     <tbody>
                     <?php
                     require_once "SQL_queries/db_connection.php";
-                    GLOBAL $connection;
-                    $query="SELECT * FROM rawmaterial where date = '$today'";
+                    $query="SELECT * FROM rawmaterial WHERE date = '$today'";
                     $result=mysqli_query($connection,$query);
-
                     while($row=mysqli_fetch_assoc($result)){
-                        $i=1;
                     $id=$row['id'];
                     $items=$row['items'];
                     $amount=$row['amount'];
                     $price_per_kg=$row['price_per_kg'];
                     $totalPrice=$row['totalPrice'];
-
                     ?>
                     <tr>
-                        <td><?php echo $i; ?></td>
+                        <td><?php echo 1; ?></td>
                         <td><?php echo $items; ?></td>
                         <td><?php echo $amount; ?></td>
                         <td><?php echo $price_per_kg; ?></td>
@@ -160,8 +150,6 @@ require_once "header.php";
                     </tbody>
 
                     <?php
-                    $i++;
-
                     }
                     ?>
                 </table>

@@ -1,6 +1,6 @@
 <?php
 require_once "errors.php";
-require_once "SQL_queries/production_query.php";
+require_once "SQL_queries/db_connection.php";
 require_once "shortcuts/productionEntriesDateShortcut.php";
 GLOBAL $connection;
 GLOBAL $productionEntriesDate;
@@ -41,7 +41,7 @@ require_once "header.php";
     <!--heading-->
 
 
-    <!--sales-->
+    <!--production-->
     <div class="row  my-3 mx-3 justify-content-evenly">
 
         <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-bottom-0">

@@ -1,9 +1,10 @@
 <?php
 require_once "errors.php";
-GLOBAL $connection;
-$today=date('Y-m-d');
-GLOBAL $today;
 require_once "SQL_queries/production_query.php";
+$today=date('Y-m-d');
+GLOBAL $connection;
+GLOBAL $today;
+
 ?>
 <!doctype html>
 <html lang="en">

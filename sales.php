@@ -55,8 +55,9 @@ GLOBAL $today;
                     <input type="submit" class="form-control btn btn-primary" value="Submit" name="salesEntriesSubmit">
                 </div>
             </form>
+            <?php require_once "shortcuts/salesEntriesDateShortcut.php";?>
         </div>
-         <?php require_once "shortcuts/salesEntriesDateShortcut.php";?>
+
         <!--date-->
 
         <!--detailed heading-->
