@@ -49,13 +49,13 @@ require_once "header.php";
 
         <!--date-->
         <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
-            <form action="rawmaterialEntries.php">
+            <form action="rawmaterialEntries.php" method="post">
                 <div class="mb-3">
                     <label for="date" class="form-label text-secondary fs-5">Date</label>
-                    <input type="date" name="rawmaterialEntriesDate" class="form-control" id="date" required>
+                    <input name="raw_materialEntriesDate" type="date" class="form-control" id="date" required>
                 </div>
                 <div class="mb-3">
-                    <input type="submit" name="rawmaterialEntriesSubmit" class="form-control btn btn-primary" value="Submit">
+                    <input type="submit" class="form-control btn btn-primary" value="Submit" name="raw_materialEntriesSubmit">
                 </div>
             </form>
             <?php require_once "shortcuts/rawmaterialEntriesDateShortcut.php";?>
@@ -131,27 +131,28 @@ require_once "header.php";
                     <tbody>
                     <?php
                     require_once "SQL_queries/db_connection.php";
-                    $query="SELECT * FROM rawmaterial WHERE date = '$today'";
+                    $query="SELECT * FROM rawmaterial WHERE date ='$today';";
                     $result=mysqli_query($connection,$query);
-                    while($row=mysqli_fetch_assoc($result)){
-                    $id=$row['id'];
-                    $items=$row['items'];
-                    $amount=$row['amount'];
-                    $price_per_kg=$row['price_per_kg'];
-                    $totalPrice=$row['totalPrice'];
-                    ?>
-                    <tr>
-                        <td><?php echo 1; ?></td>
-                        <td><?php echo $items; ?></td>
-                        <td><?php echo $amount; ?></td>
-                        <td><?php echo $price_per_kg; ?></td>
-                        <td><?php echo $totalPrice; ?></td>
-                    </tr>
-                    </tbody>
+                    $i=1;
+                    while ($row = mysqli_fetch_assoc($result)){
+                        $items=$row['items'];
+                        $amount=$row['amount'];
+                        $price_per_kg=$row['price_per_kg'];
+                        $totalPrice=$row['totalPrice'];
 
-                    <?php
+
+                        ?>
+                        <tr>
+                            <td><?php echo $i++; ?></td>
+                            <td><?php echo $items; ?></td>
+                            <td><?php echo $amount; ?></td>
+                            <td><?php echo $price_per_kg; ?></td>
+                            <td><?php echo $totalPrice; ?></td>
+                        </tr>
+                        <?php
                     }
                     ?>
+                    </tbody>
                 </table>
             </div>
         </div>

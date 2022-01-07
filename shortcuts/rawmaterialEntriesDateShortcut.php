@@ -1,4 +1,4 @@
 <?php
-if(isset($_POST['rawmaterialEntriesSubmit'])){
-    $rawmaterialEntriesDate=$_POST['rawmaterialEntriesDate'];
+if(isset($_POST['raw_materialEntriesSubmit'])){
+    $raw_materialEntriesDate=$_POST['raw_materialEntriesDate'];
 }

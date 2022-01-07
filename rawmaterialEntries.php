@@ -3,7 +3,7 @@ require_once "errors.php";
 require_once "SQL_queries/db_connection.php";
 require_once "shortcuts/rawmaterialEntriesDateShortcut.php";
 GLOBAL $connection;
-GLOBAL $rawmaterialEntriesDate;
+GLOBAL $raw_materialEntriesDate;
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,11 +43,11 @@ require_once "header.php";
     <!--raw material-->
     <div class="row  my-5 mx-3 justify-content-evenly">
 
-        <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-top-0 border-bottom-0">
+        <div class="col-lg-8 text-center py-3 bg-light  border border-secondary ">
             <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
         </div>
 
-        <div class="col-lg-8 border border-secondary mb-5 py-2">
+        <div class="col-lg-8 border border-secondary  my-4 p-0">
             <div class="col-12 table-responsive">
                 <table class="table table-striped table-bordered table-hover">
 
@@ -64,27 +64,30 @@ require_once "header.php";
                     <tbody>
                     <?php
                     require_once "SQL_queries/db_connection.php";
-                   $query="SELECT * FROM rawmaterial WHERE date='$rawmaterialEntriesDate';";
+                   $query="SELECT * FROM rawmaterial WHERE date ='$raw_materialEntriesDate';";
                    $result=mysqli_query($connection,$query);
+                   $i=1;
                    while ($row = mysqli_fetch_assoc($result)){
                        $items=$row['items'];
                        $amount=$row['amount'];
                        $price_per_kg=$row['price_per_kg'];
                        $totalPrice=$row['totalPrice'];
 
+
                     ?>
                     <tr>
-                        <td><?php echo 1; ?></td>
+                        <td><?php echo $i++; ?></td>
                         <td><?php echo $items; ?></td>
                         <td><?php echo $amount; ?></td>
                         <td><?php echo $price_per_kg; ?></td>
                         <td><?php echo $totalPrice; ?></td>
                     </tr>
+                       <?php
+                        }
+                       ?>
                     </tbody>
 
-                    <?php
-                    }
-                    ?>
+
                 </table>
             </div>
         </div>
