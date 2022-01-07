@@ -59,9 +59,7 @@ require_once "header.php";
                 </div>
             </form>
         </div>
-        <?php
-        re
-        ?>
+
         <!--date-->
 
         <!--detailed heading-->
