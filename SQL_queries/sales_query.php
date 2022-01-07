@@ -7,7 +7,7 @@ if(isset($_POST['submitSales'])){
     $imageSales=$_POST['imageSales'];
     $priceSales=$_POST['priceSales'];
     $amountSales=$_POST['amountSales'];
-    $amount_leftSales=$_POST['amount_leftSales'];
+    $amount_leftSales=($priceSales-$amountSales);
     $descriptionSales=$_POST['descriptionSales'];
     $values="";
     //connection

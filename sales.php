@@ -151,10 +151,10 @@ GLOBAL $today;
                     <input name="amountSales" type="number"  class="form-control" id="amount_by_customer" placeholder="Amount Paid by Customer" required>
                 </div>
 
-                <div class="mb-3">
+                <!--<div class="mb-3">
                     <label for="left" class="form-label">Amount Left</label>
                     <input name="amount_leftSales" type="number" class="form-control" id="left" placeholder="Amount Left by Customer" required>
-                </div>
+                </div>-->
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>

@@ -82,11 +82,11 @@ require_once "header.php";
                         <div class="mb-3">
                         <label for="amount" class="form-label m-0 p-1">Items</label>
                         <select class="form-select" aria-label="Default select example" name="select_items" required>
-                            <option selected>Select Items</option>
+                            <option selected disabled>Select Items</option>
                             <option value="Sugar">Sugar</option>
                             <option value="Flour">Flour</option>
                             <option value="butter">butter</option>
-                            <option value="Baking_Soda">Baking Soda</option>
+                            <option value="Baking Soda">Baking Soda</option>
                             <option value="Other">Other</option>
                         </select>
                         </div>
@@ -106,12 +106,13 @@ require_once "header.php";
                             <input type="number" class="form-control" id="price_per_kg" name="select_price_per_kg" required>
                         </div>
                     </div>
-
+                    <div class="col-lg-6">
+                        <div class="mt-4 mb-2">
+                            <input name="add_values" type="submit" class="form-control btn btn-primary " value="Add Values">
+                        </div>
+                    </div>
                 </div>
 
-                    <div class="mb-3">
-                        <input name="add_values" type="submit" class="form-control btn btn-primary" value="Add Values">
-                    </div>
             </form>
         </div>
         <div class="col-lg-8 border border-secondary mb-5 py-2">
