@@ -29,4 +29,5 @@ if(isset($_POST['submitSales'])){
         }
 
        header('Location: reports.php');
+        exit;
 }

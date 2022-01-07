@@ -31,29 +31,50 @@ require_once "header.php";
     <!--nav-->
     <?php require_once "navbarFunctions/navbar_rawmaterial.php";?>
     <!--nav-->
+
     <!--raw material-->
     <div class="row mx-3 justify-content-evenly">
+
+        <!--heading-->
         <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
             raw material
         </h1>
+        <!--heading-->
+
+        <!--detailed heading-->
+        <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
+            <p>Entries for Specific Date</p>
+        </div>
+        <!--detailed heading-->
+
         <!--date-->
         <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
             <form action="rawmaterialEntries.php">
                 <div class="mb-3">
                     <label for="date" class="form-label text-secondary fs-5">Date</label>
-                    <input type="date" class="form-control" id="date" required>
+                    <input type="date" name="rawmaterialEntriesDate" class="form-control" id="date" required>
                 </div>
                 <div class="mb-3">
-                    <input type="submit" class="form-control btn btn-primary" value="Submit">
+                    <input type="submit" name="rawmaterialEntriesSubmit" class="form-control btn btn-primary" value="Submit">
                 </div>
             </form>
         </div>
+        <?php
+        re
+        ?>
         <!--date-->
+
+        <!--detailed heading-->
+        <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
+            <p>Today's Entries</p>
+        </div>
+        <!--detailed heading-->
+
+
         <div class="col-lg-8 border border-secondary mb-5 py-2">
             <ul class="nav nav-tabs my-3">
                 <li class="nav-item">
                     <button class="nav-link active" aria-current="page">RAW MATERIAL</button>
-                    <!-- <a class="nav-link active" aria-current="page" href="#">sales</a>-->
                 </li>
             </ul>
             <form action="rawmaterial.php" method="post">
@@ -103,7 +124,7 @@ require_once "header.php";
         </div>
         <div class="col-lg-8 border border-secondary mb-5 py-2">
             <div class="col-12 table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped table-bordered table-hover">
 
                     <thead>
                     <tr>
@@ -111,7 +132,7 @@ require_once "header.php";
                         <th scope="col">ITEMS</th>
                         <th scope="col">AMOUNT</th>
                         <th scope="col">PRICE/KG</th>
-                        <th scope="col">PRICE</th>
+                        <th scope="col">TOTAL PRICE</th>
                     </tr>
                     </thead>
 

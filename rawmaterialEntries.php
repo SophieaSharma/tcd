@@ -22,55 +22,27 @@ require_once "header.php";
 
 <div class="container-fluid p-0">
     <!--nav-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fs-4">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link active" href="rawmaterial.php">Raw Material</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="production.php">Production</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link " aria-current="page" href="sales.php">Sales</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="reports.php">Reports</a>
-                    </li>
-                </ul>
-            </div>
-            <a href="signup_loginPage.php" class="btn btn-primary fs-5 px-3 mx-1"> Log Out</a>
-        </div>
-    </nav>
+    <?php require_once "navbarFunctions/navbar_rawmaterialEntries.php"?>
     <!--nav-->
-    <!--sales-->
+
+    <!--heading-->
+    <a href="rawmaterial.php" style="text-decoration: none; color: #131313;">
+        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
+            raw material
+        </h1>
+    </a>
+
+    <!--heading-->
+
+    <!--raw material-->
     <div class="row  my-5 mx-3 justify-content-evenly">
 
         <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-top-0 border-bottom-0">
             <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
         </div>
-        <!--Accordion it will keep increasing with every form entry-->
-        <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Title in the form
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Accordion-->
+
     </div>
-    <!--sales-->
+    <!--raw material-->
 </div>
 <!--footer-->
 <?php require_once "footer.php"?>

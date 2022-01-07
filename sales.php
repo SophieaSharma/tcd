@@ -165,7 +165,7 @@ GLOBAL $today;
                 </div>
             </form>
 
- 
+
             <h3 class="display-6 fs-5 text-uppercase text-center">Entries</h3>
 
                 <!-- Accordion it will keep increasing with every form entry-->
