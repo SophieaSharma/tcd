@@ -164,8 +164,22 @@ require_once "header.php";
             <?php
             $count=mysqli_num_rows($result);
             ?>
-            <p class="pt-3" style=" text-transform: uppercase;">total items = <?php echo $count; ?> </p> <br>
-            <p style=" text-transform: uppercase;">Total Price = <?php echo $total_price_of_all_items; ?><span style="text-transform: none"> Rs</span></p>
+            <div class="border border-secondary p-2">
+            <p style=" text-transform: uppercase;">total items = <?php echo $count; ?> </p> <br>
+            <p style=" text-transform: uppercase;">Total Price =
+                <?php
+                if(!$total_price_of_all_items==0){
+                    echo $total_price_of_all_items;
+                    if($total_price_of_all_items!=0){
+                        echo " Rs";
+                    }
+                }else{
+                    echo 0;
+                }
+
+                ?>
+            </p>
+            </div>
         </div>
     </div>
     <!--raw material-->

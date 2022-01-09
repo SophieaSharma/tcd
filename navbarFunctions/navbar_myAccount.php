@@ -6,10 +6,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="rawmaterial.php">Raw Material</a>
+                    <a class="nav-link  " href="rawmaterial.php">Raw Material</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link active" href="#">Production</a>
+                    <a class="nav-link" href="production.php">Production</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link " aria-current="page" href="sales.php">Sales</a>
@@ -18,7 +18,7 @@
                     <a class="nav-link" href="reports.php">Reports</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link " href="myAccount.php">My Account</a>
+                    <a class="nav-link active" href="#">My Account</a>
                 </li>
             </ul>
 

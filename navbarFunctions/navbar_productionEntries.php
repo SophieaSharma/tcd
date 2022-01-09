@@ -17,6 +17,9 @@
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="reports.php">Reports</a>
                 </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link " href="myAccount.php">My Account</a>
+                </li>
             </ul>
 
         </div>
