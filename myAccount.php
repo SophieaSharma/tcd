@@ -32,7 +32,8 @@
 
     <div class="row">
         <div class="col-sm-3 bg-secondary">
-            <img src="" alt="profile picture">
+            <img src="" alt="profile picture" class="m-3 text-center">
+            <p class="mx-3 text-center fs-4">Name :</p>
 
         </div>
         <div class="col-sm-9 bg-primary">iframe</div>
