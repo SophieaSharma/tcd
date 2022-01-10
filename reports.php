@@ -1,4 +1,16 @@
+<?php
+#rawmaterial variable
+GLOBAL $total_price_of_all_items;
+#sales variable
+GLOBAL $totalPriceSales;
+require_once "shortcuts/reportQueryFromRawmaterial.php";
+require_once "shortcuts/reportQueryFromSales.php";
 
+$a = $totalPriceSales - $total_price_of_all_items;
+$b = $totalPriceSales + $total_price_of_all_items;
+$c = ($a / $b) * 100;
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -52,6 +64,9 @@ require_once "header.php";
                         <!-- <a class="nav-link active" aria-current="page" href="#">sales</a>-->
                     </li>
                 </ul>
+            <div class="progress my-3">
+                <div class="progress-bar bg-success" role="progressbar" style="width:<?php echo $c ; ?>%; " aria-valuenow="<?php echo $c ; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $c."%"; ?></div>
+            </div>
                 <form action="" method="post">
                     <div class="mb-3">
                         <input type="submit" class="form-control btn btn-primary" value="Evaluate">

@@ -3,7 +3,7 @@ require_once "errors.php";
 require_once "SQL_queries/sales_query.php";
 $today=date('Y-m-d');
 GLOBAL $connection;
-GLOBAL $today;
+GLOBAL $today,$totalPriceSales;
 ?>
 <!doctype html>
 <html lang="en">
@@ -192,6 +192,7 @@ GLOBAL $today;
                     $amount_paid=$row['amount_paid'];
                     $amount_left=$row['amount_left'];
                     $description=$row['description'];
+                    $totalPriceSales+=$amount_paid;
                     if(empty($description)){
                         $description="-";
                     }
@@ -248,7 +249,8 @@ GLOBAL $today;
 
             <!--total sales-->
             <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light ">
-                Total Sale = <?php echo $count;?>
+                <p>Total Sale = <?php echo $count;?></p>
+                <p>Total price = <?php echo $totalPriceSales;?></p>
             </div>
             <!--total sales-->
         </div>
