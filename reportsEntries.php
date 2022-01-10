@@ -1,4 +1,19 @@
+<?php
+require_once "errors.php";
+require_once "shortcuts/reportsEntriesDateShortcut.php";
+require_once "shortcuts/reportQueryFromSales.php";
+#rawmaterial variable
+GLOBAL $total_price_of_all_items;
+#sales variable
+GLOBAL $totalPriceSales;
+GLOBAL $today,$dateReportEntry,$connection;
+$today=date('Y-m-d');
+$a = $totalPriceSales - $total_price_of_all_items;
+$b = $totalPriceSales + $total_price_of_all_items;
+$c = ($a / $b) * 100;
+$c= intval($c);
 
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,59 +33,59 @@
 <?php require_once "header.php"; ?>
 <!--heading-->
 
+<!--reports-->
 <div class="container-fluid p-0">
     <!--nav-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fs-4">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="rawmaterial.php">Raw Material</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="production.php">Production</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link " aria-current="page" href="sales.php">Sales</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link active" href="reports.php">Reports</a>
-                    </li>
-                </ul>
-
-            </div>
-            <a href="signup_loginPage.php" class="btn btn-primary fs-5 px-3 mx-1"> Log Out</a>
-        </div>
-    </nav>
+    <?php require_once "navbarFunctions/navbar_reportsEntries.php";?>
     <!--nav-->
-    <!--sales-->
-    <div class="row  my-5 mx-3 justify-content-evenly">
 
-        <div class="col-lg-8 text-center pt-3 bg-light  border border-secondary border-top-0 border-bottom-0">
-            <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
-        </div>
-        <!--Accordion it will keep increasing with every form entry-->
-        <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 border-bottom-0">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Title in the form
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                    </div>
-                </div>
+    <!--reports-->
+    <div class="row mx-3 justify-content-evenly">
+
+        <!--heading-->
+        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
+            <a href="reports.php" style="text-decoration: none; color: black;">reports</a>
+        </h1>
+        <!--heading-->
+
+        <!--data-->
+        <div class="col-lg-8  border border-secondary bg-light">
+            <ul class="nav nav-tabs my-3">
+                <li class="nav-item">
+                    <button class="nav-link active" aria-current="page">REPORTS</button>
+                </li>
+            </ul>
+
+            <?php
+            require_once "SQL_queries/db_connection.php";
+            $query="SELECT * FROM report WHERE date='$dateReportEntry'";
+            $result=mysqli_query($connection,$query);
+            while ($row = mysqli_fetch_assoc($result)){
+            $date=$row['date'];
+            $date=strtotime($date);
+            $date=date('d-M-Y',$date);
+            $value=$row['value'];
+            ?>
+            <div class="fs-5">
+                Date : <?php echo $date; ?>
             </div>
+
+                <div class="progress my-3" style="height: 22px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $value; ?>%;" aria-valuenow="<?php echo $value; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $value ."%"; ?></div>
+                </div>
+
+
+         <?php } ?>
         </div>
-        <!--Accordion-->
+        <!--data-->
+
     </div>
-    <!--sales-->
+    <!--reports-->
+
 </div>
+<!--reports-->
+
+
 <!--footer-->
 <?php require_once "footer.php"?>
 <!--footer-->
