@@ -56,6 +56,21 @@ $c= intval($c);
                 </li>
             </ul>
 
+            <div class="my-3">
+                <div class="row">
+                    <span class=" col-4 text-uppercase fs-6">profit</span>
+                    <div class="col-1 progress" style="height: 10px; ">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+                <span class="text-uppercase fs-6">loss</span>
+                <div class="col-1 progress" style="height: 10px; ">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <br>
+            </div>
+
             <?php
             require_once "SQL_queries/db_connection.php";
             $query="SELECT * FROM report WHERE date='$dateReportEntry'";
@@ -72,6 +87,7 @@ $c= intval($c);
 
                 <div class="progress my-3" style="height: 22px;">
                     <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $value; ?>%;" aria-valuenow="<?php echo $value; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $value ."%"; ?></div>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo (100-$value); ?>%;" aria-valuenow="<?php echo (100-$value); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo (100-$value) ."%"; ?></div>
                 </div>
 
 

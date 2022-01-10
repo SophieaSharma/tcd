@@ -87,6 +87,7 @@ require_once "header.php";
                 <form action="reports.php" method="post">
                     <div class="progress my-3">
                         <div class="progress-bar bg-success" role="progressbar" style="width:<?php echo $c ; ?>%; " aria-valuenow="<?php echo $c ; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $c."%"; ?></div>
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo (100-$c); ?>%;" aria-valuenow="<?php echo (100-$c); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo (100-$c) ."%"; ?></div>
                     </div>
                     <div class="mb-3">
                         <input name="submitReport" type="submit" class="form-control btn btn-primary" value="Submit">
