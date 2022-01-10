@@ -1,4 +1,6 @@
-
+<?php
+require_once "errors.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>

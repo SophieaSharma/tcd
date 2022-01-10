@@ -250,7 +250,14 @@ GLOBAL $today,$totalPriceSales;
             <!--total sales-->
             <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light ">
                 <p>Total Sale = <?php echo $count;?></p>
-                <p>Total price = <?php echo $totalPriceSales;?></p>
+                <p>Total price = <?php echo $totalPriceSales;
+                if($totalPriceSales!=0){
+                    echo "<span style='text-transform: none;'> Rs</span>";
+                }else{
+                    echo 0;
+                }
+                ?>
+                </p>
             </div>
             <!--total sales-->
         </div>

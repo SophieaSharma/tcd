@@ -1,4 +1,5 @@
 <?php
+require_once "errors.php";
 $server_name='localhost';
 $username='root';
 $password='';
