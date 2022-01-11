@@ -70,12 +70,14 @@ $c= intval($c);
             $value=$row['value'];
             ?>
             <div class="fs-5">
-                Date : <?php echo $date; ?>
+                Date : <?php echo $date; ?> <br>
+                <p class="text-uppercase my-3 text-success">Profit : <?php echo $value; ?>%</p>
+                <p class="text-uppercase my-3 text-danger">Loss : <?php echo (100-$value); ?>%</p>
             </div>
 
-                <div class="progress my-3" style="height: 22px;">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $value; ?>%;" aria-valuenow="<?php echo $value; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $value ."%"; ?></div>
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo (100-$value); ?>%;" aria-valuenow="<?php echo (100-$value); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo (100-$value) ."%"; ?></div>
+                <div class="progress my-4" style="height: 25px;">
+                    <div class="progress-bar bg-success fs-5" role="progressbar" style="width: <?php echo $value; ?>%;" aria-valuenow="<?php echo $value; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $value ."%"; ?></div>
+                    <div class="progress-bar bg-danger fs-5" role="progressbar" style="width: <?php echo (100-$value); ?>%;" aria-valuenow="<?php echo (100-$value); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo (100-$value) ."%"; ?></div>
                 </div>
 
 
