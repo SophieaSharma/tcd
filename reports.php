@@ -10,6 +10,9 @@ GLOBAL $today;
 $today=date('Y-m-d');
 $a = $totalPriceSales - $total_price_of_all_items;
 $b = $totalPriceSales + $total_price_of_all_items;
+if($b==0){
+    $b=1;
+}
 $c = ($a / $b) * 100;
 $c= intval($c);
 
@@ -30,9 +33,7 @@ $c= intval($c);
 <body>
 
 <!--heading-->
-<?php
-require_once "header.php";
-?>
+<?php require_once "header.php"; ?>
 <!--heading-->
 
 <!--reports-->

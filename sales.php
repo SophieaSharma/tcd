@@ -193,6 +193,9 @@ GLOBAL $today,$totalPriceSales;
                     $amount_left=$row['amount_left'];
                     $description=$row['description'];
                     $totalPriceSales+=$amount_paid;
+                    $rupees="Rs";
+
+
                     if(empty($description)){
                         $description="-";
                     }
@@ -223,9 +226,9 @@ GLOBAL $today,$totalPriceSales;
                                             <?php  echo "<li class='fs-6 my-2'>{$date}</li>" ?>
                                             <?php  echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" ?>
                                             <?php  echo "<li class='fs-6 my-2'>{$flavour}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$price}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$amount_paid}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$amount_left}</li>" ?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$price} {$rupees}</li>"?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$amount_paid} {$rupees}</li>"?>
+                                            <?php  echo "<li class='fs-6 my-2'>{$amount_left} {$rupees}</li>" ?>
                                             <?php  echo "<li class='fs-6 my-2'>{$description}</li>" ?>
 
                                         </ul>
