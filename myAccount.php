@@ -38,7 +38,7 @@ require_once "errors.php";
 
         <!--Profile-->
         <div class="col-lg-8 border border-secondary bg-light mb-3 py-2">
-            <img src="img/cake1.jpeg" alt="" class="mx-auto d-block my-3 img-thumbnail" >
+            <img src="img/cake1.jpeg" alt="" class="mx-auto d-block my-3 img-thumbnail rounded-circle" >
             <p class="text-uppercase text-center fs-4 my-2">name - </p>
             <p class="text-uppercase text-center fs-4 my-2">email -  </p>
             <p class="text-uppercase text-center fs-4"> </p>
