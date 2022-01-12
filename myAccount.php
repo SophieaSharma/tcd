@@ -20,29 +20,45 @@ require_once "errors.php";
 <?php require_once "header.php"; ?>
 <!--heading-->
 
-<!--My Account-->
+<!--reports-->
 <div class="container-fluid p-0">
     <!--nav-->
     <?php require_once "navbarFunctions/navbar_myAccount.php";?>
     <!--nav-->
 
-    <!--heading-->
-    <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
-        my Account
-    </h1>
-    <!--heading-->
+    <!--data-->
+    <div class="row mx-3 justify-content-evenly">
 
-    <div class="row">
-        <div class="col-sm-3 bg-secondary">
-            <img src="" alt="profile picture" class="m-3 text-center">
-            <p class="mx-3 text-center fs-4">Name :</p>
+        <!--heading-->
+        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
+            My Accounts
+        </h1>
+        <!--heading-->
+
+
+        <!--Profile-->
+        <div class="col-lg-8 border border-secondary bg-light mb-3 py-2">
+            <img src="img/cake1.jpeg" alt="" class="mx-auto d-block my-3 img-thumbnail" >
+            <p class="text-uppercase text-center fs-4 my-2">name - </p>
+            <p class="text-uppercase text-center fs-4 my-2">email -  </p>
+            <p class="text-uppercase text-center fs-4"> </p>
 
         </div>
-        <div class="col-sm-9 bg-primary">iframe</div>
+        <!--Profile-->
+
+
+        <!--form-->
+        <div class="col-lg-8  border border-secondary bg-light py-2">
+
+
+
+        </div>
+        <!--form-->
     </div>
+    <!--data-->
 
 </div>
-<!--My Account-->
+<!--reports-->
 
 
 <!--footer-->

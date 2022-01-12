@@ -1,5 +1,6 @@
 <?php
 require_once "errors.php";
+GLOBAL $connection, $nameSignup, $emailSignup, $passwordSignup;
 require_once "SQL_queries/signup_query.php";
 ?>
 
@@ -41,21 +42,20 @@ require_once "SQL_queries/signup_query.php";
                                     <label for="Name" class="form-label">Name</label>
                                     <input name="nameSignup" type="text" class="form-control" id="Name" placeholder="Name" required>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="radioBox" id="admin" required>
-                                    <label class="form-check-label" for="admin">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input my-1" type="radio" name="radioBox" id="admin" value="Admin" required>
+                                    <label class="form-check-label my-1" for="admin">
                                         Admin
                                     </label>
-                                </div>
-                                <div class="mb-3 form-check">
-                                    <input class="form-check-input" type="radio" name="radioBox" id="user" required>
-                                    <label class="form-check-label" for="user">
+                                    <br>
+                                    <input class="form-check-input my-1" type="radio" name="radioBox" id="user" value="User" required>
+                                    <label class="form-check-label my-1" for="user">
                                         User
                                     </label>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                    <input name="emailSignup" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your Email Address" required>
+                                    <label for="emailId " class="form-label">Email address</label>
+                                    <input name="emailSignup" type="email" class="form-control" id="emailId" placeholder="Your Email Address" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
@@ -70,16 +70,15 @@ require_once "SQL_queries/signup_query.php";
                             <form action="rawmaterial.php" method="post">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your Email Id" required>
+                                    <input type="email" name="emailLogin" class="form-control" id="exampleFormControlInput1" placeholder="Your Email Id" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="Password" class="form-control" id="password" placeholder="********" required>
+                                    <input type="Password" name="passwordLogin" class="form-control" id="password" placeholder="********" required>
                                 </div>
                                 <div class="my-4">
-                                    <input type="submit" class="form-control btn btn-primary" value="Submit">
+                                    <input type="submit" class="form-control btn btn-primary" value="Submit" name="submitLogin">
                                 </div>
-
                             </form>
                         </div>
                     </div>
