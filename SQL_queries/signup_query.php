@@ -10,6 +10,10 @@ if(isset($_POST['submitSignup'])){
     GLOBAL $connection;
     require_once "db_connection.php";
 
+    $nameSignup=mysqli_real_escape_string($connection,$nameSignup);
+    $emailSignup=mysqli_real_escape_string($connection,$emailSignup);
+    $passwordSignup=mysqli_real_escape_string($connection,$passwordSignup);
+
     //query
     $query="INSERT INTO user_details(name,date,user_or_admin,email_id,password) 
                 VALUES('$nameSignup','$dateSignup','$user_or_admin','$emailSignup','$passwordSignup')";
@@ -17,5 +21,7 @@ if(isset($_POST['submitSignup'])){
     if(!$result){
         die("off ".mysqli_error($connection));
     }
-    header('location: rawmaterial.php');
-}
+
+       header("Location: signup_loginPage.php");
+
+   }
