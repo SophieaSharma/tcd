@@ -15,7 +15,7 @@ if(isset($_POST['submitLogin'])){
         $db_email=$row['email_id'];
         $db_password=$row['password'];
     }
-    echo $db_email;
+    
 
     header("Location:rawmaterial.php");
 
