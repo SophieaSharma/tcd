@@ -22,6 +22,6 @@ if(isset($_POST['submitSignup'])){
         die("off ".mysqli_error($connection));
     }
 
-       header("Location: signup_loginPage.php");
+       header("Location: signup.php");
 
    }

@@ -29,23 +29,25 @@ echo $db_email;
                 <div class="col-md-6 border border-light">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link " data-bs-toggle="tab" href="#signup">Signup</a>
+                            <a class="nav-link active" data-bs-toggle="tab" href="#signup">Signup</a>
                         </li>
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link active" data-bs-toggle="tab" href="#login">Login</a>
-                        </li>
+                        </li>-->
                     </ul>
 
                     <!-- Tab panes -->
                     <div class="tab-content">
 
                         <!--signup form-->
-                        <div id="signup" class="container tab-pane fade"><br>
-                            <form action="signup_loginPage.php" method="post">
+                        <div id="signup" class="container tab-pane active"><br>
+                            <form action="signup.php" method="post">
+
                                 <div class="mb-3">
                                     <label for="Name" class="form-label">Name</label>
                                     <input name="nameSignup" type="text" class="form-control" id="Name" placeholder="Name" required>
                                 </div>
+
                                 <div class="form-check mb-3">
                                     <input class="form-check-input my-1" type="radio" name="radioBox" id="admin" value="Admin" required>
                                     <label class="form-check-label my-1" for="admin">
@@ -57,38 +59,32 @@ echo $db_email;
                                         User
                                     </label>
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="emailId " class="form-label">Email address</label>
                                     <input name="emailSignup" type="email" class="form-control" id="emailId" placeholder="Your Email Address" required>
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <input name="passwordSignup" type="Password" class="form-control" id="password" placeholder="********" required>
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                    <input name="confirmPasswordSignup" type="Password" class="form-control" id="confirmPassword" placeholder="Your Password" required>
+                                </div>
+
                                 <div class="my-4">
                                     <input name="submitSignup" type="submit" class="form-control btn btn-primary" value="Submit">
                                 </div>
                             </form>
+                            <div class="mb-3">
+                                <p class="fs-5">Already a User?<a href="login.php" style="text-decoration: none; font-weight: bold; color: black;"> Log In </a></p>
+                            </div>
                        </div>
                         <!--signup form-->
 
-                        <!--login form-->
-                        <div id="login" class="container tab-pane active"><br>
-                            <form action="" method="post">
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                    <input type="email" name="emailLogin" class="form-control" id="exampleFormControlInput1" placeholder="Your Email Id" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="Password" name="passwordLogin" class="form-control" id="password" placeholder="********" required>
-                                </div>
-                                <div class="my-4">
-                                    <input type="submit" name="submitLogin" class="form-control btn btn-primary" value="Submit" >
-                                </div>
-                            </form>
-                        </div>
-                        <!--login form-->
                     </div>
                 </div>
                 <div class="col"></div>
