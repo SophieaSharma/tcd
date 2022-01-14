@@ -128,6 +128,7 @@ require_once "headerTCD.php";
                                          KG</th>
                         <th scope="col">PRICE/
                                         AMOUNT</th>
+                        <th scope="col">DELETE</th>
                     </tr>
                     </thead>
 
@@ -138,6 +139,7 @@ require_once "headerTCD.php";
                     $result=mysqli_query($connection,$query);
                     $i=1;
                     while ($row = mysqli_fetch_assoc($result)){
+                        $id=$row['id'];
                         $items=$row['items'];
                         $amount=$row['amount'];
                         $price_per_kg=$row['price_per_kg'];
@@ -152,13 +154,27 @@ require_once "headerTCD.php";
                             <td class="px-2 py-3"><?php echo $amount; ?><span style="text-transform: none"> Kg</span></td>
                             <td class="px-2 py-3"><?php echo $price_per_kg; ?><span style="text-transform: none"> Rs</span></td>
                             <td class="px-2 py-3"><?php echo $totalPrice; ?><span style="text-transform: none"> Rs</span></td>
+                            <td class="px-2 py-3"><a style="text-transform: uppercase; color: black; font-weight: normal;" href='rawmaterial.php?delete=<?php echo $id; ?>'>Delete</a></td>
                         </tr>
-
                         <?php
-
                     }
                     ?>
                     </tbody>
+
+                    <?php
+                    //deleting values from table
+                    if(isset($_GET['delete'])){
+                        $deleteId=$_GET['delete'];
+                        $deleteQuery="DELETE FROM rawmaterial WHERE id = '$deleteId'";
+                        $deleteResult=mysqli_query($connection,$deleteQuery);
+                        if(!$deleteResult){
+                            die("not queried" . mysqli_error($connection));
+                        }?>
+                        <script>window.location.href = "rawmaterial.php"</script>
+
+                    <?php
+                    }
+                    ?>
                 </table>
             </div>
             <?php

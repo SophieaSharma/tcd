@@ -1,4 +1,3 @@
-
 <?php
  if(isset($_POST['add_values'])){
      $date = date('Y-m-d');
@@ -19,6 +18,5 @@
     if (!$result) {
         die("not connected " . mysqli_error($connection));
     }
-
 
  }
