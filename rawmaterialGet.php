@@ -19,12 +19,6 @@ GLOBAL $connection;
 </head>
 <body>
 
-<script>
-    $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
-</script>
-
 <!--heading-->
 <?php
 require_once "headerTCD.php";
@@ -41,10 +35,13 @@ require_once "headerTCD.php";
     <div class="row mx-3 justify-content-evenly">
 
         <!--heading-->
-        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
-            raw material
-        </h1>
+        <a href="rawmaterial.php" style="text-decoration: none; color: #131313;">
+            <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
+                raw material
+            </h1>
+        </a>
         <!--heading-->
+
 
 
         <div class="col-lg-8 border border-secondary mb-5 py-2">
@@ -53,7 +50,7 @@ require_once "headerTCD.php";
                     <button class="nav-link active" aria-current="page">EDIT VALUES</button>
                 </li>
             </ul>
-            <form action="rawmaterial.php" method="post">
+            <form action="" method="post">
                 <?php
                 require_once "SQL_queries/db_connection.php";
                 $getId=$_GET['edit'];
@@ -104,30 +101,6 @@ require_once "headerTCD.php";
                  }
                  ?>
 
-                <?php
-                if(isset($_POST['add_valuesGet'])){
-                    $select_itemsGet=$_POST['select_itemsGet'];
-                    $select_amountGet=$_POST['select_amountGet'];
-                    $select_price_per_kgGet=$_POST['select_price_per_kgGet'];
-                    $select_total_priceGet=$select_amountGet*$select_price_per_kgGet;
-
-                    GLOBAL $connection;
-                    require_once "SQL_queries/db_connection.php";
-
-                    $queryEdit="INSERT INTO rawmaterial(items,amount,price_per_kg)
-                     VALUES('other',1,3)";
-                    $resultEdit=mysqli_query($connection,$queryEdit);
-                    if(!$resultEdit){
-                        die("not connected" . mysqli_error($connection));
-                    }
-                    ?>
-
-                    <script>
-                        window.location.href="rawmaterial.php";
-                    </script>
-                <?php
-                }
-                ?>
 
             </form>
         </div>
