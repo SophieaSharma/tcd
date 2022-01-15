@@ -115,6 +115,8 @@ require_once "headerTCD.php";
 
             </form>
         </div>
+
+        <!--table-->
         <div class="col-lg-8 border border-secondary mb-5 py-2">
             <div class="col-12 table-responsive">
                 <table class="table table-striped table-bordered table-hover">
@@ -129,6 +131,7 @@ require_once "headerTCD.php";
                         <th scope="col">PRICE/
                                         AMOUNT</th>
                         <th scope="col">DELETE</th>
+                        <th scope="col">EDIT</th>
                     </tr>
                     </thead>
 
@@ -154,12 +157,22 @@ require_once "headerTCD.php";
                             <td class="px-2 py-3"><?php echo $amount; ?><span style="text-transform: none"> Kg</span></td>
                             <td class="px-2 py-3"><?php echo $price_per_kg; ?><span style="text-transform: none"> Rs</span></td>
                             <td class="px-2 py-3"><?php echo $totalPrice; ?><span style="text-transform: none"> Rs</span></td>
-                            <td class="px-2 py-3"><a style="text-transform: uppercase; color: black; font-weight: normal;" href='rawmaterial.php?delete=<?php echo $id; ?>'>Delete</a></td>
+                            <td class="px-2 py-3">
+                                <a style="text-transform: uppercase; color: black; font-weight: normal;" href='rawmaterial.php?delete=<?php echo $id; ?>'>
+                                    Delete
+                                </a>
+                            </td>
+                            <td class="px-2 py-3">
+                                <a style="text-transform: uppercase; color: black; font-weight: normal;" href="rawmaterialGet.php?edit=<?php echo $id; ?>">
+                                    Edit
+                                </a>
+                            </td>
                         </tr>
                         <?php
                     }
                     ?>
                     </tbody>
+
 
                     <?php
                     //deleting values from table
@@ -174,6 +187,12 @@ require_once "headerTCD.php";
 
                     <?php
                     }
+                    ?>
+
+                    <?php
+                    //editing the rows
+
+
                     ?>
                 </table>
             </div>
@@ -197,6 +216,7 @@ require_once "headerTCD.php";
             </p>
             </div>
         </div>
+        <!--table-->
     </div>
     <!--raw material-->
 
