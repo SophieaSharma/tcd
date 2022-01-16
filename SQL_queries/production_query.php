@@ -27,6 +27,10 @@ if(isset($_POST['submitProduction'])){
     if(!$result){
         die("not queried " .mysqli_error($connection));
     }
-    header('location: sales.php');
-    exit;
-  }
+    ?>
+    <script>
+        window.location.href="./production.php";
+    </script>
+<?php
+}
+?>

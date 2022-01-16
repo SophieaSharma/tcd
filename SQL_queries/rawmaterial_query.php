@@ -18,5 +18,9 @@
     if (!$result) {
         die("not connected " . mysqli_error($connection));
     }
-
+     ?>
+     <script>
+         window.location.href="./rawmaterial.php";
+     </script>
+     <?php
  }

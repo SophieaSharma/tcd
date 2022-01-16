@@ -27,7 +27,9 @@ if(isset($_POST['submitSales'])){
         if (!$result) {
             die("query,not connected " . mysqli_error($connection));
         }
-
-        header('Location: reports.php');
-        exit;
+?>
+    <script>
+    window.location.href="./sales.php";
+    </script>
+<?php
 }

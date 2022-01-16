@@ -105,8 +105,14 @@ $c= intval($c);
                         if (!$result) {
                             die("query,not connected " . mysqli_error($connection));
                         }
+                        ?>
+                        <script>
+                            window.location.href="./reports.php";
+                        </script>
+                        <?php
                     }
                     ?>
+
 
                 </form>
             </div>
