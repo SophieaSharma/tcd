@@ -238,9 +238,33 @@ GLOBAL $today;
                                         </ul>
                                     </div>
                                 </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-6 text-start">
+                                        <a href="production.php?delete=<?php echo $id; ?>" class="text-uppercase text-danger fs-6">Delete</a>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <a href="" class="text-uppercase text-primary fs-6">Edit</a>
+                                    </div>
+                                </div>
+                                <?php
+                                if(isset($_GET['delete'])){
+                                    $idGet=$_GET['delete'];
+                                    $queryGet="DELETE FROM production WHERE id= '$idGet'";
+                                    $resultGet=mysqli_query($connection,$queryGet);
+                                    if(!$resultGet){
+                                        die("not deleted" . mysqli_error($connection));
+                                    }?>
+                                    <script>
+                                        window.location.href="production.php";
+                                    </script>
+                                    <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
+
                     <?php } ?>
                 </div>
             <!--Accordion-->

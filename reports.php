@@ -6,7 +6,7 @@ require_once "shortcuts/reportQueryFromSales.php";
 GLOBAL $total_price_of_all_items;
 #sales variable
 GLOBAL $totalPriceSales;
-GLOBAL $today;
+GLOBAL $today,$connection;
 $today=date('Y-m-d');
 $a = $totalPriceSales - $total_price_of_all_items;
 $b = $totalPriceSales + $total_price_of_all_items;
@@ -77,6 +77,18 @@ $c= intval($c);
         </div>
         <!--detailed heading-->
 
+        <?php
+        require_once "SQL_queries/db_connection.php";
+        $query="SELECT id FROM report ";
+        $result=mysqli_query($connection,$query);
+        if(!$result){
+            die("no".mysqli_error($connection));
+        }
+        while($row=mysqli_fetch_assoc($result)){
+            $id=$row['id'];
+        }
+        ?>
+
         <!--form-->
         <div class="col-lg-8  border border-secondary bg-light">
                 <ul class="nav nav-tabs my-3">
@@ -85,7 +97,7 @@ $c= intval($c);
                     </li>
                 </ul>
 
-                <form action="reports.php" method="post">
+            <form action="reports.php" method="post">
                     <div class="progress my-5 " style="height: 22px;">
                         <div class="progress-bar bg-success fs-5" role="progressbar" style="width:<?php echo $c ; ?>%; " aria-valuenow="<?php echo $c ; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $c."%"; ?> Profit</div>
                         <div class="progress-bar bg-danger fs-5" role="progressbar" style="width: <?php echo (100-$c); ?>%;" aria-valuenow="<?php echo (100-$c); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo (100-$c) ."%"; ?> Loss</div>
@@ -112,9 +124,8 @@ $c= intval($c);
                         <?php
                     }
                     ?>
-
-
                 </form>
+
             </div>
         <!--form-->
     </div>
