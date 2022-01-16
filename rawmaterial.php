@@ -36,10 +36,13 @@ require_once "headerTCD.php";
     <div class="row mx-3 justify-content-evenly">
 
         <!--heading-->
-        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
-            raw material
-        </h1>
+        <a href="rawmaterial.php" style="text-decoration: none; color: #131313;">
+            <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
+                raw material
+            </h1>
+        </a>
         <!--heading-->
+
 
         <!--detailed heading-->
         <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">

@@ -3,7 +3,7 @@ require_once "errors.php";
 require_once "SQL_queries/production_query.php";
 $today=date('Y-m-d');
 GLOBAL $connection;
-GLOBAL $today;
+GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourProduction,$descriptionProduction;
 
 ?>
 <!doctype html>
@@ -31,7 +31,7 @@ GLOBAL $today;
     <?php  require_once "navbarFunctions/navbar_production.php"; ?>
     <!--nav-->
 
-    <!--form-->
+    <!--data-->
     <div class="row mx-3 justify-content-evenly">
 
         <!--heading-->
@@ -42,45 +42,36 @@ GLOBAL $today;
         </a>
         <!--heading-->
 
-        <!--detailed heading-->
-        <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
-            <p>Entries for Specific Date</p>
-        </div>
-        <!--detailed heading-->
 
-        <!--date-->
-        <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
-            <form action="productionEntries.php" method="post">
-                <div class="mb-2">
-                    <label for="date" class="form-label text-secondary fs-5">Date</label>
-                    <input type="date" name="productionEntriesDate" class="form-control " id="date" required>
-                </div>
-                <div class="mb-3">
-                    <input type="submit" name="productionEntriesSubmit" class="form-control btn btn-primary" value="Submit">
-                </div>
-            </form>
-            <?php require_once "shortcuts/productionEntriesDateShortcut.php"; ?>
-        </div>
-        <!--date-->
+        <?php
+        $getId=$_GET['edit'];
+        require_once "SQL_queries/db_connection.php";
+        $queryGet="SELECT * FROM production WHERE id='$getId';";
+        $resultGet=mysqli_query($connection,$queryGet);
+        while ($row=mysqli_fetch_assoc($resultGet)){
+            $titleGet=$row['title'];
+            /*$type_of_cakeGet=$row['type_of_cake'];
+            $itemsGet=$row['items'];*/
+            $flavoursGet=$row['flavours'];
+            $descriptionGet=$row['description'];
+            if(empty($descriptionGet)){
+                $descriptionGet="NULL";
+            }
 
-        <!--detailed heading-->
-        <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
-            <p>Today's Entries</p>
-        </div>
-        <!--detailed heading-->
+        ?>
 
         <!--form-->
         <div class="col-lg-8 mb-5 border border-secondary bg-light ">
             <ul class="nav nav-tabs my-3">
                 <li class="nav-item">
-                    <button class="nav-link active" aria-current="page">PRODUCTION</button>
+                    <button class="nav-link active" aria-current="page">EDIT VALUES</button>
                 </li>
             </ul>
-            <form action="production.php" method="post" enctype="multipart/form-data">
+            <form action="" method="post" enctype="multipart/form-data">
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input name="titleProduction" type="text" class="form-control" id="title" placeholder="Title" required>
+                    <input name="titleProduction" type="text" class="form-control" id="title" placeholder="Title" value="<?php echo $titleGet; ?>"  required>
                 </div>
 
                 <div class="mb-3">
@@ -148,8 +139,7 @@ GLOBAL $today;
                         <input class="form-check-input " type="checkbox" value="Pineapple" id="pineapple" name="flavourProduction[]">
                         <label class="form-check-label my-1" for="pineapple">
                             Pineapple
-                        </label>
-                        <br>
+                        </label> <br>
 
                         <input class="form-check-input" type="checkbox" value="Chocolate" id="chocolate" name="flavourProduction[]">
                         <label class="form-check-label my-1" for="chocolate">
@@ -181,7 +171,8 @@ GLOBAL $today;
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea name="descriptionProduction" class="form-control" id="description" rows="4"></textarea>
+                    <textarea  name="descriptionProduction" class="form-control text-secondary" id="description" rows="4" ><?php echo $descriptionGet;?>
+                    </textarea>
                 </div>
 
                 <div class="mb-3">
@@ -189,102 +180,15 @@ GLOBAL $today;
                 </div>
             </form>
 
-            <h3 class="display-6 fs-5 text-uppercase text-center">Entries</h3>
-
-            <!--Accordion it will keep increasing with every form entry-->
-                <div class="accordion  accordion-flush " id="accordionFlushExample">
-                    <?php
-                    require_once "SQL_queries/db_connection.php";
-                    $query="SELECT * FROM production WHERE date='$today'";
-                    $result=mysqli_query($connection,$query);
-                    while ($row = mysqli_fetch_assoc($result)){
-                    $id=$row['id'];
-                    $date=$row['date'];
-                    $date=strtotime($date);
-                    $date=date('d-M-Y',$date);
-                    $title=$row['title'];
-                    $type_of_cake=$row['type_of_cake'];
-                    $items=$row['items'];
-                    $flavours=$row['flavours'];
-                    $description=$row['description'];
-                    if(empty($description)){
-                        $description="-";
-                    }
-                    ?>
-                    <div class="accordion-item border border-secondary my-2">
-                        <h2 class="accordion-header" id="flush-heading">
-                            <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne<?php echo $id; ?>">
-                                <?php echo $title;?>
-                            </button>
-                        </h2>
-                        <div id="flush-collapseOne<?php echo $id; ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <ul>
-                                            <li class="fs-6 my-2 ">DATE</li>
-                                            <li class="fs-6 my-2 ">TYPE OF CAKE</li>
-                                            <li class="fs-6 my-2 ">ITEMS</li>
-                                            <li class="fs-6 my-2 ">FLAVOURS</li>
-                                            <li class="fs-6 my-2 ">DESCRIPTION</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-6">
-                                        <ul>
-                                            <?php  echo "<li class='fs-6 my-2'>{$date}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$items}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$flavours}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$description}</li>" ?>
-
-                                        </ul>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-6 text-start">
-                                        <a href="production.php?delete=<?php echo $id; ?>" class="text-uppercase text-danger fs-6">Delete</a>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <a href="productionGet.php?edit=<?php echo $id; ?>" class="text-uppercase text-primary fs-6">Edit</a>
-                                    </div>
-                                </div>
-                                <?php
-                                if(isset($_GET['delete'])){
-                                    $idGet=$_GET['delete'];
-                                    $queryGet="DELETE FROM production WHERE id= '$idGet'";
-                                    $resultGet=mysqli_query($connection,$queryGet);
-                                    if(!$resultGet){
-                                        die("not deleted" . mysqli_error($connection));
-                                    }?>
-                                    <script>
-                                        window.location.href="production.php";
-                                    </script>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <?php } ?>
-                </div>
-            <!--Accordion-->
-
-            <!--to count the total num of entries-->
-            <?php
-            $count=mysqli_num_rows($result);
-            ?>
-            <!--to count the total num of entries-->
-
-            <!--total sales-->
-            <div class="col-lg-8 py-3 display-6 fs-6 px-1 text-uppercase bg-light ">
-                Total Production = <?php echo $count; ?>
-            </div>
-            <!--total sales-->
         </div>
-        </div>
-    <!--form-->
+        <!--form-->
+
+        <?php
+        }
+        ?>
+
+    </div>
+    <!--data-->
 </div>
 <!--production-->
 

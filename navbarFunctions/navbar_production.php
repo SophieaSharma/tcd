@@ -9,7 +9,7 @@
                     <a class="nav-link" href="rawmaterial.php">Raw Material</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link active" href="#">Production</a>
+                    <a class="nav-link active" href="production.php">Production</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link " aria-current="page" href="sales.php">Sales</a>

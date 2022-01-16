@@ -12,7 +12,7 @@
                     <a class="nav-link" href="production.php">Production</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link active" aria-current="page" href="#">Sales</a>
+                    <a class="nav-link active" aria-current="page" href="sales.php">Sales</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="reports.php">Reports</a>

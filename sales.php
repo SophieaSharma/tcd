@@ -33,10 +33,13 @@ GLOBAL $today,$totalPriceSales;
     <div class="row mx-3 justify-content-evenly">
 
         <!-- heading sales-->
-        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
-            sales
-        </h1>
+        <a href="sales.php" style="text-decoration: none; color:#131313">
+            <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
+                sales
+            </h1>
+        </a>
         <!-- heading sales-->
+
 
         <!--detailed heading-->
         <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
@@ -240,7 +243,7 @@ GLOBAL $today,$totalPriceSales;
                                         <a href="sales.php?delete=<?php echo $id; ?>" class="text-uppercase text-danger fs-6">Delete</a>
                                     </div>
                                     <div class="col-6 text-end">
-                                        <a href="" class="text-uppercase text-primary fs-6">Edit</a>
+                                        <a href="salesGet.php?edit=<?php echo $id; ?>" class="text-uppercase text-primary fs-6">Edit</a>
                                     </div>
                                 </div>
 
