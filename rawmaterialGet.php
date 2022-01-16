@@ -101,7 +101,37 @@ require_once "headerTCD.php";
                  }
                  ?>
 
+                <?php
+                if(isset($_POST['add_valuesGet'])){
 
+                    $select_itemsGet = $_POST['select_itemsGet'];
+                    $select_amountGet = $_POST['select_amountGet'];
+                    $select_price_per_kgGet = $_POST['select_price_per_kgGet'];
+                    $select_total_price = $select_amountGet * $select_price_per_kgGet;
+
+                    //connection
+                    global $connection;
+                    require_once "SQL_queries/db_connection.php";
+
+                    $queryEdit="UPDATE rawmaterial 
+                    SET items='$select_itemsGet',
+                        amount='$select_amountGet',
+                        price_per_kg='$select_price_per_kgGet',
+                        totalPrice='$select_total_price'
+                    WHERE id ='$getId'";
+
+                    $resultEdit=mysqli_query($connection,$queryEdit);
+                    if(!$resultEdit){
+                        die("not updated". mysqli_error($connection));
+                    }
+                    ?>
+                    <script>
+                        window.location.href="rawmaterial.php";
+                    </script>
+
+                <?php
+                }
+                ?>
             </form>
         </div>
 
