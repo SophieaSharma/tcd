@@ -71,17 +71,17 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input name="titleProduction" type="text" class="form-control" id="title" placeholder="Title" value="<?php echo $titleGet; ?>"  required>
+                    <input name="titleProductionGet" type="text" class="form-control" id="title" placeholder="Title" value="<?php echo $titleGet; ?>"  required>
                 </div>
 
                 <div class="mb-3">
                     <label for="typeofcake" class="form-label">Type of Cake</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="type_of_cake" value="Shop Cake" id="typeofcake" required>
+                        <input class="form-check-input" type="radio" name="type_of_cakeGet" value="Shop Cake" id="typeofcake" required>
                         <label class="form-check-label mt-1" for="typeofcake">
                             Shop Cake
                         </label> <br>
-                        <input class="form-check-input" type="radio" name="type_of_cake" value="Customer Order Cake" id="typeofcake" required>
+                        <input class="form-check-input" type="radio" name="type_of_cakeGet" value="Customer Order Cake" id="typeofcake" required>
                         <label class="form-check-label mt-1" for="typeofcake">
                             Customer Order Cake
                         </label>
@@ -93,19 +93,19 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                     <div class="col-6">
                         <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Flour" id="flour" name="itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Flour" id="flour" name="itemProductionGet[]">
                                 <label class="form-check-label my-1" for="flour">
                                     Flour
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Sugar" id="sugar" name="itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Sugar" id="sugar" name="itemProductionGet[]">
                                 <label class="form-check-label my-1" for="sugar">
                                     Sugar
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Butter/Fat" id="fat" name="itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Butter/Fat" id="fat" name="itemProductionGet[]">
                                 <label class="form-check-label my-1" for="fat">
                                     Butter/Fat
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Salt" id="salt" name="itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Salt" id="salt" name="itemProductionGet[]">
                                 <label class="form-check-label my-1" for="salt">
                                     Salt
                                 </label> <br>
@@ -115,15 +115,15 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                     <div class="col-6">
                         <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Milk" id="milk" name="itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Milk" id="milk" name="itemProductionGet[]">
                                 <label class="form-check-label my-1" for="milk">
                                     Milk
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Baking Soda" id="baking_soda" name="itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Baking Soda" id="baking_soda" name="itemProductionGet[]">
                                 <label class="form-check-label my-1" for="baking_soda">
                                     Baking Soda
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Other" id="other" name="itemProduction[]">
+                                <input class="form-check-input" type="checkbox" value="Other" id="other" name="itemProductionGet[]">
                                 <label class="form-check-label my-1" for="other">
                                     Other
                                 </label> <br>
@@ -136,32 +136,32 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                     <label for="flavour" class="form-label">Flavour</label>
                     <div class="form-check">
 
-                        <input class="form-check-input " type="checkbox" value="Pineapple" id="pineapple" name="flavourProduction[]">
+                        <input class="form-check-input " type="checkbox" value="Pineapple" id="pineapple" name="flavourProductionGet[]">
                         <label class="form-check-label my-1" for="pineapple">
                             Pineapple
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Chocolate" id="chocolate" name="flavourProduction[]">
+                        <input class="form-check-input" type="checkbox" value="Chocolate" id="chocolate" name="flavourProductionGet[]">
                         <label class="form-check-label my-1" for="chocolate">
                             Chocolate
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Redvelvet" id="redvelvet" name="flavourProduction[]">
+                        <input class="form-check-input" type="checkbox" value="Redvelvet" id="redvelvet" name="flavourProductionGet[]">
                         <label class="form-check-label my-1" for="redvelvet">
                             Red Velvet
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Butterscotch" id="butterscotch" name="flavourProduction[]">
+                        <input class="form-check-input" type="checkbox" value="Butterscotch" id="butterscotch" name="flavourProductionGet[]">
                         <label class="form-check-label my-1" for="butterscotch">
                             Butterscotch
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Blueberry" id="blueberry" name="flavourProduction[]">
+                        <input class="form-check-input" type="checkbox" value="Blueberry" id="blueberry" name="flavourProductionGet[]">
                         <label class="form-check-label my-1" for="blueberry">
                             Blueberry
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Other" id="other" name="flavourProduction[]">
+                        <input class="form-check-input" type="checkbox" value="Other" id="other" name="flavourProductionGet[]">
                         <label class="form-check-label my-1" for="other">
                             Other
                         </label> <br>
@@ -171,18 +171,58 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea  name="descriptionProduction" class="form-control text-secondary" id="description" rows="4" ><?php echo $descriptionGet;?>
+                    <textarea  name="descriptionProductionGet" class="form-control text-secondary" id="description" rows="4" ><?php echo $descriptionGet;?>
                     </textarea>
                 </div>
 
                 <div class="mb-3">
-                    <input name="submitProduction" type="submit" class="form-control btn btn-primary" value="Submit">
+                    <input name="submitProductionGet" type="submit" class="form-control btn btn-primary" value="Submit">
                 </div>
             </form>
+            <!--editing the data-->
+            <?php
+            if(isset($_POST['submitProductionGet'])){
+                $titleProductionGet=$_POST['titleProductionGet'];
+                $type_of_cakeGet=$_POST['type_of_cakeGet'];
+                $itemProductionGet=$_POST['itemProductionGet'];
+                $flavourProductionGet=$_POST['flavourProductionGet'];
+                $descriptionProductionGet=$_POST['descriptionProductionGet'];
+
+                GLOBAL $connection;
+                require_once "SQL_queries/db_connection.php";
+
+                $item_valuesGet="";
+                $flavours_valueGet="";
+                foreach($itemProductionGet as $item){
+                    $item_valuesGet.= ($item . " ");
+                }
+                foreach ($flavourProductionGet as $flavour) {
+                    $flavours_valueGet.= ($flavour." ");
+                }
+
+                $queryEdit="UPDATE production
+                 SET title='$titleProductionGet',
+                     type_of_cake='$type_of_cakeGet',
+                     items='$item_valuesGet',
+                     flavours='$flavours_valueGet',
+                     description='$descriptionProductionGet'
+                     WHERE id='$getId'";
+                $resultEdit=mysqli_query($connection,$queryEdit);
+                if(!$resultEdit){
+                    die("not edited". mysqli_error($connection));
+                }
+                ?>
+                <script>
+                    window.location.href="production.php";
+                </script>
+
+            <?php
+            }
+            ?>
+            <!--editing the data-->
 
         </div>
         <!--form-->
-
         <?php
         }
         ?>

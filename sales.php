@@ -76,7 +76,7 @@ GLOBAL $today,$totalPriceSales;
                     <button class="nav-link active" aria-current="page">SALES</button>
                 </li>
             </ul>
-            <form action="sales.php" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -153,11 +153,6 @@ GLOBAL $today,$totalPriceSales;
                     <label for="amount_by_customer" class="form-label">Amount Paid </label>
                     <input name="amountSales" type="number"  class="form-control" id="amount_by_customer" placeholder="Amount Paid by Customer" required>
                 </div>
-
-                <!--<div class="mb-3">
-                    <label for="left" class="form-label">Amount Left</label>
-                    <input name="amount_leftSales" type="number" class="form-control" id="left" placeholder="Amount Left by Customer" required>
-                </div>-->
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
@@ -247,6 +242,7 @@ GLOBAL $today,$totalPriceSales;
                                     </div>
                                 </div>
 
+                                <!--delete the saved data-->
                                 <?php
                                 if(isset($_GET['delete'])){
                                     $idGet=$_GET['delete'];
@@ -262,6 +258,7 @@ GLOBAL $today,$totalPriceSales;
 
                                 }
                                 ?>
+                                <!--delete the saved data-->
 
                             </div>
                         </div>

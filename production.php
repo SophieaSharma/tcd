@@ -35,7 +35,7 @@ GLOBAL $today;
     <div class="row mx-3 justify-content-evenly">
 
         <!--heading-->
-        <a href="production.php" style="text-decoration: none; color:#131313">
+        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" style="text-decoration: none; color:#131313">
             <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
                 production
             </h1>

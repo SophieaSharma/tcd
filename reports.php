@@ -97,7 +97,7 @@ $c= intval($c);
                     </li>
                 </ul>
 
-            <form action="reports.php" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                     <div class="progress my-5 " style="height: 22px;">
                         <div class="progress-bar bg-success fs-5" role="progressbar" style="width:<?php echo $c ; ?>%; " aria-valuenow="<?php echo $c ; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $c."%"; ?> Profit</div>
                         <div class="progress-bar bg-danger fs-5" role="progressbar" style="width: <?php echo (100-$c); ?>%;" aria-valuenow="<?php echo (100-$c); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo (100-$c) ."%"; ?> Loss</div>

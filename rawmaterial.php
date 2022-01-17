@@ -63,7 +63,6 @@ require_once "headerTCD.php";
             </form>
             <?php require_once "shortcuts/rawmaterialEntriesDateShortcut.php";?>
         </div>
-
         <!--date-->
 
         <!--detailed heading-->
@@ -72,14 +71,19 @@ require_once "headerTCD.php";
         </div>
         <!--detailed heading-->
 
-
+        <!--entry-->
         <div class="col-lg-8 border border-secondary mb-5 py-2">
+
+            <!--tab-->
             <ul class="nav nav-tabs my-3">
                 <li class="nav-item">
                     <button class="nav-link active" aria-current="page">RAW MATERIAL</button>
                 </li>
             </ul>
-            <form action="rawmaterial.php" method="post">
+            <!--tab-->
+
+            <!--select values-->
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="mb-3">
@@ -117,7 +121,10 @@ require_once "headerTCD.php";
                 </div>
 
             </form>
+            <!--select values-->
+
         </div>
+        <!--entry-->
 
         <!--table-->
         <div class="col-lg-8 border border-secondary mb-5 py-2">
@@ -161,12 +168,12 @@ require_once "headerTCD.php";
                             <td class="px-2 py-3"><?php echo $price_per_kg; ?><span style="text-transform: none"> Rs</span></td>
                             <td class="px-2 py-3"><?php echo $totalPrice; ?><span style="text-transform: none"> Rs</span></td>
                             <td class="px-2 py-3">
-                                <a style="text-transform: uppercase; color: black; font-weight: normal;" href='rawmaterial.php?delete=<?php echo $id; ?>'>
+                                <a style="text-transform: uppercase; color: black; font-weight: normal;" class="text-danger" href='rawmaterial.php?delete=<?php echo $id; ?>'>
                                     Delete
                                 </a>
                             </td>
                             <td class="px-2 py-3">
-                                <a style="text-transform: uppercase; color: black; font-weight: normal;" href="rawmaterialGet.php?edit=<?php echo $id; ?>">
+                                <a style="text-transform: uppercase; color: black; font-weight: normal;" class="text-primary" href="rawmaterialGet.php?edit=<?php echo $id; ?>">
                                     Edit
                                 </a>
                             </td>

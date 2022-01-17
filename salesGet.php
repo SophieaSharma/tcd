@@ -40,6 +40,14 @@ GLOBAL $today,$totalPriceSales;
         </a>
         <!-- heading sales-->
 
+        <?php
+        #to input the already selected values in the form
+        $getId=$_GET['edit'];
+        require_once "SQL_queries/db_connection.php";
+        $queryGet="SELECT * FROM sales WHERE id='$getId';";
+        $resultGet=mysqli_query($connection,$queryGet);
+
+        ?>
 
         <!--form-->
         <div class="col-lg-8 mb-5 border border-secondary bg-light ">
@@ -48,22 +56,21 @@ GLOBAL $today,$totalPriceSales;
                     <button class="nav-link active" aria-current="page">SALES</button>
                 </li>
             </ul>
-            <form action="sales.php" method="post">
-
+            <form action="" method="post">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input name="titleSales" type="text" class="form-control" id="title" placeholder="Title" required>
+                    <input name="titleSalesGet" type="text" class="form-control" id="title" placeholder="Title" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="typeofcake" class="form-label">Type of Cake</label>
                     <div class="form-check">
-                        <input name="type_of_cake" value="Shop Cake" class="form-check-input" type="radio" id="typeofcake" required>
+                        <input name="type_of_cakeGet" value="Shop Cake" class="form-check-input" type="radio" id="typeofcake" required>
                         <label class="form-check-label mt-1" for="typeofcake" >
                             Shop Cake
                         </label>
                         <br>
-                        <input name="type_of_cake" value="Customer Cake" class="form-check-input" type="radio" id="typeofcake" required>
+                        <input name="type_of_cakeGet" value="Customer Cake" class="form-check-input" type="radio" id="typeofcake" required>
                         <label class="form-check-label mt-1" for="typeofcake">
                             Customer Order Cake
                         </label>
@@ -74,33 +81,33 @@ GLOBAL $today,$totalPriceSales;
                     <label for="flavour" class="form-label">Flavour</label>
                     <div class="form-check">
 
-                        <input class="form-check-input " type="checkbox" value="Pineapple" id="pineapple" name="flavourSales[]">
+                        <input class="form-check-input " type="checkbox" value="Pineapple" id="pineapple" name="flavourSalesGet[]">
                         <label class="form-check-label my-1" for="pineapple">
                             Pineapple
                         </label>
                         <br>
 
-                        <input class="form-check-input" type="checkbox" value="Chocolate" id="chocolate" name="flavourSales[]">
+                        <input class="form-check-input" type="checkbox" value="Chocolate" id="chocolate" name="flavourSalesGet[]">
                         <label class="form-check-label my-1" for="chocolate">
                             Chocolate
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Redvelvet" id="redvelvet" name="flavourSales[]">
+                        <input class="form-check-input" type="checkbox" value="Redvelvet" id="redvelvet" name="flavourSalesGet[]">
                         <label class="form-check-label my-1" for="redvelvet">
                             Red Velvet
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Butterscotch" id="butterscotch" name="flavourSales[]">
+                        <input class="form-check-input" type="checkbox" value="Butterscotch" id="butterscotch" name="flavourSalesGet[]">
                         <label class="form-check-label my-1" for="butterscotch">
                             Butterscotch
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Blueberry" id="blueberry" name="flavourSales[]">
+                        <input class="form-check-input" type="checkbox" value="Blueberry" id="blueberry" name="flavourSalesGet[]">
                         <label class="form-check-label my-1" for="blueberry">
                             Blueberry
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Other" id="other" name="flavourSales[]">
+                        <input class="form-check-input" type="checkbox" value="Other" id="other" name="flavourSalesGet[]">
                         <label class="form-check-label my-1" for="other">
                             Other
                         </label> <br>
@@ -111,19 +118,19 @@ GLOBAL $today,$totalPriceSales;
                 <div class="mb-3">
                     <label for="file" class="form-label">File</label>
                     <div class="input-group mb-3">
-                        <input name="imageSales" type="file" class="form-control" id="file">
+                        <input name="imageSalesGet" type="file" class="form-control" id="file">
                         <label class="input-group-text" for="file">Upload</label>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
-                    <input name="priceSales" type="number" class="form-control" id="price" placeholder="Price of the cake" min="0" max="10000" required>
+                    <input name="priceSalesGet" type="number" class="form-control" id="price" placeholder="Price of the cake" min="0" max="10000" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="amount_by_customer" class="form-label">Amount Paid </label>
-                    <input name="amountSales" type="number"  class="form-control" id="amount_by_customer" placeholder="Amount Paid by Customer" required>
+                    <input name="amountSalesGet" type="number"  class="form-control" id="amount_by_customer" placeholder="Amount Paid by Customer" required>
                 </div>
 
                 <!--<div class="mb-3">
@@ -133,13 +140,56 @@ GLOBAL $today,$totalPriceSales;
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea name="descriptionSales" class="form-control" id="description" rows="4"></textarea>
+                    <textarea name="descriptionSalesGet" class="form-control" id="description" rows="4"></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <input name="submitSales" type="submit" class="form-control btn btn-primary" value="Submit">
+                    <input name="submitSalesGet" type="submit" class="form-control btn btn-primary" value="Submit">
                 </div>
             </form>
+            <!--editing the saved data-->
+            <?php
+            if(isset($_POST['submitSalesGet'])){
+            $titleSalesGet=$_POST['titleSalesGet'];
+            $type_of_cakeSalesGet=$_POST['type_of_cakeGet'];
+            $flavourSalesGet=$_POST['flavourSalesGet'];
+            $imageSalesGet=$_POST['imageSalesGet'];
+            $priceSalesGet=$_POST['priceSalesGet'];
+            $amountSalesGet=$_POST['amountSalesGet'];
+            $amount_leftSalesGet=($priceSalesGet-$amountSalesGet);
+            $descriptionSalesGet=$_POST['descriptionSalesGet'];
+            $valuesGet="";
+            //connection
+            GLOBAL $connection;
+            require_once "SQL_queries/db_connection.php";
+
+            //query
+            foreach ($flavourSalesGet as $i) {
+                $valuesGet.= ($i." ");
+            }
+
+            $queryEdit="UPDATE sales
+            SET title='$titleSalesGet',
+                type_of_cake='$type_of_cakeSalesGet',
+                flavour='$valuesGet',
+                price='$priceSalesGet',
+                amount_paid='$amountSalesGet',
+                amount_left='$amount_leftSalesGet',
+                description='$descriptionSalesGet'
+            WHERE id = '$getId'   ";
+
+            $resultEdit = mysqli_query($connection, $queryEdit);
+            if (!$resultEdit) {
+                die("not updates " . mysqli_error($connection));
+            }
+            ?>
+            <script>
+                window.location.href="sales.php";
+            </script>
+            <?php
+            }
+            ?>
+            <!--editing the saved data-->
 
         </div>
         <!--form-->
