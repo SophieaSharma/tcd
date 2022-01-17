@@ -3,7 +3,7 @@ require_once "errors.php";
 require_once "SQL_queries/db_connection.php";
 require_once "shortcuts/salesEntriesDateShortcut.php";
 GLOBAL $connection;
-GLOBAL $salesEntriesDate;
+GLOBAL $salesEntriesDate,$totalPriceSales;
 ?>
 <!doctype html>
 <html lang="en">
@@ -70,6 +70,7 @@ GLOBAL $salesEntriesDate;
                     $amount_paid=$row['amount_paid'];
                     $amount_left=$row['amount_left'];
                     $description=$row['description'];
+                        $totalPriceSales+=$amount_paid;
                     if(empty($description)){
                         $description="-";
                     }
@@ -123,6 +124,14 @@ GLOBAL $salesEntriesDate;
             <!--total sales-->
             <div class="col-lg-8 display-6 fs-6 p-3 text-uppercase bg-light ">
                 Total Sale = <?php echo $count;?>
+                <p>Total price = <?php echo $totalPriceSales;
+                    if($totalPriceSales!=0){
+                        echo "<span style='text-transform: none;'> Rs</span>";
+                    }else{
+                        echo 0;
+                    }
+                    ?>
+                </p>
             </div>
             <!--total sales-->
 
