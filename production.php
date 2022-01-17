@@ -211,33 +211,59 @@ GLOBAL $today;
                         $description="-";
                     }
                     ?>
-                    <div class="accordion-item border border-secondary my-2">
+                     <div class="accordion-item border border-secondary my-2">
                         <h2 class="accordion-header" id="flush-heading">
                             <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne<?php echo $id; ?>">
                                 <?php echo $title;?>
                             </button>
                         </h2>
                         <div id="flush-collapseOne<?php echo $id; ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
+                            <div class="accordion-body ">
                                 <div class="row">
-                                    <div class="col-6">
-                                        <ul>
-                                            <li class="fs-6 my-2 ">DATE</li>
-                                            <li class="fs-6 my-2 ">TYPE OF CAKE</li>
-                                            <li class="fs-6 my-2 ">ITEMS</li>
-                                            <li class="fs-6 my-2 ">FLAVOURS</li>
-                                            <li class="fs-6 my-2 ">DESCRIPTION</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-6">
-                                        <ul>
-                                            <?php  echo "<li class='fs-6 my-2'>{$date}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$items}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$flavours}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$description}</li>" ?>
 
-                                        </ul>
+                                    <div class="row my-1">
+                                        <div class="col-6 text-uppercase ">Date</div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $date; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-6  text-uppercase">type </div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $type_of_cake; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-6  text-uppercase">items</div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $items; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-6  text-uppercase">flavours</div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $flavours; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1 ">
+                                        <div class="col-6 text-uppercase">Description</div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $description; ?>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                                 <br>

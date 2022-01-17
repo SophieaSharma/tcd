@@ -208,6 +208,71 @@ GLOBAL $today,$totalPriceSales;
                         <div id="collapse<?php echo $id ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne<?php echo $id; ?>" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <div class="row">
+
+                                    <div class="row my-1">
+                                        <div class="col-6 text-uppercase ">Date</div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $date; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-6  text-uppercase">type </div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $type_of_cake; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-6  text-uppercase">flavour</div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $flavour; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-6  text-uppercase">price</div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $price; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-6  text-uppercase">amount paid</div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $amount_paid; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-6  text-uppercase">amount left</div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $amount_left; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1 ">
+                                        <div class="col-6 text-uppercase">Description</div>
+                                        <div class="col-6 ">
+                                            <p style="word-wrap: break-word;">
+                                                <?php echo $description; ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="row">
                                     <div class="col-6">
                                         <ul>
                                             <li class="fs-6 my-2 ">DATE</li>
@@ -221,17 +286,17 @@ GLOBAL $today,$totalPriceSales;
                                     </div>
                                     <div class="col-6">
                                         <ul>
-                                            <?php  echo "<li class='fs-6 my-2'>{$date}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$flavour}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$price} {$rupees}</li>"?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$amount_paid} {$rupees}</li>"?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$amount_left} {$rupees}</li>" ?>
-                                            <?php  echo "<li class='fs-6 my-2'>{$description}</li>" ?>
+                                            <?php /* echo "<li class='fs-6 my-2'>{$date}</li>" */?>
+                                            <?php /* echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" */?>
+                                            <?php /* echo "<li class='fs-6 my-2'>{$flavour}</li>" */?>
+                                            <?php /* echo "<li class='fs-6 my-2'>{$price} {$rupees}</li>"*/?>
+                                            <?php /* echo "<li class='fs-6 my-2'>{$amount_paid} {$rupees}</li>"*/?>
+                                            <?php /* echo "<li class='fs-6 my-2'>{$amount_left} {$rupees}</li>" */?>
+                                            <?php /* echo "<li class='fs-6 my-2'>{$description}</li>" */?>
 
                                         </ul>
                                     </div>
-                                </div>
+                                </div>-->
                                 <br>
                                 <div class="row">
                                     <div class="col-6 text-start">
