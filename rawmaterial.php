@@ -89,7 +89,7 @@ require_once "headerTCD.php";
                         <div class="mb-3">
                         <label for="amount" class="form-label m-0 p-1">Items</label>
                         <select class="form-select" aria-label="Default select example" name="select_items" required>
-                            <option selected disabled>Select Items</option>
+                            <option selected disabled>-- Select Items --</option>
                             <option value="Sugar">Sugar</option>
                             <option value="Flour">Flour</option>
                             <option value="Butter">Butter</option>

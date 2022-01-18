@@ -67,24 +67,23 @@ echo $db_email;
 
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input name="passwordSignup" type="Password" class="form-control" id="password" placeholder="********" required>
+                                    <input name="passwordSignup" type="Password" class="form-control" id="password" placeholder="Your Password" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="confirmPassword" class="form-label">Confirm Password</label>
-                                    <input name="confirmPasswordSignup" type="Password" class="form-control" id="confirmPassword" placeholder="Your Password" required>
+                                    <input name="confirmPasswordSignup" type="Password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
                                 </div>
 
                                 <div class="my-4">
                                     <input name="submitSignup" type="submit" class="form-control btn btn-primary" value="Submit">
                                 </div>
                             </form>
-                            <div class="mb-3">
+                            <div class="mb-5">
                                 <p class="fs-5">Already a User?<a href="login.php" style="text-decoration: none; font-weight: bold; color: black;"> Log In </a></p>
                             </div>
                        </div>
                         <!--signup form-->
-
                     </div>
                 </div>
                 <div class="col"></div>
