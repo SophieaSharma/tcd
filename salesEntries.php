@@ -71,6 +71,7 @@ GLOBAL $salesEntriesDate,$totalPriceSales;
                     $amount_left=$row['amount_left'];
                     $description=$row['description'];
                         $totalPriceSales+=$amount_paid;
+                    $rupees="Rs";
                     if(empty($description)){
                         $description="-";
                     }
@@ -117,7 +118,7 @@ GLOBAL $salesEntriesDate,$totalPriceSales;
                                         <div class="col-6  text-uppercase">price</div>
                                         <div class="col-6 ">
                                             <p style="word-wrap: break-word;">
-                                                <?php echo $price; ?>
+                                                <?php echo $price. " ". $rupees; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -126,7 +127,7 @@ GLOBAL $salesEntriesDate,$totalPriceSales;
                                         <div class="col-6  text-uppercase">amount paid</div>
                                         <div class="col-6 ">
                                             <p style="word-wrap: break-word;">
-                                                <?php echo $amount_paid; ?>
+                                                <?php echo $amount_paid. " ". $rupees; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -135,7 +136,7 @@ GLOBAL $salesEntriesDate,$totalPriceSales;
                                         <div class="col-6  text-uppercase">amount left</div>
                                         <div class="col-6 ">
                                             <p style="word-wrap: break-word;">
-                                                <?php echo $amount_left; ?>
+                                                <?php echo $amount_left. " ". $rupees; ?>
                                             </p>
                                         </div>
                                     </div>

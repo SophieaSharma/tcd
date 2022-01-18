@@ -5,6 +5,7 @@ if(isset($_POST['submitSignup'])){
     $user_or_admin=$_POST['radioBox'];
     $emailSignup=$_POST['emailSignup'];
     $passwordSignup=$_POST['passwordSignup'];
+    $confirmPasswordSignup=$_POST['confirmPasswordSignup'];
 
     //connection
     GLOBAL $connection;
@@ -15,8 +16,8 @@ if(isset($_POST['submitSignup'])){
     $passwordSignup=mysqli_real_escape_string($connection,$passwordSignup);
 
     //query
-    $query="INSERT INTO user_details(name,date,user_or_admin,email_id,password) 
-                VALUES('$nameSignup','$dateSignup','$user_or_admin','$emailSignup','$passwordSignup')";
+    $query="INSERT INTO user_details(name,date,user_or_admin,email_id,password,confirmPassword) 
+                VALUES('$nameSignup','$dateSignup','$user_or_admin','$emailSignup','$passwordSignup','$confirmPasswordSignup')";
     $result=mysqli_query($connection,$query);
     if(!$result){
         die("off ".mysqli_error($connection));

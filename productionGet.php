@@ -21,6 +21,11 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
 </head>
 <body>
 
+
+<!--jquery needed to select all checkboxes-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--jquery needed to select all checkboxes-->
+
 <!--heading-->
 <?php require_once "headerTCD.php"; ?>
 <!--heading-->
@@ -88,8 +93,28 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                     </div>
                 </div>
 
+                <!--select all items-->
+                <script>
+                    $(document) .ready(function(){
+                        $("#selectAllItems").click(function (){
+                            $("#flour, #sugar,#fat,#salt,#milk,#baking_soda").prop('checked',this.checked);
+                        });
+                    });
+                </script>
+                <!--select all items-->
                 <div class="row">
                     <label for="items" class="form-label">Items</label>
+                    <div class="col-12">
+                        <div class="mb-1">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"  id="selectAllItems">
+                                <label class="form-check-label my-1 text-uppercase" for="selectAllItems">
+                                    Select All
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-6">
                         <div class="mb-3">
                             <div class="form-check">
@@ -132,9 +157,25 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                     </div>
                 </div>
 
+                <!--select all flavours-->
+                <script>
+                    $(document) .ready(function(){
+                        $("#selectAllFlavours").click(function (){
+                            $("#pineapple, #chocolate,#redvelvet,#butterscotch,#blueberry").prop('checked',this.checked);
+                        });
+                    });
+                </script>
+                <!--select all flavours-->
+
                 <div class="mb-3">
                     <label for="flavour" class="form-label">Flavour</label>
                     <div class="form-check">
+
+                        <input class="form-check-input my-2" type="checkbox"  id="selectAllFlavours">
+                        <label class="form-check-label my-2 text-uppercase" for="selectAllFlavours">
+                            Select All
+                        </label>
+                        <br>
 
                         <input class="form-check-input " type="checkbox" value="Pineapple" id="pineapple" name="flavourProductionGet[]">
                         <label class="form-check-label my-1" for="pineapple">

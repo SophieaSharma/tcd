@@ -4,7 +4,6 @@ require_once "SQL_queries/production_query.php";
 $today=date('Y-m-d');
 GLOBAL $connection;
 GLOBAL $today;
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,6 +19,10 @@ GLOBAL $today;
     <title>ePortal</title>
 </head>
 <body>
+
+<!--jquery needed to select all checkboxes-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--jquery needed to select all checkboxes-->
 
 <!--heading-->
 <?php require_once "headerTCD.php"; ?>
@@ -96,54 +99,88 @@ GLOBAL $today;
                         </label>
                     </div>
                 </div>
-
+                <!--select all items-->
+                <script>
+                    $(document) .ready(function(){
+                    $("#selectAllItems").click(function (){
+                    $("#flour, #sugar,#fat,#salt,#milk,#baking_soda").prop('checked',this.checked);
+                    });
+                        });
+                </script>
+                <!--select all items-->
                 <div class="row">
-                    <label for="items" class="form-label">Items</label>
-                    <div class="col-6">
-                        <div class="mb-3">
+                    <label for="items" class="form-label" >Items</label>
+                    <div class="col-12">
+                        <div class="mb-1">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Flour" id="flour" name="itemProduction[]">
-                                <label class="form-check-label my-1" for="flour">
-                                    Flour
-                                </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Sugar" id="sugar" name="itemProduction[]">
-                                <label class="form-check-label my-1" for="sugar">
-                                    Sugar
-                                </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Butter/Fat" id="fat" name="itemProduction[]">
-                                <label class="form-check-label my-1" for="fat">
-                                    Butter/Fat
-                                </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Salt" id="salt" name="itemProduction[]">
-                                <label class="form-check-label my-1" for="salt">
-                                    Salt
-                                </label> <br>
+                                <input class="form-check-input" type="checkbox"  id="selectAllItems">
+                                <label class="form-check-label my-1 text-uppercase" for="selectAllItems">
+                                    Select All
+                                </label>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Milk" id="milk" name="itemProduction[]">
-                                <label class="form-check-label my-1" for="milk">
-                                    Milk
-                                </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Baking Soda" id="baking_soda" name="itemProduction[]">
-                                <label class="form-check-label my-1" for="baking_soda">
-                                    Baking Soda
-                                </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Other" id="other" name="itemProduction[]">
-                                <label class="form-check-label my-1" for="other">
-                                    Other
-                                </label> <br>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Flour" id="flour" name="itemProduction[]">
+                                    <label class="form-check-label my-1" for="flour">
+                                        Flour
+                                    </label> <br>
+                                    <input class="form-check-input" type="checkbox" value="Sugar" id="sugar" name="itemProduction[]">
+                                    <label class="form-check-label my-1" for="sugar">
+                                        Sugar
+                                    </label> <br>
+                                    <input class="form-check-input" type="checkbox" value="Butter/Fat" id="fat" name="itemProduction[]">
+                                    <label class="form-check-label my-1" for="fat">
+                                        Butter/Fat
+                                    </label> <br>
+                                    <input class="form-check-input" type="checkbox" value="Salt" id="salt" name="itemProduction[]">
+                                    <label class="form-check-label my-1" for="salt">
+                                        Salt
+                                    </label> <br>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Milk" id="milk" name="itemProduction[]">
+                                    <label class="form-check-label my-1" for="milk">
+                                        Milk
+                                    </label> <br>
+                                    <input class="form-check-input" type="checkbox" value="Baking Soda" id="baking_soda" name="itemProduction[]">
+                                    <label class="form-check-label my-1" for="baking_soda">
+                                        Baking Soda
+                                    </label> <br>
+                                    <input class="form-check-input" type="checkbox" value="Other" id="other" name="itemProduction[]">
+                                    <label class="form-check-label my-1" for="other">
+                                        Other
+                                    </label> <br>
+                                </div>
+                            </div>
+                        </div>
                 </div>
 
+                <!--select all flavours-->
+                <script>
+                    $(document) .ready(function(){
+                        $("#selectAllFlavours").click(function (){
+                            $("#pineapple, #chocolate,#redvelvet,#butterscotch,#blueberry").prop('checked',this.checked);
+                        });
+                    });
+                </script>
+                <!--select all flavours-->
+
                 <div class="mb-3">
-                    <label for="flavour" class="form-label">Flavour</label>
+                    <label for="flavour" class="form-label">Flavours</label>
                     <div class="form-check">
+
+                        <input class="form-check-input my-2" type="checkbox"  id="selectAllFlavours">
+                        <label class="form-check-label my-2 text-uppercase" for="selectAllFlavours">
+                           Select All
+                        </label>
+                        <br>
 
                         <input class="form-check-input " type="checkbox" value="Pineapple" id="pineapple" name="flavourProduction[]">
                         <label class="form-check-label my-1" for="pineapple">
@@ -177,7 +214,6 @@ GLOBAL $today;
                         </label> <br>
                     </div>
                 </div>
-
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
@@ -317,6 +353,7 @@ GLOBAL $today;
 <!--footer-->
 <?php require_once "footerTCD.php" ?>
 <!--footer-->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

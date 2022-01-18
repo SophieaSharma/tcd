@@ -77,9 +77,9 @@ require_once "headerTCD.php";
                     <tr>
                         <td><?php echo $i++; ?></td>
                         <td><?php echo $items; ?></td>
-                        <td><?php echo $amount; ?></td>
-                        <td><?php echo $price_per_kg; ?></td>
-                        <td><?php echo $totalPrice; ?></td>
+                        <td><?php echo $amount; ?><span style="text-transform: none"> Kg</span></td>
+                        <td><?php echo $price_per_kg; ?><span style="text-transform: none"> Rs</span></td>
+                        <td><?php echo $totalPrice; ?><span style="text-transform: none"> Rs</span></td>
                     </tr>
                        <?php
                         }

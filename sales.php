@@ -20,6 +20,10 @@ GLOBAL $today,$totalPriceSales;
 </head>
 <body>
 
+<!--jquery needed to select all checkboxes-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--jquery needed to select all checkboxes-->
+
 <!--heading-->
 <?php require_once "headerTCD.php"; ?>
 <!--heading-->
@@ -97,10 +101,25 @@ GLOBAL $today,$totalPriceSales;
                         </label>
                     </div>
                 </div>
-                
+
+                <!--select all flavours-->
+                <script>
+                    $(document) .ready(function(){
+                        $("#selectAllFlavours").click(function (){
+                            $("#pineapple, #chocolate,#redvelvet,#butterscotch,#blueberry").prop('checked',this.checked);
+                        });
+                    });
+                </script>
+                <!--select all flavours-->
                  <div class="mb-3">
                     <label for="flavour" class="form-label">Flavour</label>
                     <div class="form-check">
+
+                        <input class="form-check-input my-2" type="checkbox"  id="selectAllFlavours">
+                        <label class="form-check-label my-2 text-uppercase" for="selectAllFlavours">
+                            Select All
+                        </label>
+                        <br>
 
                         <input class="form-check-input " type="checkbox" value="Pineapple" id="pineapple" name="flavourSales[]">
                         <label class="form-check-label my-1" for="pineapple">
@@ -240,7 +259,7 @@ GLOBAL $today,$totalPriceSales;
                                         <div class="col-6  text-uppercase">price</div>
                                         <div class="col-6 ">
                                             <p style="word-wrap: break-word;">
-                                                <?php echo $price; ?>
+                                                <?php echo $price . " ". $rupees; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -249,7 +268,7 @@ GLOBAL $today,$totalPriceSales;
                                         <div class="col-6  text-uppercase">amount paid</div>
                                         <div class="col-6 ">
                                             <p style="word-wrap: break-word;">
-                                                <?php echo $amount_paid; ?>
+                                                <?php echo $amount_paid . " ". $rupees; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -258,7 +277,7 @@ GLOBAL $today,$totalPriceSales;
                                         <div class="col-6  text-uppercase">amount left</div>
                                         <div class="col-6 ">
                                             <p style="word-wrap: break-word;">
-                                                <?php echo $amount_left; ?>
+                                                <?php echo $amount_left . " ". $rupees; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -272,31 +291,7 @@ GLOBAL $today,$totalPriceSales;
                                         </div>
                                     </div>
                                 </div>
-                                <!--<div class="row">
-                                    <div class="col-6">
-                                        <ul>
-                                            <li class="fs-6 my-2 ">DATE</li>
-                                            <li class="fs-6 my-2 ">TYPE OF CAKE</li>
-                                            <li class="fs-6 my-2 ">FLAVOUR</li>
-                                            <li class="fs-6 my-2 ">TOTAL PRICE</li>
-                                            <li class="fs-6 my-2 ">AMOUNT PAID</li>
-                                            <li class="fs-6 my-2 ">AMOUNT LEFT</li>
-                                            <li class="fs-6 my-2 ">DESCRIPTION</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-6">
-                                        <ul>
-                                            <?php /* echo "<li class='fs-6 my-2'>{$date}</li>" */?>
-                                            <?php /* echo "<li class='fs-6 my-2'>{$type_of_cake}</li>" */?>
-                                            <?php /* echo "<li class='fs-6 my-2'>{$flavour}</li>" */?>
-                                            <?php /* echo "<li class='fs-6 my-2'>{$price} {$rupees}</li>"*/?>
-                                            <?php /* echo "<li class='fs-6 my-2'>{$amount_paid} {$rupees}</li>"*/?>
-                                            <?php /* echo "<li class='fs-6 my-2'>{$amount_left} {$rupees}</li>" */?>
-                                            <?php /* echo "<li class='fs-6 my-2'>{$description}</li>" */?>
 
-                                        </ul>
-                                    </div>
-                                </div>-->
                                 <br>
                                 <div class="row">
                                     <div class="col-6 text-start">
