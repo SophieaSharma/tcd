@@ -149,7 +149,7 @@ GLOBAL $today;
                                     <label class="form-check-label my-1" for="milk">
                                         Milk
                                     </label> <br>
-                                    <input class="form-check-input" type="checkbox" value="Baking Soda" id="baking_soda" name="itemProduction[]">
+                                    <input class="form-check-input" type="checkbox" value="BakingSoda" id="baking_soda" name="itemProduction[]">
                                     <label class="form-check-label my-1" for="baking_soda">
                                         Baking Soda
                                     </label> <br>

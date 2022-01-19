@@ -56,9 +56,11 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
         while ($row=mysqli_fetch_assoc($resultGet)){
             $titleGet=$row['title'];
             $type_of_cakeGet=$row['type_of_cake'];
-            /*$itemsGet=$row['items'];*/
+            $itemsGet=$row['items'];
             $flavoursGet=$row['flavours'];
             $descriptionGet=$row['description'];
+            $arrayFlavours=explode(' ',$flavoursGet);
+            $arrayItems=explode(' ',$itemsGet);
             if(empty($descriptionGet)){
                 $descriptionGet="NULL";
             }
@@ -76,7 +78,7 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input name="titleProductionGet" type="text" class="form-control" id="title" placeholder="Title" value="<?php echo $titleGet; ?>"  required>
+                    <input name="titleProductionGet" type="text" class="form-control text-secondary" id="title" placeholder="Title" value="<?php echo $titleGet; ?>"  required>
                 </div>
 
                 <div class="mb-3">
@@ -127,6 +129,7 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                     });
                 </script>
                 <!--select all items-->
+
                 <div class="row">
                     <label for="items" class="form-label">Items</label>
                     <div class="col-12">
@@ -143,19 +146,23 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                     <div class="col-6">
                         <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Flour" id="flour" name="itemProductionGet[]">
+                                <input class="form-check-input" type="checkbox" value="Flour" id="flour" name="itemProductionGet[]"
+                                    <?php if(in_array('Flour',$arrayItems)){ ?> checked <?php } ?> >
                                 <label class="form-check-label my-1" for="flour">
                                     Flour
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Sugar" id="sugar" name="itemProductionGet[]">
+                                <input class="form-check-input" type="checkbox" value="Sugar" id="sugar" name="itemProductionGet[]"
+                                    <?php if(in_array('Sugar',$arrayItems)){ ?> checked <?php } ?>>
                                 <label class="form-check-label my-1" for="sugar">
                                     Sugar
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Butter/Fat" id="fat" name="itemProductionGet[]">
+                                <input class="form-check-input" type="checkbox" value="Butter/Fat" id="fat" name="itemProductionGet[]"
+                                    <?php if(in_array('Butter/Fat',$arrayItems)){ ?> checked <?php } ?>>
                                 <label class="form-check-label my-1" for="fat">
                                     Butter/Fat
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Salt" id="salt" name="itemProductionGet[]">
+                                <input class="form-check-input" type="checkbox" value="Salt" id="salt" name="itemProductionGet[]"
+                                    <?php if(in_array('Salt',$arrayItems)){ ?> checked <?php } ?>>
                                 <label class="form-check-label my-1" for="salt">
                                     Salt
                                 </label> <br>
@@ -165,15 +172,18 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                     <div class="col-6">
                         <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Milk" id="milk" name="itemProductionGet[]">
+                                <input class="form-check-input" type="checkbox" value="Milk" id="milk" name="itemProductionGet[]"
+                                    <?php if(in_array('Milk',$arrayItems)){ ?> checked <?php } ?>>
                                 <label class="form-check-label my-1" for="milk">
                                     Milk
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Baking Soda" id="baking_soda" name="itemProductionGet[]">
+                                <input class="form-check-input" type="checkbox" value="BakingSoda" id="baking_soda" name="itemProductionGet[]"
+                                    <?php if(in_array('BakingSoda',$arrayItems)){ ?> checked <?php } ?>>
                                 <label class="form-check-label my-1" for="baking_soda">
                                     Baking Soda
                                 </label> <br>
-                                <input class="form-check-input" type="checkbox" value="Other" id="other" name="itemProductionGet[]">
+                                <input class="form-check-input" type="checkbox" value="Other" id="other" name="itemProductionGet[]"
+                                    <?php if(in_array('Other',$arrayItems)){ ?> checked <?php } ?>>
                                 <label class="form-check-label my-1" for="other">
                                     Other
                                 </label> <br>
@@ -202,32 +212,38 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                         </label>
                         <br>
 
-                        <input class="form-check-input " type="checkbox" value="Pineapple" id="pineapple" name="flavourProductionGet[]">
+                        <input class="form-check-input " type="checkbox" value="Pineapple" id="pineapple" name="flavourProductionGet[]"
+                            <?php if(in_array('Pineapple',$arrayFlavours)){ ?> checked <?php } ?>>
                         <label class="form-check-label my-1" for="pineapple">
                             Pineapple
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Chocolate" id="chocolate" name="flavourProductionGet[]">
+                        <input class="form-check-input" type="checkbox" value="Chocolate" id="chocolate" name="flavourProductionGet[]"
+                            <?php if(in_array('Chocolate',$arrayFlavours)){ ?> checked <?php } ?>>
                         <label class="form-check-label my-1" for="chocolate">
                             Chocolate
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Redvelvet" id="redvelvet" name="flavourProductionGet[]">
+                        <input class="form-check-input" type="checkbox" value="Redvelvet" id="redvelvet" name="flavourProductionGet[]"
+                            <?php if(in_array('Redvelvet',$arrayFlavours)){ ?> checked <?php } ?>>
                         <label class="form-check-label my-1" for="redvelvet">
                             Red Velvet
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Butterscotch" id="butterscotch" name="flavourProductionGet[]">
+                        <input class="form-check-input" type="checkbox" value="Butterscotch" id="butterscotch" name="flavourProductionGet[]"
+                            <?php if(in_array('Butterscotch',$arrayFlavours)){ ?> checked <?php } ?>>
                         <label class="form-check-label my-1" for="butterscotch">
                             Butterscotch
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Blueberry" id="blueberry" name="flavourProductionGet[]">
+                        <input class="form-check-input" type="checkbox" value="Blueberry" id="blueberry" name="flavourProductionGet[]"
+                            <?php if(in_array('Blueberry',$arrayFlavours)){ ?> checked <?php } ?>>
                         <label class="form-check-label my-1" for="blueberry">
                             Blueberry
                         </label> <br>
 
-                        <input class="form-check-input" type="checkbox" value="Other" id="other" name="flavourProductionGet[]">
+                        <input class="form-check-input" type="checkbox" value="Other" id="other" name="flavourProductionGet[]"
+                            <?php if(in_array('Other',$arrayFlavours)){ ?> checked <?php } ?>>
                         <label class="form-check-label my-1" for="other">
                             Other
                         </label> <br>
