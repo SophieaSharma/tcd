@@ -55,8 +55,8 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
         $resultGet=mysqli_query($connection,$queryGet);
         while ($row=mysqli_fetch_assoc($resultGet)){
             $titleGet=$row['title'];
-            /*$type_of_cakeGet=$row['type_of_cake'];
-            $itemsGet=$row['items'];*/
+            $type_of_cakeGet=$row['type_of_cake'];
+            /*$itemsGet=$row['items'];*/
             $flavoursGet=$row['flavours'];
             $descriptionGet=$row['description'];
             if(empty($descriptionGet)){
@@ -82,14 +82,39 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                 <div class="mb-3">
                     <label for="typeofcake" class="form-label">Type of Cake</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="type_of_cakeGet" value="Shop Cake" id="typeofcake" required>
-                        <label class="form-check-label mt-1" for="typeofcake">
-                            Shop Cake
-                        </label> <br>
-                        <input class="form-check-input" type="radio" name="type_of_cakeGet" value="Customer Order Cake" id="typeofcake" required>
-                        <label class="form-check-label mt-1" for="typeofcake">
-                            Customer Order Cake
-                        </label>
+
+                        <?php
+                        if($type_of_cakeGet=='Shop Cake') { ?>
+                            <input name='type_of_cakeGet' value='Shop Cake' checked class='form-check-input' type='radio' id='typeofcake' required>
+                            <label class='form-check-label mt-1' for='typeofcake' >
+                                Shop Cake
+                            </label>
+
+                            <br>
+                            <input name='type_of_cakeGet' value='Customer Cake'  class='form-check-input' type='radio' id='typeofcake' required>
+                            <label class='form-check-label mt-1' for='typeofcake'>
+                                Customer Order Cake
+                            </label>
+                            <?php
+                        }
+                        ?>
+                        <?php
+                        if($type_of_cakeGet=='Customer Order Cake') { ?>
+                            <input name='type_of_cakeGet' value='Shop Cake' class='form-check-input' type='radio' id='typeofcake' required>
+                            <label class='form-check-label mt-1' for='typeofcake' >
+                                Shop Cake
+                            </label>
+
+                            <br>
+                            <input name='type_of_cakeGet' value='Customer Cake' checked class='form-check-input' type='radio' id='typeofcake' required>
+                            <label class='form-check-label mt-1' for='typeofcake'>
+                                Customer Order Cake
+                            </label>
+                            <?php
+                        }
+                        ?>
+
+
                     </div>
                 </div>
 

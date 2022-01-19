@@ -44,14 +44,7 @@ GLOBAL $today,$totalPriceSales;
         </a>
         <!-- heading sales-->
 
-        <?php
-        #to input the already selected values in the form
-        $getId=$_GET['edit'];
-        require_once "SQL_queries/db_connection.php";
-        $queryGet="SELECT * FROM sales WHERE id='$getId';";
-        $resultGet=mysqli_query($connection,$queryGet);
 
-        ?>
 
         <!--form-->
         <div class="col-lg-8 mb-5 border border-secondary bg-light ">
@@ -60,24 +53,63 @@ GLOBAL $today,$totalPriceSales;
                     <button class="nav-link active" aria-current="page">SALES</button>
                 </li>
             </ul>
+
+            <?php
+            #to input the already selected values in the form
+            $getId=$_GET['edit'];
+            require_once "SQL_queries/db_connection.php";
+            $queryGet="SELECT * FROM sales WHERE id='$getId';";
+            $resultGet=mysqli_query($connection,$queryGet);
+            while ($row=mysqli_fetch_assoc($resultGet)){
+                $titleGet=$row['title'];
+                $type_of_cakeGet=$row['type_of_cake'];
+                /*$flavourGet=$row['flavour'];*/
+                $priceGet=$row['price'];
+                $amount_paidGet=$row['amount_paid'];
+                $descriptionGet=$row['description'];
+
+            ?>
             <form action="" method="post">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input name="titleSalesGet" type="text" class="form-control" id="title" placeholder="Title" required>
+                    <input name="titleSalesGet" type="text" class="form-control" id="title"  value="<?php echo $titleGet; ?>" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="typeofcake" class="form-label">Type of Cake</label>
                     <div class="form-check">
-                        <input name="type_of_cakeGet" value="Shop Cake" class="form-check-input" type="radio" id="typeofcake" required>
-                        <label class="form-check-label mt-1" for="typeofcake" >
-                            Shop Cake
-                        </label>
-                        <br>
-                        <input name="type_of_cakeGet" value="Customer Cake" class="form-check-input" type="radio" id="typeofcake" required>
-                        <label class="form-check-label mt-1" for="typeofcake">
-                            Customer Order Cake
-                        </label>
+                        <?php
+                       if($type_of_cakeGet=='Customer Cake') { ?>
+                            <input name='type_of_cakeGet' value='Shop Cake' class='form-check-input' type='radio' id='typeofcake' required>
+                            <label class='form-check-label mt-1' for='typeofcake' >
+                                Shop Cake
+                            </label>
+
+                            <br>
+                            <input name='type_of_cakeGet' value='Customer Cake' checked class='form-check-input' type='radio' id='typeofcake' required>
+                            <label class='form-check-label mt-1' for='typeofcake'>
+                                Customer Order Cake
+                            </label>
+                        <?php
+                        }
+                        ?>
+                        <?php
+                        if($type_of_cakeGet=='Shop Cake') { ?>
+                            <input name='type_of_cakeGet' value='Shop Cake' checked class='form-check-input' type='radio' id='typeofcake' required>
+                            <label class='form-check-label mt-1' for='typeofcake' >
+                                Shop Cake
+                            </label>
+
+                            <br>
+                            <input name='type_of_cakeGet' value='Customer Cake'  class='form-check-input' type='radio' id='typeofcake' required>
+                            <label class='form-check-label mt-1' for='typeofcake'>
+                                Customer Order Cake
+                            </label>
+                            <?php
+                        }
+                        ?>
+
+
                     </div>
                 </div>
 
@@ -145,28 +177,25 @@ GLOBAL $today,$totalPriceSales;
 
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
-                    <input name="priceSalesGet" type="number" class="form-control" id="price" placeholder="Price of the cake" min="0" max="10000" required>
+                    <input name="priceSalesGet" type="number" class="form-control" id="price"  min="0" max="10000" value="<?php echo $priceGet; ?>" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="amount_by_customer" class="form-label">Amount Paid </label>
-                    <input name="amountSalesGet" type="number"  class="form-control" id="amount_by_customer" placeholder="Amount Paid by Customer" required>
+                    <input name="amountSalesGet" type="number"  class="form-control" id="amount_by_customer" value="<?php echo $amount_paidGet ?>" required>
                 </div>
 
-                <!--<div class="mb-3">
-                    <label for="left" class="form-label">Amount Left</label>
-                    <input name="amount_leftSales" type="number" class="form-control" id="left" placeholder="Amount Left by Customer" required>
-                </div>-->
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea name="descriptionSalesGet" class="form-control" id="description" rows="4"></textarea>
+                    <textarea name="descriptionSalesGet" class="form-control text-secondary" id="description" rows="4"><?php echo $descriptionGet; ?></textarea>
                 </div>
 
                 <div class="mb-3">
                     <input name="submitSalesGet" type="submit" class="form-control btn btn-primary" value="Submit">
                 </div>
             </form>
+<?php } ?>
             <!--editing the saved data-->
             <?php
             if(isset($_POST['submitSalesGet'])){
