@@ -18,7 +18,6 @@ GLOBAL $connection;
     <title>ePortal</title>
 </head>
 <body>
-
 <!--heading-->
 <?php
 require_once "headerTCD.php";
@@ -68,12 +67,48 @@ require_once "headerTCD.php";
                         <div class="mb-3">
                             <label for="amount" class="form-label m-0 p-1">Items</label>
                             <select class="form-select" aria-label="Default select example" name="select_itemsGet" required>
-                                <option selected ><?php echo $getSelectItems ?></option>
-                                <option value="Sugar">Sugar</option>
-                                <option value="Flour">Flour</option>
-                                <option value="Butter">Butter</option>
-                                <option value="Baking Soda">Baking Soda</option>
-                                <option value="Other">Other</option>
+
+                                <!--this is to solve the duplicity of items-->
+                                <?php
+                                if($getSelectItems=="Sugar") {
+                                    echo "<option value='Sugar' selected>Sugar</option>";
+
+                                    echo "<option value='Flour'> Flour</option>";
+                                    echo "<option value='Butter'> Butter</option>";
+                                    echo "<option value='Baking Soda'> Baking Soda</option>";
+                                    echo "<option value='Other'> Other</option>";
+                                }
+                                else if($getSelectItems=="Flour") {
+                                    echo "<option value='Sugar'>Sugar</option>";
+                                    echo "<option value='Flour' selected> Flour</option>";
+                                    echo "<option value='Butter'> Butter</option>";
+                                    echo "<option value='Baking Soda'> Baking Soda</option>";
+                                    echo "<option value='Other'> Other</option>";
+                                }
+                                else if($getSelectItems=="Butter") {
+                                    echo "<option value='Sugar'>Sugar</option>";
+                                    echo "<option value='Flour' > Flour</option>";
+                                    echo "<option value='Butter' selected> Butter</option>";
+                                    echo "<option value='Baking Soda'> Baking Soda</option>";
+                                    echo "<option value='Other'> Other</option>";
+                                }
+                                else if($getSelectItems=="Baking Soda") {
+                                    echo "<option value='Sugar'>Sugar</option>";
+                                    echo "<option value='Flour' > Flour</option>";
+                                    echo "<option value='Butter'> Butter</option>";
+                                    echo "<option value='Baking Soda' selected> Baking Soda</option>";
+                                    echo "<option value='Other'> Other</option>";
+                                }
+                                else{
+                                    echo "<option value='Sugar'>Sugar</option>";
+                                    echo "<option value='Flour' > Flour</option>";
+                                    echo "<option value='Butter'> Butter</option>";
+                                    echo "<option value='Baking Soda' > Baking Soda</option>";
+                                    echo "<option value='Other' selected> Other</option>";
+                                }
+                                ?>
+                                <!--this is to solve the duplicity of items-->
+
                             </select>
                         </div>
                     </div>
