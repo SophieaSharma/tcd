@@ -2,17 +2,8 @@
 require_once "errors.php";
 require_once "shortcuts/reportsEntriesDateShortcut.php";
 require_once "shortcuts/reportQueryFromSales.php";
-#rawmaterial variable
-GLOBAL $total_price_of_all_items;
-#sales variable
-GLOBAL $totalPriceSales;
 GLOBAL $today,$dateReportEntry,$connection;
 $today=date('Y-m-d');
-$a = $totalPriceSales - $total_price_of_all_items;
-$b = $totalPriceSales + $total_price_of_all_items;
-$c = ($a / $b) * 100;
-$c= intval($c);
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -56,9 +47,6 @@ $c= intval($c);
                 </li>
             </ul>
 
-
-
-
             <?php
             require_once "SQL_queries/db_connection.php";
             $query="SELECT * FROM report WHERE date='$dateReportEntry'";
@@ -68,19 +56,28 @@ $c= intval($c);
             $date=strtotime($date);
             $date=date('d-M-Y',$date);
             $value=$row['value'];
+            $profit_or_loss=$row['profit_or_loss'];
             ?>
-            <div class="fs-5">
+                <div class="fs-5">
                 Date : <?php echo $date; ?> <br>
-                <p class="text-uppercase my-3 text-success">Profit : <?php echo $value; ?>%</p>
-                <p class="text-uppercase my-3 text-danger">Loss : <?php echo (100-$value); ?>%</p>
+                <?php
+                if($profit_or_loss=="Profit"){
+                    echo  "<p class='text-uppercase my-3 text-success'>Profit : {$value}%</p>";
+                }elseif ($profit_or_loss=="Loss"){
+                    echo  "<p class='text-uppercase my-3 text-danger'>Loss : {$value}%</p>";
+                }
+                ?>
             </div>
+                <div class="progress mt-3 mb-5" style="height: 22px;">
+                    <?php
+                    if($profit_or_loss=="Profit"){
+                        echo  "<div class='progress-bar bg-success fs-5' role='progressbar' style='width: {$value}%;' aria-valuenow='{$value}' aria-valuemin='0' aria-valuemax='100'>{$value}% Profit</div>";
+                    }elseif ($profit_or_loss=="Loss"){
+                        echo  "<div class='progress-bar bg-danger fs-5' role='progressbar' style='width: {$value}%;' aria-valuenow='{$value}' aria-valuemin='0' aria-valuemax='100'>{$value}% Loss</div>";
+                    }
+                    ?>
 
-                <div class="progress my-4" style="height: 25px;">
-                    <div class="progress-bar bg-success fs-5" role="progressbar" style="width: <?php echo $value; ?>%;" aria-valuenow="<?php echo $value; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $value ."%"; ?></div>
-                    <div class="progress-bar bg-danger fs-5" role="progressbar" style="width: <?php echo (100-$value); ?>%;" aria-valuenow="<?php echo (100-$value); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo (100-$value) ."%"; ?></div>
                 </div>
-
-
          <?php } ?>
         </div>
         <!--data-->
