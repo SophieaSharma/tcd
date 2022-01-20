@@ -3,8 +3,14 @@ require_once "errors.php";
 require_once "SQL_queries/sales_query.php";
 $today=date('Y-m-d');
 GLOBAL $connection;
-GLOBAL $today,$totalPriceSales;
+GLOBAL $today,$totalPriceSales,$fileName;
+
+if(!empty(($_FILES["file"]["name"]))){
+   require_once "insert.php";
+}
+
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -80,7 +86,7 @@ GLOBAL $today,$totalPriceSales;
                     <button class="nav-link active" aria-current="page">SALES</button>
                 </li>
             </ul>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <form action="sales.php" method="post" enctype="multipart/form-data">
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -158,8 +164,7 @@ GLOBAL $today,$totalPriceSales;
                 <div class="mb-3">
                     <label for="file" class="form-label">File</label>
                     <div class="input-group mb-3">
-                        <input name="imageSales" type="file" class="form-control" id="file">
-                        <label class="input-group-text" for="file">Upload</label>
+                        <input name="file" type="file" class="form-control" id="file">
                     </div>
                 </div>
 
@@ -204,7 +209,7 @@ GLOBAL $today,$totalPriceSales;
                     $title=$row['title'];
                     $type_of_cake=$row['type_of_cake'];
                     $flavour=$row['flavour'];
-                    $image=$row['image'];
+                    $image="uploads/".$row['image'];
                     $price=$row['price'];
                     $amount_paid=$row['amount_paid'];
                     $amount_left=$row['amount_left'];
@@ -227,6 +232,13 @@ GLOBAL $today,$totalPriceSales;
                         <div id="collapse<?php echo $id ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne<?php echo $id; ?>" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <div class="row">
+                                    <div class="row mb-3">
+                                        <div class="col-12">
+                                            <?php
+                                                echo "<img class='img-fluid ' style='width: 100%' src='$image' alt='$fileName'>";
+                                            ?>
+                                        </div>
+                                    </div>
 
                                     <div class="row my-1">
                                         <div class="col-6 text-uppercase ">Date</div>

@@ -3,7 +3,7 @@ require_once "errors.php";
 require_once "SQL_queries/db_connection.php";
 require_once "shortcuts/salesEntriesDateShortcut.php";
 GLOBAL $connection;
-GLOBAL $salesEntriesDate,$totalPriceSales;
+GLOBAL $salesEntriesDate,$totalPriceSales,$fileName;
 ?>
 <!doctype html>
 <html lang="en">
@@ -65,7 +65,7 @@ GLOBAL $salesEntriesDate,$totalPriceSales;
                     $title=$row['title'];
                     $type_of_cake=$row['type_of_cake'];
                     $flavour=$row['flavour'];
-                    $image=$row['image'];
+                    $image="uploads/".$row['image'];
                     $price=$row['price'];
                     $amount_paid=$row['amount_paid'];
                     $amount_left=$row['amount_left'];
@@ -86,6 +86,14 @@ GLOBAL $salesEntriesDate,$totalPriceSales;
                         <div id="collapse<?php echo $id ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne<?php echo $id; ?>" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <div class="row">
+
+                                    <div class="row mb-3">
+                                        <div class="col-12 ">
+                                            <?php
+                                            echo "<img class='img-fluid ' style='width: 100%' src='$image' alt='$fileName'>";
+                                            ?>
+                                        </div>
+                                    </div>
 
                                     <div class="row my-1">
                                         <div class="col-6 text-uppercase ">Date</div>
