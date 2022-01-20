@@ -4,6 +4,12 @@ require_once "SQL_queries/production_query.php";
 $today=date('Y-m-d');
 GLOBAL $connection;
 GLOBAL $today;
+
+#if image is not empty execute the insertImages.php
+if(!empty(($_FILES["file"]["name"]))){
+    require_once "SQL_queries/insertImages.php";
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -214,6 +220,12 @@ GLOBAL $today;
                         </label> <br>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <label for="file" class="form-label">File</label>
+                    <div class="input-group mb-3">
+                        <input name="file" type="file" class="form-control" id="file">
+                    </div>
+                </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
@@ -242,6 +254,7 @@ GLOBAL $today;
                     $type_of_cake=$row['type_of_cake'];
                     $items=$row['items'];
                     $flavours=$row['flavours'];
+                    $image="uploads/".$row['image'];
                     $description=$row['description'];
                     if(empty($description)){
                         $description="-";
@@ -256,6 +269,15 @@ GLOBAL $today;
                         <div id="flush-collapseOne<?php echo $id; ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body ">
                                 <div class="row">
+
+                                    <div class="row mb-3">
+                                        <div class="col-12">
+                                            <?php
+                                            echo "<img class='img-fluid ' style='width: 100%' src='$image' alt='$fileName'>";
+                                            ?>
+                                        </div>
+                                    </div>
+
 
                                     <div class="row my-1">
                                         <div class="col-6 text-uppercase ">Date</div>

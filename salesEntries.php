@@ -4,6 +4,12 @@ require_once "SQL_queries/db_connection.php";
 require_once "shortcuts/salesEntriesDateShortcut.php";
 GLOBAL $connection;
 GLOBAL $salesEntriesDate,$totalPriceSales,$fileName;
+
+#if image is not empty execute the insertImages.php
+if(!empty(($_FILES["file"]["name"]))){
+    require_once "SQL_queries/insertImages.php";
+}
+
 ?>
 <!doctype html>
 <html lang="en">

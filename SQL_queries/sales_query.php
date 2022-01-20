@@ -21,7 +21,7 @@ if(isset($_POST['submitSales'])){
     }
 
     if(!empty(($_FILES["file"]["name"]))){
-        require_once "insert.php";
+        require_once "insertImages.php";
     }
 
             $query ="INSERT INTO sales(date,title,type_of_cake,flavour,image,price,amount_paid,amount_left,description)

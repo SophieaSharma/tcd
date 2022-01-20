@@ -5,8 +5,9 @@ $today=date('Y-m-d');
 GLOBAL $connection;
 GLOBAL $today,$totalPriceSales,$fileName;
 
+#if image is not empty execute the insertImages.php
 if(!empty(($_FILES["file"]["name"]))){
-   require_once "insert.php";
+   require_once "SQL_queries/insertImages.php";
 }
 
 ?>
