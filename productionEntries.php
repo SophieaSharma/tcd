@@ -85,10 +85,10 @@ require_once "headerTCD.php";
                         <div class="accordion-body">
                             <div class="row">
 
-                                <div class="row mb-3">
+                                <div class="row ">
                                     <div class="col-12 ">
                                         <?php
-                                        echo "<img class='img-fluid ' style='width: 100%' src='$image' alt='$fileName'>";
+                                        echo "<img class='img-fluid mb-3' style='width: 100%' src='$image' alt='$fileName'>";
                                         ?>
                                     </div>
                                 </div>
