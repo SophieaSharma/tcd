@@ -3,7 +3,22 @@ require_once "errors.php";
 require_once "SQL_queries/production_query.php";
 $today=date('Y-m-d');
 GLOBAL $connection;
-GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourProduction,$descriptionProduction;
+GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourProduction,$descriptionProduction,$fileName;
+
+#if image is not empty execute the insertImages.php
+if(!empty(($_FILES["fileProductionGet"]["name"]))){
+    $fileDir="uploads/";
+    $tmp_name=$_FILES["fileProductionGet"]["tmp_name"];
+    $fileName=basename($_FILES["fileProductionGet"]["name"]);
+    $fileExt=pathinfo($fileName,PATHINFO_EXTENSION);
+    $filePath=$fileDir.$fileName;
+    $allowedArray=array('jpeg','jpg','png');
+    if(in_array($fileExt,$allowedArray)){
+        move_uploaded_file($tmp_name,$filePath);
+    }
+
+}
+
 
 ?>
 <!doctype html>
@@ -58,7 +73,6 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
             $type_of_cakeGet=$row['type_of_cake'];
             $itemsGet=$row['items'];
             $flavoursGet=$row['flavours'];
-            $imageURL=$row['image'];
             $descriptionGet=$row['description'];
             $arrayFlavours=explode(' ',$flavoursGet);
             $arrayItems=explode(' ',$itemsGet);
@@ -254,7 +268,7 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                 <div class="mb-3">
                     <label for="file" class="form-label">File</label>
                     <div class="input-group mb-3">
-                        <input name="fileProductionGet" type="file" class="form-control" id="file" value="<?php echo $imageURL; ?>">
+                        <input name="fileProductionGet" type="file" class="form-control" id="file" >
                     </div>
                 </div>
 
@@ -277,7 +291,6 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                 $itemProductionGet=$_POST['itemProductionGet'];
                 $flavourProductionGet=$_POST['flavourProductionGet'];
                 $descriptionProductionGet=$_POST['descriptionProductionGet'];
-                $fileProductionGet=$_POST['fileProductionGet'];
 
                 GLOBAL $connection;
                 require_once "SQL_queries/db_connection.php";
@@ -291,9 +304,11 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                     $flavours_valueGet.= ($flavour." ");
                 }
 
+
+
                 $queryEdit="UPDATE production
                  SET title='$titleProductionGet',
-                     image='$fileProductionGet',
+                     image='$fileName',
                      type_of_cake='$type_of_cakeGet',
                      items='$item_valuesGet',
                      flavours='$flavours_valueGet',

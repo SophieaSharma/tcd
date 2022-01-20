@@ -3,7 +3,22 @@ require_once "errors.php";
 require_once "SQL_queries/sales_query.php";
 $today=date('Y-m-d');
 GLOBAL $connection;
-GLOBAL $today,$totalPriceSales;
+GLOBAL $today,$totalPriceSales,$fileName;
+
+#if image is not empty execute the insertImages.php
+if(!empty(($_FILES["imageSalesGet"]["name"]))){
+    $fileDir="uploads/";
+    $tmp_name=$_FILES["imageSalesGet"]["tmp_name"];
+    $fileName=basename($_FILES["imageSalesGet"]["name"]);
+    $fileExt=pathinfo($fileName,PATHINFO_EXTENSION);
+    $filePath=$fileDir.$fileName;
+    $allowedArray=array('jpeg','jpg','png');
+    if(in_array($fileExt,$allowedArray)){
+        move_uploaded_file($tmp_name,$filePath);
+    }
+
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -71,7 +86,7 @@ GLOBAL $today,$totalPriceSales;
 
             ?>
 
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input name="titleSalesGet" type="text" class="form-control text-secondary" id="title"  value="<?php echo $titleGet; ?>" required>
@@ -179,7 +194,6 @@ GLOBAL $today,$totalPriceSales;
                     <label for="file" class="form-label">File</label>
                     <div class="input-group mb-3">
                         <input name="imageSalesGet" type="file" class="form-control" id="file">
-                        <label class="input-group-text" for="file">Upload</label>
                     </div>
                 </div>
 
@@ -210,7 +224,6 @@ GLOBAL $today,$totalPriceSales;
             $titleSalesGet=$_POST['titleSalesGet'];
             $type_of_cakeSalesGet=$_POST['type_of_cakeGet'];
             $flavourSalesGet=$_POST['flavourSalesGet'];
-            $imageSalesGet=$_POST['imageSalesGet'];
             $priceSalesGet=$_POST['priceSalesGet'];
             $amountSalesGet=$_POST['amountSalesGet'];
             $amount_leftSalesGet=($priceSalesGet-$amountSalesGet);
@@ -230,6 +243,7 @@ GLOBAL $today,$totalPriceSales;
                 type_of_cake='$type_of_cakeSalesGet',
                 flavour='$valuesGet',
                 price='$priceSalesGet',
+                image='$fileName',
                 amount_paid='$amountSalesGet',
                 amount_left='$amount_leftSalesGet',
                 description='$descriptionSalesGet'
