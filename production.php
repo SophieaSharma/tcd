@@ -3,7 +3,7 @@ require_once "errors.php";
 require_once "SQL_queries/production_query.php";
 $today=date('Y-m-d');
 GLOBAL $connection;
-GLOBAL $today;
+GLOBAL $today,$fileName;
 
 #if image is not empty execute the insertImages.php
 if(!empty(($_FILES["file"]["name"]))){
@@ -273,7 +273,7 @@ if(!empty(($_FILES["file"]["name"]))){
                                     <div class="row mb-3">
                                         <div class="col-12">
                                             <?php
-                                            echo "<img class='img-fluid ' style='width: 100%' src='$image' alt='$fileName'>";
+                                            echo "<img class='img-fluid ' style='width: 100%;' src='$image' alt='$fileName'>";
                                             ?>
                                         </div>
                                     </div>

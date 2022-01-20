@@ -1,6 +1,7 @@
 <?php
 require_once "db_connection.php";
 GLOBAL $connection;
+
 $fileDir="uploads/";
 $tmp_name=$_FILES["file"]["tmp_name"];
 $fileName=basename($_FILES["file"]["name"]);

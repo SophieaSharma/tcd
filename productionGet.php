@@ -58,6 +58,7 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
             $type_of_cakeGet=$row['type_of_cake'];
             $itemsGet=$row['items'];
             $flavoursGet=$row['flavours'];
+            $imageURL=$row['image'];
             $descriptionGet=$row['description'];
             $arrayFlavours=explode(' ',$flavoursGet);
             $arrayItems=explode(' ',$itemsGet);
@@ -250,6 +251,13 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                     </div>
                 </div>
 
+                <div class="mb-3">
+                    <label for="file" class="form-label">File</label>
+                    <div class="input-group mb-3">
+                        <input name="fileProductionGet" type="file" class="form-control" id="file" value="<?php echo $imageURL; ?>">
+                    </div>
+                </div>
+
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
@@ -269,6 +277,7 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
                 $itemProductionGet=$_POST['itemProductionGet'];
                 $flavourProductionGet=$_POST['flavourProductionGet'];
                 $descriptionProductionGet=$_POST['descriptionProductionGet'];
+                $fileProductionGet=$_POST['fileProductionGet'];
 
                 GLOBAL $connection;
                 require_once "SQL_queries/db_connection.php";
@@ -284,6 +293,7 @@ GLOBAL $today,$titleProduction,$type_of_cakeProduction,$itemProduction,$flavourP
 
                 $queryEdit="UPDATE production
                  SET title='$titleProductionGet',
+                     image='$fileProductionGet',
                      type_of_cake='$type_of_cakeGet',
                      items='$item_valuesGet',
                      flavours='$flavours_valueGet',
