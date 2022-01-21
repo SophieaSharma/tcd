@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light fs-4">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +16,14 @@
                     <a class="nav-link " aria-current="page" href="sales.php">Sales</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="reports.php">Reports</a>
+                       <a class="nav-link" href="reports.php"
+                       <?php
+                       if($_SESSION['category']=='User'){?>
+                           style="pointer-events: none";
+                           <?php } ?> >
+                           Reports
+                       </a>
+
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link " href="myAccount.php">My Account</a>
