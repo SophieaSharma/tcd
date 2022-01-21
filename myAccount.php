@@ -1,7 +1,8 @@
 <?php
 require_once "errors.php";
 require_once "SQL_queries/db_connection.php";
-GLOBAL $connection;
+GLOBAL $connection,$getId;
+echo $getId;
 ?>
 <!doctype html>
 <html lang="en">
@@ -40,17 +41,6 @@ GLOBAL $connection;
 
         <!--Profile-->
         <div class="col-lg-8 border border-secondary bg-light mb-3 py-2">
-            <img src="img/cake1.jpeg" alt="" class="mx-auto d-block my-3 img-thumbnail rounded-circle" >
-            <p class=" text-left fs-4 my-2" style="text-transform: capitalize;">NAME - <?php echo $_SESSION['name']; ?></p>
-            <p class=" text-left fs-4 my-2" >EMAIL - <?php echo $_SESSION['email']; ?></p>
-            <p class=" text-left fs-4 my-2" style="text-transform: capitalize;">CATEGORY - <?php echo $_SESSION['category']; ?></p>
-
-        </div>
-        <!--Profile-->
-
-
-        <!--form-->
-        <div class="col-lg-8  border border-secondary bg-light py-2">
             <?php
             #to input the already selected values in the form
             $getId=$_SESSION['id'];
@@ -58,83 +48,48 @@ GLOBAL $connection;
             $queryGet="SELECT * FROM user_details WHERE id='$getId';";
             $resultGet=mysqli_query($connection,$queryGet);
             $row=mysqli_fetch_assoc($resultGet);
+            $id=$row['id'];
             $alreadyName=$row['name'];
             $alreadyEmail=$row['email_id'];
             $alreadyPassword=$row['password'];
             ?>
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Update Name
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                                <form action="" method="post">
-                                    <div class="mb-3">
-                                        <label for="title" class="form-label">NAME</label>
-                                        <input name="name" type="text" class="form-control text-secondary" id="title"  value="<?php echo $alreadyName ?>" required>
-                                    </div>
+           <img src="img/cake1.jpeg" alt="" class="mx-auto d-block my-3 img-thumbnail rounded-circle" >
 
-                                    <div class="mb-3">
-                                        <input name="updateName" type="submit" class="form-control btn btn-primary" value="Update">
-                                    </div>
-                                </form>
+           <div class="row">
+               <div class="col-4"> <ul class="list-group">
+                       <li class="list-group-item fs-5 text-capitalize">Name</li>
+                       <li class="list-group-item fs-5 text-capitalize">Email</li>
+                       <li class="list-group-item fs-5 text-capitalize">Category</li>
+                   </ul>
+               </div>
+               <div class="col-4">
+                   <ul class="list-group">
+                       <li class="list-group-item fs-5 text-capitalize"><?php echo $_SESSION['name']; ?></li>
+                       <li class="list-group-item fs-5 "><?php echo $_SESSION['email']; ?></li>
+                       <li class="list-group-item fs-5 text-capitalize"><?php echo $_SESSION['category']; ?></li>
+                   </ul>
+               </div>
+               <div class="col-4">
+                   <ul class="list-group">
+                       <li class="list-group-item fs-5 py-3">
+                           <a href="myAccount.php?updateName=<?php echo $id; ?>" style="text-decoration: none;">UPDATE NAME</a>
+                       </li>
+                       <li class="list-group-item fs-5 py-3">
+                           <a href="myAccount.php?updateEmail=<?php echo $id; ?>" style="text-decoration: none;">UPDATE EMAIL</a>
+                       </li>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                           Update Email
-                        </button>
-                    </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <form action="" method="post">
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">EMAIL</label>
-                                    <input name="email" type="email" class="form-control text-secondary" value="<?php echo $alreadyEmail; ?>" required>
-                                </div>
+                   </ul>
+               </div>
+           </div>
 
-                                <div class="mb-3">
-                                    <input name="updateEmail" type="submit" class="form-control btn btn-primary" value="Update">
-                                </div>
-                            </form>
+        </div>
+        <!--Profile-->
 
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            Update Password
-                        </button>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <form action="" method="post" >
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">OLD PASSWORD</label>
-                                    <input name="oldPassword" type="password" class="form-control text-secondary"  required>
-                                </div>
 
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">NEW PASSWORD</label>
-                                    <input name="newPassword" type="password" class="form-control text-secondary"   required>
-                                </div>
+        <!--form-->
+        <div class="col-lg-8  border border-secondary bg-light py-2">
 
-                                <div class="mb-3">
-                                    <input name="updatePassword" type="submit" class="form-control btn btn-primary" value="Update">
-                                </div>
-                            </form>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
         <!--form-->
