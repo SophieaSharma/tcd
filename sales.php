@@ -338,8 +338,7 @@ if(!empty(($_FILES["file"]["name"]))){
                     </div>
                     <?php  } ?>
                 </div>
-
-            <!--Accordion-->
+                <!--Accordion-->
 
 
 

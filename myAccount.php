@@ -1,5 +1,7 @@
 <?php
 require_once "errors.php";
+require_once "SQL_queries/db_connection.php";
+GLOBAL $connection;
 ?>
 <!doctype html>
 <html lang="en">
@@ -49,8 +51,90 @@ require_once "errors.php";
 
         <!--form-->
         <div class="col-lg-8  border border-secondary bg-light py-2">
+            <?php
+            #to input the already selected values in the form
+            $getId=$_SESSION['id'];
 
+            $queryGet="SELECT * FROM user_details WHERE id='$getId';";
+            $resultGet=mysqli_query($connection,$queryGet);
+            $row=mysqli_fetch_assoc($resultGet);
+            $alreadyName=$row['name'];
+            $alreadyEmail=$row['email_id'];
+            $alreadyPassword=$row['password'];
+            ?>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Update Name
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                                <form action="" method="post">
+                                    <div class="mb-3">
+                                        <label for="title" class="form-label">NAME</label>
+                                        <input name="name" type="text" class="form-control text-secondary" id="title"  value="<?php echo $alreadyName ?>" required>
+                                    </div>
 
+                                    <div class="mb-3">
+                                        <input name="updateName" type="submit" class="form-control btn btn-primary" value="Update">
+                                    </div>
+                                </form>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                           Update Email
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <form action="" method="post">
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">EMAIL</label>
+                                    <input name="email" type="email" class="form-control text-secondary" value="<?php echo $alreadyEmail; ?>" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <input name="updateEmail" type="submit" class="form-control btn btn-primary" value="Update">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            Update Password
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <form action="" method="post" >
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">OLD PASSWORD</label>
+                                    <input name="oldPassword" type="password" class="form-control text-secondary"  required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">NEW PASSWORD</label>
+                                    <input name="newPassword" type="password" class="form-control text-secondary"   required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <input name="updatePassword" type="submit" class="form-control btn btn-primary" value="Update">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!--form-->
