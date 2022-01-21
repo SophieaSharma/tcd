@@ -1,9 +1,6 @@
 <?php
 require_once "errors.php";
-GLOBAL $connection,$db_email,$db_password;
 require_once "SQL_queries/signup_query.php";
-require_once "SQL_queries/login_query.php";
-echo $db_email;
 ?>
 
 <!doctype html>
@@ -31,9 +28,7 @@ echo $db_email;
                         <li class="nav-item">
                             <a class="nav-link active" data-bs-toggle="tab" href="#signup">Signup</a>
                         </li>
-                        <!--<li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#login">Login</a>
-                        </li>-->
+
                     </ul>
 
                     <!-- Tab panes -->
@@ -41,7 +36,7 @@ echo $db_email;
 
                         <!--signup form-->
                         <div id="signup" class="container tab-pane active"><br>
-                            <form action="signup.php" method="post">
+                            <form action="" method="post">
 
                                 <div class="mb-3">
                                     <label for="Name" class="form-label">Name</label>

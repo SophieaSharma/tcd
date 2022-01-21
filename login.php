@@ -1,6 +1,5 @@
 <?php
 require_once "errors.php";
-GLOBAL $connection;
 require_once "SQL_queries/login_query.php";
 ?>
 
@@ -36,7 +35,7 @@ require_once "SQL_queries/login_query.php";
             <div class="tab-content">
                 <!--login form-->
                  <div id="login" class="container tab-pane active"><br>
-                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                     <form action="" method="post">
                          <div class="mb-3">
                              <label for="exampleFormControlInput1" class="form-label">Email address</label>
                              <input type="email" name="emailLogin" class="form-control" id="exampleFormControlInput1" placeholder="Your Email Id" required>

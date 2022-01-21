@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "errors.php";
 ?>
 <!doctype html>
@@ -39,9 +40,9 @@ require_once "errors.php";
         <!--Profile-->
         <div class="col-lg-8 border border-secondary bg-light mb-3 py-2">
             <img src="img/cake1.jpeg" alt="" class="mx-auto d-block my-3 img-thumbnail rounded-circle" >
-            <p class=" text-left fs-4 my-2">NAME -</p>
-            <p class=" text-left fs-4 my-2">EMAIL -</p>
-            <p class=" text-left fs-4 my-2">CATEGORY -</p>
+            <p class=" text-left fs-4 my-2" style="text-transform: capitalize;">NAME - <?php echo $_SESSION['name']; ?></p>
+            <p class=" text-left fs-4 my-2" >EMAIL - <?php echo $_SESSION['email']; ?></p>
+            <p class=" text-left fs-4 my-2" style="text-transform: capitalize;">CATEGORY - <?php echo $_SESSION['category']; ?></p>
 
         </div>
         <!--Profile-->

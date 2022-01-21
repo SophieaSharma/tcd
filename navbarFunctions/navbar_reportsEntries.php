@@ -22,6 +22,6 @@
                 </li>
             </ul>
         </div>
-        <a href="./login.php" class="btn btn-primary fs-5 px-3 mx-1"> Log Out</a>
+        <a href="logout.php" class="btn btn-primary fs-5 px-3 mx-1"> Log Out</a>
     </div>
 </nav>

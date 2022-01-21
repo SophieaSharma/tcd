@@ -1,28 +1,53 @@
 <?php
+session_start();
+
+$today=date('Y-m-d');
+
 if(isset($_POST['submitSignup'])){
-    $nameSignup=$_POST['nameSignup'];
-    $dateSignup=date('Y-m-d');
-    $user_or_admin=$_POST['radioBox'];
-    $emailSignup=$_POST['emailSignup'];
-    $passwordSignup=$_POST['passwordSignup'];
-    $confirmPasswordSignup=$_POST['confirmPasswordSignup'];
 
-    //connection
-    GLOBAL $connection;
-    require_once "db_connection.php";
+require_once "SQL_queries/db_connection.php";
+GLOBAL $connection;
 
-    $nameSignup=mysqli_real_escape_string($connection,$nameSignup);
-    $emailSignup=mysqli_real_escape_string($connection,$emailSignup);
-    $passwordSignup=mysqli_real_escape_string($connection,$passwordSignup);
+    $name=$_POST['nameSignup'];
+    $category=$_POST['radioBox'];
+    $email=$_POST['emailSignup'];
+    $password=$_POST['passwordSignup'];
+    $confirmPassword=$_POST['confirmPasswordSignup'];
 
-    //query
-    $query="INSERT INTO user_details(name,date,user_or_admin,email_id,password,confirmPassword) 
-                VALUES('$nameSignup','$dateSignup','$user_or_admin','$emailSignup','$passwordSignup','$confirmPasswordSignup')";
-    $result=mysqli_query($connection,$query);
-    if(!$result){
-        die("off ".mysqli_error($connection));
-    }
+    $name=mysqli_real_escape_string($connection,trim(stripcslashes($name)));
+    $email=mysqli_real_escape_string($connection,trim(stripcslashes($email)));
+    $password=mysqli_real_escape_string($connection,trim(stripcslashes($password)));
+    $confirmPassword=mysqli_real_escape_string($connection,trim(stripcslashes($confirmPassword)));
 
-       header("Location: signup.php");
+    $email=filter_var($email,FILTER_SANITIZE_EMAIL);
 
-   }
+     if(!(filter_var($email,FILTER_VALIDATE_EMAIL))){
+         echo "<script>alert('email not perfect')</script>";
+     }else{
+    //check if email is taken or not
+    $query_to_check_email="SELECT * FROM user_details WHERE email_id ='$email'";
+    $result_to_check_email=mysqli_query($connection,$query_to_check_email);
+    if(mysqli_num_rows($result_to_check_email)>0){
+        echo "<script> alert('email already taken') </script>";
+    }else{
+        //confirm password
+        if($password===$confirmPassword){
+            //insert the query and move to rawmaterial.php
+
+            $query_to_insert_data="INSERT INTO user_details(date,user_or_admin,name,email_id,password,confirmPassword)
+                       VALUES ('$today','$category','$name','$email','$password','$confirmPassword')";
+            $result_to_insert_data=mysqli_query($connection,$query_to_insert_data);
+            if(!$result_to_insert_data){
+                die("data not inserted" . mysqli_error($connection));
+            }else{
+
+                header("location:login.php");
+            }
+        }else{
+            echo "<script> alert('password doesn\'t match') </script>";
+        }
+}
+
+}
+
+}

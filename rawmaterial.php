@@ -1,9 +1,14 @@
 <?php
+session_start();
 require_once "errors.php";
 require_once "SQL_queries/rawmaterial_query.php";
 $today=date('Y-m-d');
 GLOBAL $connection;
 GLOBAL $today,$total_price_of_all_items;
+//if not logged in
+if(!isset($_SESSION['id'])){
+    header("location:login.php");
+}
 ?>
 <!doctype html>
 <html lang="en">
