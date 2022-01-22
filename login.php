@@ -44,11 +44,13 @@ require_once "SQL_queries/login_query.php";
                              <label for="password" class="form-label">Password</label>
                              <input type="Password" name="passwordLogin" class="form-control" id="password" placeholder="Your Password" required>
                          </div>
-                         <div class="my-4">
+                         <div class="my-3">
                              <input type="submit" name="submitLogin" class="form-control btn btn-primary" value="Submit" >
                          </div>
                      </form>
                      <div class="mb-3">
+                         <p class="fs-6"><a href="" style="text-decoration: none;  font-style: italic;"> Forgot Password? </a></p>
+                         <br>
                          <p class="fs-5">New User?<a href="signup.php" style="text-decoration: none; font-weight: bold; color: black;"> Sign Up </a></p>
                      </div>
                  </div>
