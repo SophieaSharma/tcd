@@ -123,7 +123,7 @@ if($report>0){
         }
         ?>
         <!--form-->
-        <div class="col-lg-8  border border-secondary bg-light">
+        <div class="col-lg-8  border border-secondary bg-light mb-5">
                 <ul class="nav nav-tabs my-3">
                     <li class="nav-item">
                         <button class="nav-link active" aria-current="page">REPORTS</button>
@@ -143,8 +143,8 @@ if($report>0){
 
             </div>
 
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-                    <div class="progress my-5 " style="height: 22px;">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="mb-5">
+                    <div class="progress my-3 " style="height: 22px;">
                         <?php
                         if($profit){
                            echo  "<div class='progress-bar bg-success fs-5' role='progressbar' style='width: {$profit}%;' aria-valuenow='{$profit}' aria-valuemin='0' aria-valuemax='100'>{$profit}% Profit</div>";
@@ -154,7 +154,7 @@ if($report>0){
                         ?>
 
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-5">
                         <input name="submitReport" type="submit" class="form-control btn btn-primary" value="Submit">
                     </div>
 

@@ -56,30 +56,14 @@ echo $getId;
            <img src="img/cake1.jpeg" alt="" class="mx-auto d-block my-3 img-thumbnail rounded-circle" >
 
            <div class="row">
-               <div class="col-4"> <ul class="list-group">
-                       <li class="list-group-item fs-5 text-capitalize">Name</li>
-                       <li class="list-group-item fs-5 text-capitalize">Email</li>
-                       <li class="list-group-item fs-5 text-capitalize">Category</li>
+               <div class="col-12"> <ul class="list-group">
+                       <li class="list-group-item fs-5 text-capitalize">Name:-  <?php echo $_SESSION['name']; ?></li>
+                       <li class="list-group-item fs-5 ">Email:- <?php echo $_SESSION['email']; ?></li>
+                       <li class="list-group-item fs-5 text-capitalize">Category:- <?php echo $_SESSION['category']; ?></li>
                    </ul>
                </div>
-               <div class="col-4">
-                   <ul class="list-group">
-                       <li class="list-group-item fs-5 text-capitalize"><?php echo $_SESSION['name']; ?></li>
-                       <li class="list-group-item fs-5 "><?php echo $_SESSION['email']; ?></li>
-                       <li class="list-group-item fs-5 text-capitalize"><?php echo $_SESSION['category']; ?></li>
-                   </ul>
-               </div>
-               <div class="col-4">
-                   <ul class="list-group">
-                       <li class="list-group-item fs-5 py-3">
-                           <a href="myAccount.php?updateName=<?php echo $id; ?>" style="text-decoration: none;">UPDATE NAME</a>
-                       </li>
-                       <li class="list-group-item fs-5 py-3">
-                           <a href="myAccount.php?updateEmail=<?php echo $id; ?>" style="text-decoration: none;">UPDATE EMAIL</a>
-                       </li>
 
-                   </ul>
-               </div>
+
            </div>
 
         </div>
@@ -87,10 +71,24 @@ echo $getId;
 
 
         <!--form-->
-        <div class="col-lg-8  border border-secondary bg-light py-2">
+        <div class="col-lg-8  border border-secondary bg-light py-2 mb-5">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="py-2">
+                        <a href="myAccount.php?updateName=<?php echo $id; ?>" style="text-decoration: none;">UPDATE NAME</a>
+                    </div>
+
+                   <div class="py-2">
+                       <a href="myAccount.php?updateEmail=<?php echo $id; ?>" style="text-decoration: none;">UPDATE EMAIL</a>
+                   </div>
+
+                    <div class="py-2">
+                        <a href="myAccount.php?updatePass=<?php echo $id; ?>" style="text-decoration: none;">UPDATE PASSWORD</a>
+                    </div>
 
 
-
+                </div>
+            </div>
         </div>
         <!--form-->
     </div>
