@@ -37,8 +37,8 @@ require_once "SQL_queries/login_query.php";
                  <div id="login" class="container tab-pane active"><br>
                      <form action="" method="post">
                          <div class="mb-3">
-                             <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                             <input type="email" name="emailLogin" class="form-control" id="exampleFormControlInput1" placeholder="Your Email Id" required>
+                             <label for="exampleFormControlInput" class="form-label">Email address</label>
+                             <input type="email" name="emailLogin" class="form-control" id="exampleFormControlInput" placeholder="Your Email Id" required>
                          </div>
                          <div class="mb-3">
                              <label for="password" class="form-label">Password</label>
