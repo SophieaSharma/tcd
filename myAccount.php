@@ -2,7 +2,7 @@
 require_once "errors.php";
 require_once "SQL_queries/db_connection.php";
 GLOBAL $connection,$getId;
-echo $getId;
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -62,17 +62,14 @@ echo $getId;
                        <li class="list-group-item fs-5 text-capitalize">Category:- <?php echo $_SESSION['category']; ?></li>
                    </ul>
                </div>
-
-
            </div>
-
         </div>
         <!--Profile-->
 
 
         <!--form-->
         <div class="col-lg-8  border border-secondary bg-light py-2 mb-5">
-            <div class="row justify-content-center">
+            <div class="row ">
                 <div class="col-8">
                     <div class="py-2">
                         <a href="myAccount.php?updateName=<?php echo $id; ?>" style="text-decoration: none;">UPDATE NAME</a>
@@ -85,8 +82,6 @@ echo $getId;
                     <div class="py-2">
                         <a href="myAccount.php?updatePass=<?php echo $id; ?>" style="text-decoration: none;">UPDATE PASSWORD</a>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -101,6 +96,7 @@ echo $getId;
 <!--footer-->
 <?php require_once "footerTCD.php" ?>
 <!--footer-->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
