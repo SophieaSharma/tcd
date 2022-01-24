@@ -27,7 +27,7 @@ session_start();
                     </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link active" href="#">My Account</a>
+                    <a class="nav-link active" href="myAccount.php">My Account</a>
                 </li>
             </ul>
 

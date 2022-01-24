@@ -36,6 +36,7 @@ if(!empty(($_FILES["file"]["name"]))){
 <!--heading-->
 
 <div class="container-fluid p-0">
+
     <!--nav-->
     <?php require_once "navbarFunctions/navbar_sales.php";?>
     <!--nav-->
@@ -71,7 +72,6 @@ if(!empty(($_FILES["file"]["name"]))){
             </form>
             <?php require_once "shortcuts/salesEntriesDateShortcut.php";?>
         </div>
-
         <!--date-->
 
         <!--detailed heading-->
@@ -367,6 +367,7 @@ if(!empty(($_FILES["file"]["name"]))){
 
       </div>
     <!--sales-->
+
 </div>
 
 <!--footer-->

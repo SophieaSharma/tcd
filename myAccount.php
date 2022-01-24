@@ -33,9 +33,11 @@ GLOBAL $connection,$getId;
     <div class="row mx-3 justify-content-evenly">
 
         <!--heading-->
-        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
-            My Accounts
-        </h1>
+        <a href="myAccount.php" style="text-decoration: none; color:#131313">
+            <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
+                My Accounts
+            </h1>
+        </a>
         <!--heading-->
 
 
@@ -72,11 +74,11 @@ GLOBAL $connection,$getId;
             <div class="row ">
                 <div class="col-8">
                     <div class="py-2">
-                        <a href="myAccount.php?updateName=<?php echo $id; ?>" style="text-decoration: none;">UPDATE NAME</a>
+                        <a href="updateName.php?updateName=<?php echo $id; ?>" style="text-decoration: none;">UPDATE NAME</a>
                     </div>
 
                    <div class="py-2">
-                       <a href="myAccount.php?updateEmail=<?php echo $id; ?>" style="text-decoration: none;">UPDATE EMAIL</a>
+                       <a href="updateEmail.php?updateEmail=<?php echo $id; ?>" style="text-decoration: none;">UPDATE EMAIL</a>
                    </div>
 
                     <div class="py-2">
@@ -86,6 +88,7 @@ GLOBAL $connection,$getId;
             </div>
         </div>
         <!--form-->
+
     </div>
     <!--data-->
 

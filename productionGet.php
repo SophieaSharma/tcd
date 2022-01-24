@@ -313,7 +313,7 @@ if(!empty(($_FILES["fileProductionGet"]["name"]))){
                      items='$item_valuesGet',
                      flavours='$flavours_valueGet',
                      description='$descriptionProductionGet'
-                     WHERE id='$getId'";
+                 WHERE id='$getId'";
                 $resultEdit=mysqli_query($connection,$queryEdit);
                 if(!$resultEdit){
                     die("not edited". mysqli_error($connection));
