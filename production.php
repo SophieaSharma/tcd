@@ -326,10 +326,13 @@ if(!empty(($_FILES["file"]["name"]))){
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col-6 text-start">
+                                    <div class="col-4 text-start">
                                         <a href="production.php?delete=<?php echo $id; ?>" class="text-uppercase text-danger fs-6">Delete</a>
                                     </div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-4 text-center">
+                                        <a href="production.php?sold=<?php echo $id; ?>" class="text-uppercase text-warning fs-6">Sold</a>
+                                    </div>
+                                    <div class="col-4 text-end">
                                         <a href="productionGet.php?edit=<?php echo $id; ?>" class="text-uppercase text-primary fs-6">Edit</a>
                                     </div>
                                 </div>

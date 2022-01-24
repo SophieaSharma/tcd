@@ -20,6 +20,7 @@ GLOBAL $connection;
     $confirmPassword=mysqli_real_escape_string($connection,trim(stripcslashes($confirmPassword)));
 
     $email=filter_var($email,FILTER_SANITIZE_EMAIL);
+    
 
      if(!(filter_var($email,FILTER_VALIDATE_EMAIL))){
          echo "<script>alert('email not perfect')</script>";
