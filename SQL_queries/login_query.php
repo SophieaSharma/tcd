@@ -17,7 +17,10 @@ if(isset($_POST['submitLogin'])){
     $row=mysqli_fetch_assoc($result);
     if(mysqli_num_rows($result)>0){
         //check if password is correct
-        if( $row['password'] == $login_password){
+        //decrypt password
+        $finalPass=hash_equals($row['password'],crypt($login_password,$row['password']));
+        /*if( $row['password'] == $login_password){*/
+        if($finalPass){
             $_SESSION['id']=$row['id'];
             $_SESSION['name']=$row['name'];
             $_SESSION['category']=$row['user_or_admin'];

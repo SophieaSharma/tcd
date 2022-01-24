@@ -43,17 +43,10 @@ if(isset($_POST['submitSales'])){
         $result = mysqli_query($connection, $query);
         if (!$result) {
             die("query,not connected " . mysqli_error($connection));
+        }else{
+            echo "<script>
+            window.location.href='./sales.php';
+            </script>";
         }
-
-
-        ?>
-        <script>
-            window.location.href="./sales.php";
-        </script>
-    }
-
-
-<?php
 }
 }
-?>

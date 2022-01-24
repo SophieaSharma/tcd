@@ -42,13 +42,10 @@ if(isset($_POST['submitProduction'])){
         $result=mysqli_query($connection,$query);
         if(!$result){
             die("not queried " .mysqli_error($connection));
+        }else{
+            echo " <script>
+                   window.location.href='./production.php';
+                  </script>";
         }
-        ?>
-        <script>
-            window.location.href="./production.php";
-        </script>
-
-<?php
 }
 }
-?>
