@@ -3,7 +3,7 @@ require_once "errors.php";
 require_once "SQL_queries/production_query.php";
 $today=date('Y-m-d');
 GLOBAL $connection;
-GLOBAL $today,$fileName;
+GLOBAL $today,$fileName,$soldStatus;
 
 #if image is not empty execute the insertImages.php
 if(!empty(($_FILES["file"]["name"]))){
@@ -25,6 +25,7 @@ if(!empty(($_FILES["file"]["name"]))){
     <title>ePortal</title>
 </head>
 <body>
+
 
 <!--jquery needed to select all checkboxes-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -240,7 +241,7 @@ if(!empty(($_FILES["file"]["name"]))){
             <h3 class="display-6 fs-5 text-uppercase text-center">Entries</h3>
 
             <!--Accordion it will keep increasing with every form entry-->
-                <div class="accordion  accordion-flush " id="accordionFlushExample">
+                <div class="accordion accordion-flush " id="accordionFlushExample">
                     <?php
                     require_once "SQL_queries/db_connection.php";
                     $query="SELECT * FROM production WHERE date='$today'";
@@ -259,14 +260,29 @@ if(!empty(($_FILES["file"]["name"]))){
                     if(empty($description)){
                         $description="-";
                     }
+                    $soldStatus=$row['sold_unsold'];
+
                     ?>
                      <div class="accordion-item border border-secondary my-2">
-                        <h2 class="accordion-header" id="flush-heading">
+                        <h2 class="accordion-header " id="flush-heading"  >
                             <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne<?php echo $id; ?>">
-                                <?php echo $title;?>
+
+                                    <div class="col-6 text-start"><?php echo $title; ?></div>
+
+                                    <div class="col-6 text-end">
+                                        <?php
+                                        if($soldStatus==='Sold'){
+                                           echo "<span class='badge bg-success rounded-pill mx-3'>{$soldStatus}</span>";
+                                        }else{
+                                            echo "<span class='badge bg-danger rounded-pill mx-3'>{$soldStatus}</span>";
+                                        }
+                                        ?>
+                                    </div>
+
+
                             </button>
                         </h2>
-                        <div id="flush-collapseOne<?php echo $id; ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseOne<?php echo $id; ?>" class="accordion-collapse collapse " aria-labelledby="flush-heading" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body ">
                                 <div class="row">
 
@@ -325,16 +341,50 @@ if(!empty(($_FILES["file"]["name"]))){
                                     </div>
                                 </div>
                                 <br>
-                                <div class="row">
+                                <div class="row mt-3">
                                     <div class="col-4 text-start">
-                                        <a href="production.php?delete=<?php echo $id; ?>" class="text-uppercase text-danger fs-6">Delete</a>
+                                        <a href="production.php?delete=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-danger btn-sm">Delete</a>
                                     </div>
                                     <div class="col-4 text-center">
-                                        <a href="production.php?sold=<?php echo $id; ?>" class="text-uppercase text-warning fs-6">Sold</a>
+                                        <?php if($soldStatus==='Unsold'){ ?>
+                                        <form action="" method="post">
+                                            <div class="mb-3">
+                                                <input name="sold" type="submit" class="text-light text-uppercase  fs-6 btn btn-warning btn-sm" value="Sold">
+                                            </div>
+                                        </form>
+                                        <?php }
+                                        else{?>
+                                            <form action="" method="post">
+                                                <div class="mb-3">
+                                                    <input name="sold" type="submit" class="text-light text-uppercase  fs-6 btn btn-warning btn-sm" value="Unsold">
+                                                </div>
+                                            </form>
+                                        <?php } ?>
+
+                                        <?php
+                                        //query to add sold and unsold
+                                        if(isset($_POST['sold'])){
+                                            $sold=$_POST['sold'];
+
+                                            require_once "SQL_queries/db_connection.php";
+                                            $querySold="UPDATE production 
+                                       SET sold_unsold='$sold'
+                                       WHERE id='$id'";
+                                            $resultSold=mysqli_query($connection,$querySold);
+                                            if(!$resultSold){
+                                                die("not sold".mysqli_error($connection));
+                                            }else{
+                                                echo "<script>
+                                                        window.location.href='production.php';
+                                                  </script>";
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                     <div class="col-4 text-end">
-                                        <a href="productionGet.php?edit=<?php echo $id; ?>" class="text-uppercase text-primary fs-6">Edit</a>
+                                        <a href="productionGet.php?edit=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-primary btn-sm">Edit</a>
                                     </div>
+
                                 </div>
                                 <?php
                                 if(isset($_GET['delete'])){
