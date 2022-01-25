@@ -308,10 +308,10 @@ if(!empty(($_FILES["file"]["name"]))){
                                 <br>
                                 <div class="row">
                                     <div class="col-6 text-start">
-                                        <a href="sales.php?delete=<?php echo $id; ?>" class="text-uppercase text-danger fs-6">Delete</a>
+                                        <a href="sales.php?delete=<?php echo $id; ?>" class="text-uppercase btn btn-danger btn-sm fs-6">Delete</a>
                                     </div>
                                     <div class="col-6 text-end">
-                                        <a href="salesGet.php?edit=<?php echo $id; ?>" class="text-uppercase text-primary fs-6">Edit</a>
+                                        <a href="salesGet.php?edit=<?php echo $id; ?>" class="text-uppercase btn btn-primary btn-sm  fs-6">Edit</a>
                                     </div>
                                 </div>
 
