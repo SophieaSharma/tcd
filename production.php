@@ -266,7 +266,6 @@ if(!empty(($_FILES["file"]["name"]))){
                      <div class="accordion-item border border-secondary my-2">
                         <h2 class="accordion-header " id="flush-heading"  >
                             <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne<?php echo $id; ?>">
-
                                     <div class="col-6 text-start"><?php echo $title; ?></div>
 
                                     <div class="col-6 text-end">
@@ -278,8 +277,6 @@ if(!empty(($_FILES["file"]["name"]))){
                                         }
                                         ?>
                                     </div>
-
-
                             </button>
                         </h2>
                         <div id="flush-collapseOne<?php echo $id; ?>" class="accordion-collapse collapse " aria-labelledby="flush-heading" data-bs-parent="#accordionFlushExample">
@@ -345,48 +342,49 @@ if(!empty(($_FILES["file"]["name"]))){
                                     <div class="col-4 text-start">
                                         <a href="production.php?delete=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-danger btn-sm">Delete</a>
                                     </div>
+
                                     <div class="col-4 text-center">
-                                        <?php if($soldStatus==='Unsold'){ ?>
-                                        <form action="" method="post">
-                                            <div class="mb-3">
-                                                <input name="sold" type="submit" class="text-light text-uppercase  fs-6 btn btn-warning btn-sm" value="Sold">
-                                            </div>
-                                        </form>
-                                        <?php }
-                                        else{?>
-                                            <form action="" method="post">
-                                                <div class="mb-3">
-                                                    <input name="sold" type="submit" class="text-light text-uppercase  fs-6 btn btn-warning btn-sm" value="Unsold">
-                                                </div>
-                                            </form>
-                                        <?php } ?>
+                                            <?php
+                                            if($soldStatus==='Unsold'){?>
+                                                <a href="production.php?status=Sold&id=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-warning btn-sm">SOLD</a>
+                                           <?php } else
+                                           {?>
+                                               <a href="production.php?status=Unsold&id=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-warning btn-sm">UNSOLD</a>
+                                            <?php }
+                                            ?>
 
                                         <?php
-                                        //query to add sold and unsold
-                                        if(isset($_POST['sold'])){
-                                            $sold=$_POST['sold'];
+                                        if(isset($_GET['status'])){
+                                            $status=$_GET['status'];
+                                            $idSold=$_GET['id'];
 
                                             require_once "SQL_queries/db_connection.php";
                                             $querySold="UPDATE production 
-                                       SET sold_unsold='$sold'
-                                       WHERE id='$id'";
+                                                        SET sold_unsold='$status'
+                                                        WHERE id='$idSold'";
                                             $resultSold=mysqli_query($connection,$querySold);
                                             if(!$resultSold){
-                                                die("not sold".mysqli_error($connection));
+                                                die("not queried".mysqli_error($connection));
                                             }else{
+
                                                 echo "<script>
                                                         window.location.href='production.php';
                                                   </script>";
                                             }
                                         }
                                         ?>
+
+
                                     </div>
+
                                     <div class="col-4 text-end">
                                         <a href="productionGet.php?edit=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-primary btn-sm">Edit</a>
                                     </div>
 
                                 </div>
+
                                 <?php
+                                //delete the entries
                                 if(isset($_GET['delete'])){
                                     $idGet=$_GET['delete'];
                                     $queryGet="DELETE FROM production WHERE id= '$idGet'";

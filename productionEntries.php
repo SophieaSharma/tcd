@@ -71,6 +71,7 @@ require_once "headerTCD.php";
                 $flavours=$row['flavours'];
                 $image="uploads/".$row['image'];
                 $description=$row['description'];
+                $soldStatus=$row['sold_unsold'];
                 if(empty($description)){
                     $description="-";
                 }
@@ -78,7 +79,17 @@ require_once "headerTCD.php";
                 <div class="accordion-item border border-secondary my-2">
                     <h2 class="accordion-header" id="flush-heading">
                         <button class="accordion-button collapsed text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne<?php echo $id; ?>" aria-expanded="false" aria-controls="flush-collapseOne<?php echo $id; ?>">
-                            <?php echo $title;?>
+                            <div class="col-6 text-start"><?php echo $title; ?></div>
+
+                            <div class="col-6 text-end">
+                                <?php
+                                if($soldStatus==='Sold'){
+                                    echo "<span class='badge bg-success rounded-pill mx-3'>{$soldStatus}</span>";
+                                }else{
+                                    echo "<span class='badge bg-danger rounded-pill mx-3'>{$soldStatus}</span>";
+                                }
+                                ?>
+                            </div>
                         </button>
                     </h2>
                     <div id="flush-collapseOne<?php echo $id; ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading" data-bs-parent="#accordionFlushExample">
