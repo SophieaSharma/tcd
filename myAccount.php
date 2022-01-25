@@ -82,7 +82,7 @@ GLOBAL $connection,$getId;
                    </div>
 
                     <div class="py-2">
-                        <a href="myAccount.php?updatePass=<?php echo $id; ?>" style="text-decoration: none;">UPDATE PASSWORD</a>
+                        <a href="updatePassword.php?updatePass=<?php echo $id; ?>" style="text-decoration: none;">UPDATE PASSWORD</a>
                     </div>
                 </div>
             </div>
