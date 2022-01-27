@@ -103,8 +103,6 @@ GLOBAL $connection,$getId,$alreadyPass;
                     }
                 }
                 ?>
-
-
             </form>
         </div>
         <!--data-->
