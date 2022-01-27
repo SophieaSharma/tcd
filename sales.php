@@ -308,30 +308,35 @@ if(!empty(($_FILES["file"]["name"]))){
                                 <br>
                                 <div class="row">
                                     <div class="col-6 text-start">
-                                        <a href="sales.php?delete=<?php echo $id; ?>" class="text-uppercase btn btn-danger btn-sm fs-6">Delete</a>
+                                        <a href="sales.php?delete=<?php echo $id; ?>" class="text-uppercase btn btn-danger btn-sm fs-6"
+                                        onclick="confirmMessage()" >Delete</a>
                                     </div>
                                     <div class="col-6 text-end">
                                         <a href="salesGet.php?edit=<?php echo $id; ?>" class="text-uppercase btn btn-primary btn-sm  fs-6">Edit</a>
                                     </div>
                                 </div>
 
-                                <!--delete the saved data-->
-                                <?php
-                                if(isset($_GET['delete'])){
-                                    $idGet=$_GET['delete'];
-                                    $queryGet="DELETE FROM sales WHERE id= '$idGet'";
-                                    $resultGet=mysqli_query($connection,$queryGet);
-                                    if(!$resultGet){
-                                        die("not deleted" . mysqli_error($connection));
-                                    }?>
-                                    <script>
-                                        window.location.href="sales.php";
-                                    </script>
-                                    <?php
 
-                                }
-                                ?>
+                                <script>
+                                    function confirmMessage(){
+                                        if(confirm("You Sure? You Want to Delete")){
+                                            <!--delete the saved data-->
+                                            <?php
+                                            if(isset($_GET['delete'])){
+                                            $idGet=$_GET['delete'];
+                                            $queryGet="DELETE FROM sales WHERE id= '$idGet'";
+                                            $resultGet=mysqli_query($connection,$queryGet);
+                                            if(!$resultGet){
+                                                die("not deleted" . mysqli_error($connection));
+                                            }?>
+                                                window.location.href="sales.php";
+                                <?php } ?>
                                 <!--delete the saved data-->
+                                        }
+                                    }
+                                </script>
+
+
 
                             </div>
                         </div>

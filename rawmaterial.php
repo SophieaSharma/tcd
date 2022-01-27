@@ -173,7 +173,8 @@ require_once "headerTCD.php";
                             <td class="px-2 py-3"><?php echo $price_per_kg; ?><span style="text-transform: none"> Rs</span></td>
                             <td class="px-2 py-3"><?php echo $totalPrice; ?><span style="text-transform: none"> Rs</span></td>
                             <td class="px-2 py-3">
-                                <a style="text-transform: uppercase; color: black; font-weight: normal;" class="text-danger" href='rawmaterial.php?delete=<?php echo $id; ?>'>
+                                <a style="text-transform: uppercase; color: black; font-weight: normal;" class="text-danger" href='rawmaterial.php?delete=<?php echo $id; ?>'
+                                  onclick="confirmMessage()">
                                     Delete
                                 </a>
                             </td>
@@ -188,26 +189,29 @@ require_once "headerTCD.php";
                     ?>
                     </tbody>
 
+                    <script>
+                        function confirmMessage(){
+                            if(confirm("You Sure? You Want to Delete")){
+                                <?php
+                                //deleting values from table
+                                if(isset($_GET['delete'])){
+                                $deleteId=$_GET['delete'];
+                                $deleteQuery="DELETE FROM rawmaterial WHERE id = '$deleteId'";
+                                $deleteResult=mysqli_query($connection,$deleteQuery);
+                                if(!$deleteResult){
+                                    die("not queried" . mysqli_error($connection));
+                                }?>
+                                window.location.href = "rawmaterial.php"
+                    <?php } ?>
+                            }
+                        }
+                    </script>
 
-                    <?php
-                    //deleting values from table
-                    if(isset($_GET['delete'])){
-                        $deleteId=$_GET['delete'];
-                        $deleteQuery="DELETE FROM rawmaterial WHERE id = '$deleteId'";
-                        $deleteResult=mysqli_query($connection,$deleteQuery);
-                        if(!$deleteResult){
-                            die("not queried" . mysqli_error($connection));
-                        }?>
-                        <script>window.location.href = "rawmaterial.php"</script>
 
-                    <?php
-                    }
-                    ?>
+
 
                     <?php
                     //editing the rows
-
-
                     ?>
                 </table>
             </div>
