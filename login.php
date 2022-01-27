@@ -49,8 +49,8 @@ require_once "SQL_queries/login_query.php";
                          </div>
                      </form>
                      <div class="mb-3">
-                         <p class="fs-6"><a href="" style="text-decoration: none;  font-style: italic;"> Forgot Password? </a></p>
-                         <br>
+                         <!--<p class="fs-6"><a href="" style="text-decoration: none;  font-style: italic;"> Forgot Password? </a></p>
+                         <br>-->
                          <p class="fs-5">New User?<a href="signup.php" style="text-decoration: none; font-weight: bold; color: black;"> Sign Up </a></p>
                      </div>
                  </div>

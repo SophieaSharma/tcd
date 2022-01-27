@@ -55,7 +55,6 @@ GLOBAL $connection,$getId;
             $alreadyEmail=$row['email_id'];
             $alreadyPassword=$row['password'];
             ?>
-           <img src="img/cake1.jpeg" alt="" class="mx-auto d-block my-3 img-thumbnail rounded-circle" >
 
            <div class="row">
                <div class="col-12"> <ul class="list-group">
