@@ -340,8 +340,7 @@ if(!empty(($_FILES["file"]["name"]))){
                                 <br>
                                 <div class="row mt-3">
                                     <div class="col-4 text-start">
-                                        <a href="production.php?delete=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-danger btn-sm"
-                                          onclick="confirmMessage()" >Delete</a>
+                                        <a href="production.php?delete=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-danger btn-sm">Delete</a>
                                     </div>
 
                                     <div class="col-4 text-center">
@@ -383,9 +382,6 @@ if(!empty(($_FILES["file"]["name"]))){
 
                                 </div>
 
-                                <script>
-                                    function confirmMessage(){
-                                        if(confirm("You Sure? You Want To Delete")){
                                             <?php
                                             //delete the entries
                                             if(isset($_GET['delete'])){
@@ -395,13 +391,10 @@ if(!empty(($_FILES["file"]["name"]))){
                                             if(!$resultGet){
                                                 die("not deleted" . mysqli_error($connection));
                                             }?>
-                                                window.location.href="production.php";
+                                                <script> window.location.href="production.php";</script>
                                 <?php
                                 }
                                 ?>
-                                        }
-                                    }
-                                </script>
 
                             </div>
                         </div>

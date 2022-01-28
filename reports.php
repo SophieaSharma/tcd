@@ -155,7 +155,7 @@ if($report>0){
 
                     </div>
                     <div class="mb-5">
-                        <input name="submitReport" type="submit" class="form-control btn btn-primary" value="Submit">
+                        <input name="submitReport" type="submit" class="form-control btn btn-primary" value="Save">
                     </div>
 
                 </form>

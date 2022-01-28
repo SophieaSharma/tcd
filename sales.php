@@ -317,9 +317,8 @@ if(!empty(($_FILES["file"]["name"]))){
                                 </div>
 
 
-                                <script>
-                                    function confirmMessage(){
-                                        if(confirm("You Sure? You Want to Delete")){
+
+
                                             <!--delete the saved data-->
                                             <?php
                                             if(isset($_GET['delete'])){
@@ -329,12 +328,10 @@ if(!empty(($_FILES["file"]["name"]))){
                                             if(!$resultGet){
                                                 die("not deleted" . mysqli_error($connection));
                                             }?>
-                                                window.location.href="sales.php";
-                                <?php } ?>
-                                <!--delete the saved data-->
-                                        }
-                                    }
-                                </script>
+                                                <script> window.location.href="sales.php";</script>
+                                              <?php } ?>
+                                             <!--delete the saved data-->
+
 
 
 

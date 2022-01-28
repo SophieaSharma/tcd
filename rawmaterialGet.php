@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "errors.php";
 /*require_once "SQL_queries/rawmaterial_query.php";*/
 $today=date('Y-m-d');
