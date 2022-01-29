@@ -52,7 +52,7 @@ if(!empty(($_FILES["file"]["name"]))){
             <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
         </div>
         <!--Accordion it will keep increasing with every form entry-->
-        <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 ">
+        <div class="col-lg-8 py-3 bg-light  border border-secondary border-top-0 mb-5">
 
                 <!-- Accordion it will keep increasing with every form entry-->
                 <div class="accordion accordion-flush " id="accordionFlushExample">

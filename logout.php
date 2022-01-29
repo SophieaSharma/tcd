@@ -4,6 +4,7 @@ require_once "SQL_queries/db_connection.php";
 
 $_SESSION['id']=NULL;
 $_SESSION['category']=NULL;
+$_SESSION['name']=NULL;
 $_SESSION['email']=NULL;
 
 $_SESSION=[];

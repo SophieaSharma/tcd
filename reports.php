@@ -147,7 +147,7 @@ if($report>0){
                     <div class="progress my-3 " style="height: 22px;">
                         <?php
                         if($profit){
-                           echo  "<div class='progress-bar bg-success fs-5' role='progressbar' style='width: {$profit}%;' aria-valuenow='{$profit}' aria-valuemin='0' aria-valuemax='100'>{$profit}% Profit</div>";
+                           echo  "<div class='progress-bar bg-success fs-5 ' role='progressbar' style='width: {$profit}%;' aria-valuenow='{$profit}' aria-valuemin='0' aria-valuemax='100'>{$profit}% Profit</div>";
                         }elseif ($loss){
                             echo  "<div class='progress-bar bg-danger fs-5' role='progressbar' style='width: {$loss}%;' aria-valuenow='{$loss}' aria-valuemin='0' aria-valuemax='100'>{$loss}% Loss</div>";
                         }

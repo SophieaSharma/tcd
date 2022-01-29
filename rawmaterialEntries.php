@@ -3,7 +3,7 @@ require_once "errors.php";
 require_once "SQL_queries/db_connection.php";
 require_once "shortcuts/rawmaterialEntriesDateShortcut.php";
 GLOBAL $connection;
-GLOBAL $raw_materialEntriesDate;
+GLOBAL $raw_materialEntriesDate,$total_price_of_all_items;
 ?>
 <!doctype html>
 <html lang="en">
@@ -46,7 +46,7 @@ require_once "headerTCD.php";
             <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
         </div>
 
-        <div class="col-lg-8 border border-secondary  my-4 p-0">
+        <div class="col-lg-8 border border-secondary  my-4 py-2">
             <div class="col-12 table-responsive">
                 <table class="table table-striped table-bordered table-hover">
 
@@ -71,6 +71,7 @@ require_once "headerTCD.php";
                        $amount=$row['amount'];
                        $price_per_kg=$row['price_per_kg'];
                        $totalPrice=$row['totalPrice'];
+                       $total_price_of_all_items+=$totalPrice;
 
 
                     ?>
@@ -85,9 +86,26 @@ require_once "headerTCD.php";
                         }
                        ?>
                     </tbody>
-
-
                 </table>
+            </div>
+            <?php
+            $count=mysqli_num_rows($result);
+            ?>
+            <div class="border border-secondary p-2">
+                <p style=" text-transform: uppercase;">total items = <?php echo $count; ?> </p> <br>
+                <p style=" text-transform: uppercase;">Total Price =
+                    <?php
+                    if(!$total_price_of_all_items==0){
+                        echo $total_price_of_all_items;
+                        if($total_price_of_all_items!=0){
+                            echo " Rs";
+                        }
+                    }else{
+                        echo 0;
+                    }
+
+                    ?>
+                </p>
             </div>
         </div>
 
