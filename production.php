@@ -66,7 +66,7 @@ if(!empty(($_FILES["file"]["name"]))){
                     <input type="date" name="productionEntriesDate" class="form-control " id="date" required>
                 </div>
                 <div class="mb-3">
-                    <input type="submit" name="productionEntriesSubmit" class="form-control btn btn-primary" value="Submit">
+                    <input type="submit" name="productionEntriesSubmit" class="form-control btn btn-primary" value="View">
                 </div>
             </form>
             <?php require_once "shortcuts/productionEntriesDateShortcut.php"; ?>
@@ -234,7 +234,7 @@ if(!empty(($_FILES["file"]["name"]))){
                 </div>
 
                 <div class="mb-3">
-                    <input name="submitProduction" type="submit" class="form-control btn btn-primary" value="Submit">
+                    <input name="submitProduction" type="submit" class="form-control btn btn-primary" value="Add">
                 </div>
             </form>
 

@@ -129,7 +129,7 @@ require_once "headerTCD.php";
                     </div>
                     <div class="col-lg-6">
                         <div class="mt-4 mb-2">
-                            <input name="add_valuesGet" type="submit" class="form-control btn btn-primary fs-6" value="EDIT">
+                            <input name="add_valuesGet" type="submit" class="form-control btn btn-primary fs-6" value="Update">
                         </div>
                     </div>
                 </div>

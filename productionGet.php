@@ -280,7 +280,7 @@ if(!empty(($_FILES["fileProductionGet"]["name"]))){
                 </div>
 
                 <div class="mb-3">
-                    <input name="submitProductionGet" type="submit" class="form-control btn btn-primary" value="Submit">
+                    <input name="submitProductionGet" type="submit" class="form-control btn btn-primary" value="Update">
                 </div>
             </form>
             <!--editing the data-->

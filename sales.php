@@ -67,7 +67,7 @@ if(!empty(($_FILES["file"]["name"]))){
                     <input name="salesEntriesDate" type="date" class="form-control" id="date" required>
                 </div>
                 <div class="mb-3">
-                    <input type="submit" class="form-control btn btn-primary" value="Submit" name="salesEntriesSubmit">
+                    <input type="submit" class="form-control btn btn-primary" value="View" name="salesEntriesSubmit">
                 </div>
             </form>
             <?php require_once "shortcuts/salesEntriesDateShortcut.php";?>
@@ -185,7 +185,7 @@ if(!empty(($_FILES["file"]["name"]))){
                 </div>
 
                 <div class="mb-3">
-                    <input name="submitSales" type="submit" class="form-control btn btn-primary" value="Submit">
+                    <input name="submitSales" type="submit" class="form-control btn btn-primary" value="Add">
                 </div>
             </form>
 
@@ -272,7 +272,7 @@ if(!empty(($_FILES["file"]["name"]))){
                                         <div class="col-6  text-uppercase">price</div>
                                         <div class="col-6 ">
                                             <p style="word-wrap: break-word;">
-                                                <?php echo $price . " ". $rupees; ?>
+                                                <?php echo $rupees." ". $price ; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -281,7 +281,7 @@ if(!empty(($_FILES["file"]["name"]))){
                                         <div class="col-6  text-uppercase">amount paid</div>
                                         <div class="col-6 ">
                                             <p style="word-wrap: break-word;">
-                                                <?php echo $amount_paid . " ". $rupees; ?>
+                                                <?php echo $rupees." ". $amount_paid ; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -290,7 +290,7 @@ if(!empty(($_FILES["file"]["name"]))){
                                         <div class="col-6  text-uppercase">amount left</div>
                                         <div class="col-6 ">
                                             <p style="word-wrap: break-word;">
-                                                <?php echo $amount_left . " ". $rupees; ?>
+                                                <?php echo $rupees." ".$amount_left; ?>
                                             </p>
                                         </div>
                                     </div>

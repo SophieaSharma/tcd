@@ -63,7 +63,7 @@ require_once "headerTCD.php";
                     <input name="raw_materialEntriesDate" type="date" class="form-control" id="date" required>
                 </div>
                 <div class="mb-3">
-                    <input type="submit" class="form-control btn btn-primary" value="Submit" name="raw_materialEntriesSubmit">
+                    <input type="submit" class="form-control btn btn-primary" value="View" name="raw_materialEntriesSubmit">
                 </div>
             </form>
             <?php require_once "shortcuts/rawmaterialEntriesDateShortcut.php";?>
@@ -120,7 +120,7 @@ require_once "headerTCD.php";
                     </div>
                     <div class="col-lg-6">
                         <div class="mt-4 mb-2">
-                            <input name="add_values" type="submit" class="form-control btn btn-primary " value="Add Values">
+                            <input name="add_values" type="submit" class="form-control btn btn-primary " value="Add ">
                         </div>
                     </div>
                 </div>
@@ -169,9 +169,9 @@ require_once "headerTCD.php";
                         <tr>
                             <td class="px-2 py-3"><?php echo $i++; ?></td>
                             <td class="px-2 py-3"><?php echo $items; ?></td>
-                            <td class="px-2 py-3"><?php echo $amount; ?><span style="text-transform: none"> Kg</span></td>
-                            <td class="px-2 py-3"><?php echo $price_per_kg; ?><span style="text-transform: none"> Rs</span></td>
-                            <td class="px-2 py-3"><?php echo $totalPrice; ?><span style="text-transform: none"> Rs</span></td>
+                            <td class="px-2 py-3"><?php echo $amount; ?></td>
+                            <td class="px-2 py-3"><span style="text-transform: none"> Rs </span><?php echo $price_per_kg; ?></td>
+                            <td class="px-2 py-3"><span style="text-transform: none"> Rs </span><?php echo $totalPrice; ?></td>
                             <td class="px-2 py-3">
                                 <a style="text-transform: uppercase; color: black; font-weight: normal;" class="text-danger" href='rawmaterial.php?delete=<?php echo $id; ?>'>
                                     Delete
@@ -214,13 +214,14 @@ require_once "headerTCD.php";
             <p style=" text-transform: uppercase;">Total Price =
                 <?php
                 if(!$total_price_of_all_items==0){
-                    echo $total_price_of_all_items;
+
                     if($total_price_of_all_items!=0){
-                        echo " Rs";
+                        echo "<span style='text-transform: none'> Rs </span>". ' ';
                     }
                 }else{
                     echo 0;
                 }
+                echo $total_price_of_all_items ;
 
                 ?>
             </p>

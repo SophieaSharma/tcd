@@ -214,7 +214,7 @@ if(!empty(($_FILES["imageSalesGet"]["name"]))){
                 </div>
 
                 <div class="mb-3">
-                    <input name="submitSalesGet" type="submit" class="form-control btn btn-primary" value="Submit">
+                    <input name="submitSalesGet" type="submit" class="form-control btn btn-primary" value="Update">
                 </div>
             </form>
 <?php } ?>

@@ -78,9 +78,9 @@ require_once "headerTCD.php";
                     <tr>
                         <td><?php echo $i++; ?></td>
                         <td><?php echo $items; ?></td>
-                        <td><?php echo $amount; ?><span style="text-transform: none"> Kg</span></td>
-                        <td><?php echo $price_per_kg; ?><span style="text-transform: none"> Rs</span></td>
-                        <td><?php echo $totalPrice; ?><span style="text-transform: none"> Rs</span></td>
+                        <td><?php echo $amount; ?></td>
+                        <td><span style="text-transform: none">Rs </span><?php echo $price_per_kg; ?></td>
+                        <td><span style="text-transform: none">Rs </span><?php echo $totalPrice; ?></td>
                     </tr>
                        <?php
                         }
@@ -96,13 +96,13 @@ require_once "headerTCD.php";
                 <p style=" text-transform: uppercase;">Total Price =
                     <?php
                     if(!$total_price_of_all_items==0){
-                        echo $total_price_of_all_items;
                         if($total_price_of_all_items!=0){
-                            echo " Rs";
+                            echo " <span style='text-transform: none'>Rs </span>" . " ";
                         }
                     }else{
                         echo 0;
                     }
+                    echo $total_price_of_all_items;
 
                     ?>
                 </p>
