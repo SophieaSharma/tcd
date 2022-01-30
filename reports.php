@@ -88,19 +88,6 @@ if($report>0){
             <p>Today's Date</p>
         </div>
         <!--detailed heading-->
-
-      <!--  --><?php
-/*        require_once "SQL_queries/db_connection.php";
-        $query="SELECT id FROM report ";
-        $result=mysqli_query($connection,$query);
-        if(!$result){
-            die("no".mysqli_error($connection));
-        }
-        while($row=mysqli_fetch_assoc($result)){
-            $id=$row['id'];
-
-        }
-        */?>
         <?php
         if (isset($_POST['submitReport'])){
             GLOBAL $connection;

@@ -346,10 +346,10 @@ if(!empty(($_FILES["file"]["name"]))){
                                     <div class="col-4 text-center">
                                             <?php
                                             if($soldStatus==='Unsold'){?>
-                                                <a href="production.php?status=Sold&id=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-warning btn-sm">SOLD</a>
+                                                <a href="production.php?status=Sold&id=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-success btn-sm">mark as sold</a>
                                            <?php } else
                                            {?>
-                                               <a href="production.php?status=Unsold&id=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-warning btn-sm">UNSOLD</a>
+                                               <a href="production.php?status=Unsold&id=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-danger btn-sm">mark as unsold</a>
                                             <?php }
                                             ?>
 
