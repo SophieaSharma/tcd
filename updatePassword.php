@@ -59,12 +59,12 @@ GLOBAL $connection,$getId,$alreadyPass;
                 <div class="form-group">
                     <div class="mb-3 fs-5">
                         <label for="oldPassword" class="mb-2">Old Password</label>
-                        <input type="password" class="form-control" id="oldPassword" name="oldPassword"">
+                        <input type="password" class="form-control" id="oldPassword" name="oldPassword" required>
                     </div>
 
                     <div class="mb-3 fs-5">
                         <label for="newPassword" class="mb-2">New Password</label>
-                        <input type="password" class="form-control" id="newPassword" name="newPassword"">
+                        <input type="password" class="form-control" id="newPassword" name="newPassword" required>
                     </div>
 
 

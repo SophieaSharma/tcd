@@ -59,7 +59,7 @@ GLOBAL $connection,$getId,$updateNameID;
                <div class="form-group">
                    <div class="mb-3 fs-5">
                        <label for="updateName" class="mb-2">Update Name</label>
-                       <input type="text" class="form-control" id="updateName" name="updateName" value="<?php echo $alreadyName; ?>">
+                       <input type="text" class="form-control" id="updateName" name="updateName" value="<?php echo $alreadyName; ?>" required>
                    </div>
 
                    <div class="mb-3">

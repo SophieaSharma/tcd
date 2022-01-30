@@ -58,7 +58,7 @@ GLOBAL $connection,$getId,$updateNameID;
                 <div class="form-group">
                     <div class="mb-3 fs-5">
                         <label for="updateEmail" class="mb-2">Update Email</label>
-                        <input type="email" class="form-control" id="updateEmail" name="updateEmail" value="<?php echo $alreadyEmail; ?>">
+                        <input type="email" class="form-control" id="updateEmail" name="updateEmail" value="<?php echo $alreadyEmail; ?>" required>
                     </div>
 
                     <div class="mb-3">

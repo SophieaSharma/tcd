@@ -183,9 +183,7 @@ require_once "headerTCD.php";
                                 </a>
                             </td>
                         </tr>
-                        <?php
-                    }
-                    ?>
+                        <?php } ?>
                     </tbody>
 
                                 <?php
