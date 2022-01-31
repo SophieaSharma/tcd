@@ -45,9 +45,9 @@ if($_SESSION['modalTimes']==1){?>
 <!--welcome modal-->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
-        <div class="modal-content bg-dark" >
+        <div class="modal-content " >
             <div class="row m-3 border">
-                <div class="col-12 mt-4 text-center fs-4 text-light">
+                <div class="col-12 mt-4 text-center fs-4 ">
                     WELCOME <?php echo "<span class='text-uppercase fs-5' style='font-family: utkal'>{$_SESSION['name']}</span>"; ?>
                 </div>
                 <div class="col-12 my-3 text-center">
