@@ -18,14 +18,11 @@ if(!isset($_SESSION['id'])){
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="css/style.css" type="text/css">
-
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <title>ePortal</title>
 
@@ -212,7 +209,7 @@ if($_SESSION['modalTimes']==1){?>
                             <td class="px-2 py-3"><span style="text-transform: none"> Rs </span><?php echo $price_per_kg; ?></td>
                             <td class="px-2 py-3"><span style="text-transform: none"> Rs </span><?php echo $totalPrice; ?></td>
                             <td class="px-2 py-3">
-                                <a style="text-transform: uppercase; color: black; font-weight: normal;" class="text-danger" href='rawmaterial.php?delete=<?php echo $id; ?>'>
+                                <a style="text-transform: uppercase; color: black; font-weight: normal;" class="text-danger" href='rawmaterial.php?delete=<?php echo $id; ?>' onclick="deleteConfirm()">
                                     Delete
                                 </a>
                             </td>
@@ -225,22 +222,24 @@ if($_SESSION['modalTimes']==1){?>
                         <?php } ?>
                     </tbody>
 
+
+
                                 <?php
                                 //deleting values from table
                                 if(isset($_GET['delete'])){
-                                $deleteId=$_GET['delete'];
-                                $deleteQuery="DELETE FROM rawmaterial WHERE id = '$deleteId'";
-                                $deleteResult=mysqli_query($connection,$deleteQuery);
-                                if(!$deleteResult){
-                                    die("not queried" . mysqli_error($connection));
-                                }?>
-                                    <script> window.location.href = "rawmaterial.php"  </script>
-                                <?php } ?>
+                                            $deleteId=$_GET['delete'];
+                                            $deleteQuery="DELETE FROM rawmaterial WHERE id = '$deleteId'";
+                                            $deleteResult=mysqli_query($connection,$deleteQuery);
+                                            if(!$deleteResult){
+                                                die("not queried" . mysqli_error($connection));
+                                            }
+                                           echo '<script> window.location.href = "rawmaterial.php"</script>';
+
+                                  } ?>
 
 
-                    <?php
-                    //editing the rows
-                    ?>
+
+
                 </table>
             </div>
             <?php
