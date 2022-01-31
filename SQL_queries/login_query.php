@@ -19,12 +19,12 @@ if(isset($_POST['submitLogin'])){
         //check if password is correct
         //decrypt password
         $finalPass=hash_equals($row['password'],crypt($login_password,$row['password']));
-        /*if( $row['password'] == $login_password){*/
         if($finalPass){
             $_SESSION['id']=$row['id'];
             $_SESSION['name']=$row['name'];
             $_SESSION['category']=$row['user_or_admin'];
             $_SESSION['email']=$row['email_id'];
+            $_SESSION['modalTimes']=$row['modalTimes'];
 
             header("location:rawmaterial.php");
 

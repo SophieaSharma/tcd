@@ -9,7 +9,6 @@ GLOBAL $today,$total_price_of_all_items;
 if(!isset($_SESSION['id'])){
     header("location:login.php");
 }
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -40,32 +39,36 @@ require_once "headerTCD.php";
 ?>
 <!--heading-->
 
+<?php
+
+if($_SESSION['modalTimes']==1){?>
 <!--welcome modal-->
-
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered ">
-            <div class="modal-content bg-dark" >
-                <div class="row m-3 border">
-                    <div class="col-12 mt-4 text-center fs-4 text-light">
-                        WELCOME <?php echo "<span class='text-uppercase fs-5' style='font-family: utkal'>{$_SESSION['name']}</span>"; ?>
-                    </div>
-                    <div class="col-12 my-3 text-center">
-                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Let's Go</button>
-                    </div>
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content bg-dark" >
+            <div class="row m-3 border">
+                <div class="col-12 mt-4 text-center fs-4 text-light">
+                    WELCOME <?php echo "<span class='text-uppercase fs-5' style='font-family: utkal'>{$_SESSION['name']}</span>"; ?>
                 </div>
-
+                <div class="col-12 my-3 text-center">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Let's Go</button>
+                </div>
             </div>
+
         </div>
     </div>
-
-    <script>
-         $(document).ready(function(){
-             $("#myModal").modal('show');
-         });
-     </script>
-
-
+</div>
+<script>
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+</script>
 <!--welcome modal-->
+<?php
+    $_SESSION['modalTimes']=0;
+}
+?>
+
 
 <!--main content-->
 <div class="container-fluid p-0">
