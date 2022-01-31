@@ -9,10 +9,7 @@ GLOBAL $today,$total_price_of_all_items;
 if(!isset($_SESSION['id'])){
     header("location:login.php");
 }
-if(isset($_SESSION['id'])){?>
 
-
-<?php }
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,6 +22,10 @@ if(isset($_SESSION['id'])){?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <title>ePortal</title>
@@ -40,9 +41,10 @@ require_once "headerTCD.php";
 <!--heading-->
 
 <!--welcome modal-->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered ">
-        <div class="modal-content bg-dark" >
+
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content bg-dark" >
                 <div class="row m-3 border">
                     <div class="col-12 mt-4 text-center fs-4 text-light">
                         WELCOME <?php echo "<span class='text-uppercase fs-5' style='font-family: utkal'>{$_SESSION['name']}</span>"; ?>
@@ -52,13 +54,17 @@ require_once "headerTCD.php";
                     </div>
                 </div>
 
+            </div>
         </div>
     </div>
-</div>
-<script>
-    var myModal = new bootstrap.Modal(document.getElementById('myModal'), {})
-    myModal.show()
-</script>
+
+    <script>
+         $(document).ready(function(){
+             $("#myModal").modal('show');
+         });
+     </script>
+
+
 <!--welcome modal-->
 
 <!--main content-->
