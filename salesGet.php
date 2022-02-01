@@ -214,10 +214,21 @@ if(!empty(($_FILES["imageSalesGet"]["name"]))){
                 </div>
 
                 <div class="mb-3">
-                    <input name="submitSalesGet" type="submit" class="form-control btn btn-primary" value="Update">
+                    <input name="submitSalesGet" type="submit" class="form-control btn btn-primary" value="Update" onclick="return updateConfirm()">
                 </div>
             </form>
 <?php } ?>
+
+            <script>
+                function updateConfirm(){
+                    if(confirm("Sure!! You want to Update This?")){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            </script>
+            
             <!--editing the saved data-->
             <?php
             if(isset($_POST['submitSalesGet'])){

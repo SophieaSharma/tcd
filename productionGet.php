@@ -280,9 +280,19 @@ if(!empty(($_FILES["fileProductionGet"]["name"]))){
                 </div>
 
                 <div class="mb-3">
-                    <input name="submitProductionGet" type="submit" class="form-control btn btn-primary" value="Update">
+                    <input name="submitProductionGet" type="submit" class="form-control btn btn-primary" value="Update" onclick="return updateConfirm()">
                 </div>
             </form>
+
+            <script>
+                function updateConfirm(){
+                    if(confirm("Sure!! You want to Update This?")){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            </script>
             <!--editing the data-->
             <?php
             if(isset($_POST['submitProductionGet'])){

@@ -129,7 +129,7 @@ require_once "headerTCD.php";
                     </div>
                     <div class="col-lg-6">
                         <div class="mt-4 mb-2">
-                            <input name="add_valuesGet" type="submit" class="form-control btn btn-primary fs-6" value="Update">
+                            <input name="add_valuesGet" type="submit" class="form-control btn btn-primary fs-6" value="Update" onclick="return updateConfirm()">
                         </div>
                     </div>
                 </div>
@@ -137,6 +137,16 @@ require_once "headerTCD.php";
                <?php
                  }
                  ?>
+
+                <script>
+                function updateConfirm(){
+                    if(confirm("Sure!! You want to Update This?")){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+                </script>
 
                 <?php
                 if(isset($_POST['add_valuesGet'])){
