@@ -77,7 +77,7 @@ if($report>0){
                     <input type="date" name="dateReportEntry" class="form-control datepicker" id="date" required>
                 </div>
                 <div class="mb-3">
-                    <input name="submitReportEntry" type="submit" class="form-control btn btn-primary" value="Submit">
+                    <input name="submitReportEntry" type="submit" class="form-control btn btn-primary" value="View">
                 </div>
             </form>
         </div>
