@@ -209,7 +209,7 @@ if($_SESSION['modalTimes']==1){?>
                             <td class="px-2 py-3"><span style="text-transform: none"> Rs </span><?php echo $price_per_kg; ?></td>
                             <td class="px-2 py-3"><span style="text-transform: none"> Rs </span><?php echo $totalPrice; ?></td>
                             <td class="px-2 py-3">
-                                <a style="text-transform: uppercase; color: black; font-weight: normal;" class="text-danger" href='rawmaterial.php?delete=<?php echo $id; ?>' onclick="deleteConfirm()">
+                                <a style="text-transform: uppercase; color: black; font-weight: normal;" class="text-danger" href='rawmaterial.php?delete=<?php echo $id; ?>' onclick="return deleteConfirm()">
                                     Delete
                                 </a>
                             </td>
@@ -222,20 +222,31 @@ if($_SESSION['modalTimes']==1){?>
                         <?php } ?>
                     </tbody>
 
+                    <script>
+                        function  deleteConfirm(){
+                           $var= (confirm("Sure!! You Want to Delete this?"));
+                            if($var){
+                                return true;
+                            }else{
+                                return false;
+                            }
+                        }
+                    </script>
 
 
-                                <?php
-                                //deleting values from table
-                                if(isset($_GET['delete'])){
-                                            $deleteId=$_GET['delete'];
-                                            $deleteQuery="DELETE FROM rawmaterial WHERE id = '$deleteId'";
-                                            $deleteResult=mysqli_query($connection,$deleteQuery);
-                                            if(!$deleteResult){
-                                                die("not queried" . mysqli_error($connection));
-                                            }
-                                           echo '<script> window.location.href = "rawmaterial.php"</script>';
+                    <?php
+                    //deleting values from table
+                    if(isset($_GET['delete'])){
+                        $deleteId=$_GET['delete'];
+                        $deleteQuery="DELETE FROM rawmaterial WHERE id = '$deleteId'";
+                        $deleteResult=mysqli_query($connection,$deleteQuery);
+                        if(!$deleteResult){
+                            die("not queried" . mysqli_error($connection));
+                        }
+                        echo '<script> window.location.href = "rawmaterial.php"</script>';
 
-                                  } ?>
+                    } ?>
+
 
 
 

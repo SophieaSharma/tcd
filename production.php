@@ -1,4 +1,4 @@
-<?php
+ <?php
 require_once "errors.php";
 require_once "SQL_queries/production_query.php";
 $today=date('Y-m-d');
@@ -340,7 +340,7 @@ if(!empty(($_FILES["file"]["name"]))){
                                 <br>
                                 <div class="row mt-3">
                                     <div class="col-4 text-start">
-                                        <a href="production.php?delete=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-danger btn-sm">Delete</a>
+                                        <a href="production.php?delete=<?php echo $id; ?>" class="text-uppercase  fs-6 btn btn-danger btn-sm" onclick="return deleteConfirm()">Delete</a>
                                     </div>
 
                                     <div class="col-4 text-center">
@@ -381,6 +381,16 @@ if(!empty(($_FILES["file"]["name"]))){
                                     </div>
 
                                 </div>
+
+                                <script>
+                                    function deleteConfirm(){
+                                        if(confirm("Sure!! You Want to Delete this?")){
+                                            return true;
+                                        }else{
+                                            return false;
+                                        }
+                                    }
+                                </script>
 
                                             <?php
                                             //delete the entries
