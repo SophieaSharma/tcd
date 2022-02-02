@@ -57,11 +57,13 @@ if($report>0){
     <!--data-->
     <div class="row mx-3 justify-content-evenly">
 
-        <!--heading-->
-        <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-family: 'Abyssinica SIL'; font-size: 25px;">
-            reports
-        </h1>
-        <!--heading-->
+        <!-- heading sales-->
+        <a href="reports.php" style="text-decoration: none; color:#131313">
+            <h1 class="my-3" style="text-align: center; text-transform: uppercase; font-size: 25px;">
+                reports
+            </h1>
+        </a>
+        <!-- heading sales-->
 
         <!--detailed heading-->
         <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
