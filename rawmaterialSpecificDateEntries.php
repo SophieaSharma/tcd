@@ -1,9 +1,8 @@
 <?php
 require_once "errors.php";
 require_once "SQL_queries/db_connection.php";
-require_once "shortcuts/rawmaterialEntriesDateShortcut.php";
 GLOBAL $connection;
-GLOBAL $raw_materialEntriesDate,$total_price_of_all_items;
+GLOBAL $raw_materialEntriesSpecificDate,$total_price_of_all_items;
 ?>
 <!doctype html>
 <html lang="en">
@@ -40,13 +39,27 @@ require_once "headerTCD.php";
     <!--heading-->
 
     <!--raw material-->
-    <div class="row  my-5 mx-3 justify-content-evenly">
+    <div class="row  mb-5 mx-3 justify-content-evenly">
 
-        <div class="col-lg-8 text-center py-3 bg-light  border border-secondary ">
-            <h3 class="display-6 fs-5 text-uppercase">Entries</h3>
+        <!--date-->
+        <div class="col-lg-8 border border-secondary bg-light mb-3 py-2">
+            <form action="rawmaterialSpecificDateEntries.php" method="post">
+                <div class="mb-3">
+                    <label for="date" class="form-label text-secondary fs-5">Date</label>
+                    <input name="raw_materialEntriesSpecificDate" type="date" class="form-control" id="date" required>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="form-control btn btn-primary" value="View" name="raw_materialSpecificDateSubmit">
+                </div>
+            </form>
         </div>
+        <!--date-->
 
-        <div class="col-lg-8 border border-secondary  my-4 py-2">
+
+        <?php
+        if(isset($_POST['raw_materialSpecificDateSubmit'])) {
+            $raw_materialEntriesSpecificDate = $_POST['raw_materialEntriesSpecificDate'];?>
+            <div class="col-lg-8 border border-secondary  my-4 py-2">
             <div class="col-12 table-responsive">
                 <table class="table table-striped table-bordered table-hover">
 
@@ -63,7 +76,7 @@ require_once "headerTCD.php";
                     <tbody>
                     <?php
                     require_once "SQL_queries/db_connection.php";
-                   $query="SELECT * FROM rawmaterial WHERE date ='$raw_materialEntriesDate';";
+                   $query="SELECT * FROM rawmaterial WHERE date ='$raw_materialEntriesSpecificDate';";
                    $result=mysqli_query($connection,$query);
                    $i=1;
                    while ($row = mysqli_fetch_assoc($result)){
@@ -75,39 +88,41 @@ require_once "headerTCD.php";
 
 
                     ?>
-                    <tr>
-                        <td><?php echo $i++; ?></td>
-                        <td><?php echo $items; ?></td>
-                        <td><?php echo $amount; ?></td>
-                        <td><span style="text-transform: none">Rs </span><?php echo $price_per_kg; ?></td>
-                        <td><span style="text-transform: none">Rs </span><?php echo $totalPrice; ?></td>
-                    </tr>
-                       <?php
-                        }
-                       ?>
-                    </tbody>
-                </table>
-            </div>
+        <tr>
+            <td><?php echo $i++; ?></td>
+            <td><?php echo $items; ?></td>
+            <td><?php echo $amount; ?></td>
+            <td><span style="text-transform: none">Rs </span><?php echo $price_per_kg; ?></td>
+            <td><span style="text-transform: none">Rs </span><?php echo $totalPrice; ?></td>
+        </tr>
+        <?php
+        }
+        ?>
+        </tbody>
+        </table>
+    </div>
+    <?php
+    $count=mysqli_num_rows($result);
+    ?>
+    <div class="border border-secondary p-2">
+        <p style=" text-transform: uppercase;">total items = <?php echo $count; ?> </p> <br>
+        <p style=" text-transform: uppercase;">Total Price =
             <?php
-            $count=mysqli_num_rows($result);
-            ?>
-            <div class="border border-secondary p-2">
-                <p style=" text-transform: uppercase;">total items = <?php echo $count; ?> </p> <br>
-                <p style=" text-transform: uppercase;">Total Price =
-                    <?php
-                    if(!$total_price_of_all_items==0){
-                        if($total_price_of_all_items!=0){
-                            echo " <span style='text-transform: none'>Rs </span>" . " ";
-                        }
-                    }else{
-                        echo 0;
-                    }
-                    echo $total_price_of_all_items;
+            if(!$total_price_of_all_items==0){
+                if($total_price_of_all_items!=0){
+                    echo " <span style='text-transform: none'>Rs </span>" . " ";
+                }
+            }else{
+                echo 0;
+            }
+            echo $total_price_of_all_items;
 
-                    ?>
-                </p>
-            </div>
-        </div>
+            ?>
+        </p>
+    </div>
+</div>
+      <?php  }?>
+
 
     </div>
     <!--raw material-->

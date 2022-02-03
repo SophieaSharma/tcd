@@ -85,24 +85,18 @@ if($_SESSION['modalTimes']==1){?>
         <!--heading-->
 
 
-        <!--detailed heading-->
-        <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
-            <p>Entries for Specific Date</p>
-        </div>
-        <!--detailed heading-->
+
 
         <!--date-->
-        <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
-            <form action="rawmaterialSpecificDateEntries.php" method="post">
-                <div class="mb-3">
-                    <label for="date" class="form-label text-secondary fs-5">Date</label>
-                    <input name="raw_materialEntriesDate" type="date" class="form-control" id="date" required>
-                </div>
-                <div class="mb-3">
-                    <input type="submit" class="form-control btn btn-primary" value="View" name="raw_materialEntriesSubmit">
-                </div>
-            </form>
-            <?php require_once "shortcuts/rawmaterialEntriesDateShortcut.php";?>
+        <div class="col-lg-8 border border-secondary bg-light mb-3 py-2">
+
+            <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
+                <a href="rawmaterialSpecificDateEntries.php" class="text-dark my-2" style="text-decoration: none">Entries for Specific Date</a>
+            </div>
+            <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
+                <a href="rawmaterialSpecificMonthEntries.php" class="text-dark my-2" style="text-decoration: none">Entries for Specific Month</a>
+            </div>
+
         </div>
         <!--date-->
 
