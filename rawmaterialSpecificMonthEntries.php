@@ -69,6 +69,15 @@ require_once "headerTCD.php";
 
                 <div class="col-12 table-responsive">
                     <table class="table table-striped table-bordered table-hover">
+
+
+
+                        <?php
+                        require_once "SQL_queries/db_connection.php";
+                        $raw_materialEntriesSpecificMonthArray=explode('-',$raw_materialEntriesSpecificMonth);
+                        $query="SELECT * FROM rawmaterial WHERE MONTH(date) = '$raw_materialEntriesSpecificMonthArray[1]'";
+                        $result=mysqli_query($connection,$query);
+                        $i=1;?>
                         <thead>
                         <tr>
                             <th scope="col">S.NO.</th>
@@ -79,22 +88,17 @@ require_once "headerTCD.php";
                         </tr>
                         </thead>
 
-                        <tbody>
-                        <?php
-                        require_once "SQL_queries/db_connection.php";
-                        $raw_materialEntriesSpecificMonthArray=explode('-',$raw_materialEntriesSpecificMonth);
-                        $query="SELECT * FROM rawmaterial WHERE MONTH(date) = '$raw_materialEntriesSpecificMonthArray[1]'";
-                        $result=mysqli_query($connection,$query);
-                        $i=1;
-                        while ($row = mysqli_fetch_assoc($result)){
+                      <?php
+                            while ($row = mysqli_fetch_assoc($result)){
                             $items=$row['items'];
                             $amount=$row['amount'];
                             $price_per_kg=$row['price_per_kg'];
                             $totalPrice=$row['totalPrice'];
                             $total_price_of_all_items+=$totalPrice;
 
-
                             ?>
+
+                        <tbody>
                             <tr>
                                 <td><?php echo $i++; ?></td>
                                 <td><?php echo $items; ?></td>

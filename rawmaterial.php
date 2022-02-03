@@ -91,10 +91,10 @@ if($_SESSION['modalTimes']==1){?>
         <div class="col-lg-8 border border-secondary bg-light mb-3 py-2">
 
             <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
-                <a href="rawmaterialSpecificDateEntries.php" class="text-dark my-2" style="text-decoration: none">Entries for Specific Date</a>
+                <a href="rawmaterialSpecificDateEntries.php" class="text-secondary my-2" style="text-decoration: none">Entries for Specific Date</a>
             </div>
             <div class="col-lg-8 mb-1 py-2 px-0 text-secondary fs-5">
-                <a href="rawmaterialSpecificMonthEntries.php" class="text-dark my-2" style="text-decoration: none">Entries for Specific Month</a>
+                <a href="rawmaterialSpecificMonthEntries.php" class="text-secondary my-2" style="text-decoration: none">Entries for Specific Month</a>
             </div>
 
         </div>
