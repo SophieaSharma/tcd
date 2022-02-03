@@ -1,33 +1,8 @@
 <?php
 require_once "errors.php";
-require_once "shortcuts/reportQueryFromRawmaterial.php";
-require_once "shortcuts/reportQueryFromSales.php";
-#rawmaterial variable
-GLOBAL $total_price_of_all_items;
-#sales variable
-GLOBAL $totalPriceSales;
-GLOBAL $today,$connection,$profit,$loss,$f_result,$ans;
+GLOBAL $today,$connection,$totalPriceOfRawMaterial,$totalAmountPaid;
 $today=date('Y-m-d');
 
-#calculations
-$report = $totalPriceSales - $total_price_of_all_items;
-if($totalPriceSales==0){
-    $totalPriceSales=1;
-}
-if($total_price_of_all_items==0){
-    $total_price_of_all_items=1;
-}
-if($report>0){
-    $profit=($report/$totalPriceSales)*100;
-    $profit=intval($profit);
-    $f_result=$profit;
-    $ans="Profit";
-}elseif($report<0){
-    $loss=($report/$total_price_of_all_items)*100;
-    $loss=intval(abs($loss));
-    $f_result=$loss;
-    $ans="Loss";
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -90,67 +65,102 @@ if($report>0){
             <p>Today's Date</p>
         </div>
         <!--detailed heading-->
-        <?php
-        if (isset($_POST['submitReport'])){
-            GLOBAL $connection;
-            require_once "SQL_queries/db_connection.php";
 
+        <!--data-->
+        <div class="col-lg-8  border border-secondary bg-light">
+            <ul class="nav nav-tabs my-3">
+                <li class="nav-item">
+                    <button class="nav-link active" aria-current="page">REPORTS</button>
+                </li>
+            </ul>
 
-            $query="INSERT INTO report(date,value,profit_or_loss)
-                                VALUES('$today','$f_result','$ans')";
-
-
-            $result = mysqli_query($connection, $query);
-            if (!$result) {
-                die("query,not connected " . mysqli_error($connection));
-            }
-            ?>
-            <script>
-                window.location.href="./reports.php";
-            </script>
             <?php
-        }
-        ?>
-        <!--form-->
-        <div class="col-lg-8  border border-secondary bg-light mb-5">
-                <ul class="nav nav-tabs my-3">
-                    <li class="nav-item">
-                        <button class="nav-link active" aria-current="page">REPORTS</button>
-                    </li>
-                </ul>
-            <div class="fs-5">
-                Date : <?php $today=strtotime($today);
-                echo date('d-M-Y',$today); ?> <br>
-                <?php
-                if($profit){
-                    echo  "<p class='text-uppercase my-3 text-success'>Profit : {$f_result}%</p>";
-                }elseif ($loss){
-                    echo  "<p class='text-uppercase my-3 text-danger'>Loss : {$f_result}%</p>";
+            require_once "SQL_queries/db_connection.php";
+            $queryForRaw="SELECT totalPrice FROM rawmaterial WHERE date='$today'";
+            $resultForRaw=mysqli_query($connection,$queryForRaw);
+            while ($row = mysqli_fetch_assoc($resultForRaw)){
+                $totalPrice=$row['totalPrice'];
+                $totalPriceOfRawMaterial+=$totalPrice;
+            }
+
+            $queryForSales="SELECT amount_paid FROM sales WHERE date='$today'";
+            $resultForSales=mysqli_query($connection,$queryForSales);
+            while ($row = mysqli_fetch_assoc($resultForSales)){
+                $amountPaid=$row['amount_paid'];
+                $totalAmountPaid+=$amountPaid;
+            }
+
+            //calculations
+
+            if($totalPriceOfRawMaterial<$totalAmountPaid){
+                //profit
+                $resultProfit=$totalAmountPaid-$totalPriceOfRawMaterial;
+
+                //if sales or raw material 0 to divide make the variable 1 to avoid error
+                if($totalAmountPaid==0){
+                    $totalAmountPaid=1;
                 }
+                if($totalPriceOfRawMaterial==0){
+                    $totalPriceOfRawMaterial=1;
+                }
+
+                $resultProfit=($resultProfit/$totalAmountPaid)*100;
+                $resultProfit=intval($resultProfit);
                 ?>
+                <p class='text-uppercase my-3 fs-5'>
+                    Date : <?php
+                    $today=strtotime($today);
+                    echo date('d-M-Y',$today);
+                    ?>
+                </p>
+                <p class='text-uppercase my-3 text-success fs-5'>Profit : <?php echo $resultProfit; ?>%</p>
+                <div class="progress my-4" style="height: 25px;">
+                    <div class="progress-bar bg-success fs-5" role="progressbar" style="width: <?php echo $resultProfit; ?>%;" aria-valuenow="<?php echo $resultProfit; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $resultProfit; ?>% Profit</div>
+                </div>
 
+                <?php
+            }else if($totalPriceOfRawMaterial>$totalAmountPaid){
+                //loss
+                $resultLoss=$totalPriceOfRawMaterial-$totalAmountPaid;
 
-            </div>
+                //if sales or raw material 0 to divide make the variable 1 to avoid error
+                if($totalAmountPaid==0){
+                    $totalAmountPaid=1;
+                }
+                if($totalPriceOfRawMaterial==0){
+                    $totalPriceOfRawMaterial=1;
+                }
 
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="mb-5">
-                    <div class="progress my-3 " style="height: 22px;">
-                        <?php
-                        if($profit){
-                           echo  "<div class='progress-bar bg-success fs-5 ' role='progressbar' style='width: {$profit}%;' aria-valuenow='{$profit}' aria-valuemin='0' aria-valuemax='100'>{$profit}% Profit</div>";
-                        }elseif ($loss){
-                            echo  "<div class='progress-bar bg-danger fs-5' role='progressbar' style='width: {$loss}%;' aria-valuenow='{$loss}' aria-valuemin='0' aria-valuemax='100'>{$loss}% Loss</div>";
-                        }
-                        ?>
+                $resultLoss=($resultLoss/$totalPriceOfRawMaterial)*100;
+                $resultLoss=intval($resultLoss);
+                echo $resultLoss;?>
+                <p class='text-uppercase my-3 fs-5'>
+                    Date : <?php
+                    $today=strtotime($today);
+                    echo date('d-M-Y',$today);
+                    ?>
+                </p>
+                <p class='text-uppercase my-3 text-danger fs-5'>Loss : <?php echo $resultLoss; ?>%</p>
+                <div class="progress my-4" style="height: 25px;">
+                    <div class="progress-bar bg-danger fs-5" role="progressbar" style="width: <?php echo $resultLoss; ?>%;" aria-valuenow="<?php echo $resultLoss; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $resultLoss; ?>% Loss</div>
+                </div>
 
-                    </div>
-                    <div class="mb-5">
-                        <input name="submitReport" type="submit" class="form-control btn btn-primary" value="Save">
-                    </div>
+                <?php
 
-                </form>
-
-            </div>
-        <!--form-->
+            }else{ //neutral ?>
+                <p class='text-uppercase my-3 fs-5'>
+                    Date : <?php
+                    $today=strtotime($today);
+                    echo date('d-M-Y',$today);
+                    ?>
+                </p>
+                <p class='text-uppercase my-3 text-secondary fs-5'>Neutral</p>
+                <div class="progress my-4" style="height: 25px;">
+                    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            <?php } ?>
+        </div>
+        <!--data-->
     </div>
     <!--data-->
 

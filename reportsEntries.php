@@ -127,8 +127,8 @@ $today=date('Y-m-d');
                     echo date('d-M-Y',$dateReportEntry);
                     ?>
                 </p>
-                <p class='text-uppercase my-3 text-secondary fs-5'>Neutral</p>
-                <div class="progress my-4" style="height: 25px;">
+                <p class='text-uppercase my-2 text-secondary fs-5'>No Profit/loss</p>
+                <div class="progress my-3" style="height: 25px;">
                     <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
            <?php } ?>
