@@ -27,7 +27,7 @@ if(!isset($_SESSION['id'])){
     <title>ePortal</title>
 
 </head>
-<body>
+<body class="mb-5">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!--heading-->

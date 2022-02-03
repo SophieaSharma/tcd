@@ -14,7 +14,7 @@ require_once "SQL_queries/login_query.php";
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>ePortal</title>
 </head>
-<body>
+<body class="mb-5">
 <!--header-->
 <?php require_once "headerTCD.php"; ?>
 <!--header-->

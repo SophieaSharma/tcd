@@ -17,7 +17,7 @@ $today=date('Y-m-d');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <title>ePortal</title>
 </head>
-<body>
+<body class="mb-5">
 
 <!--heading-->
 <?php require_once "headerTCD.php"; ?>
@@ -67,7 +67,7 @@ $today=date('Y-m-d');
         <!--detailed heading-->
 
         <!--data-->
-        <div class="col-lg-8  border border-secondary bg-light">
+        <div class="col-lg-8  border border-secondary bg-light mb-5">
             <ul class="nav nav-tabs my-3">
                 <li class="nav-item">
                     <button class="nav-link active" aria-current="page">REPORTS</button>
@@ -154,7 +154,7 @@ $today=date('Y-m-d');
                     echo date('d-M-Y',$today);
                     ?>
                 </p>
-                <p class='text-uppercase my-3 text-secondary fs-5'>Neutral</p>
+                <p class='text-uppercase my-3 text-secondary fs-5'>No profit/loss</p>
                 <div class="progress my-4" style="height: 25px;">
                     <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>

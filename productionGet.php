@@ -34,7 +34,7 @@ if(!empty(($_FILES["fileProductionGet"]["name"]))){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <title>ePortal</title>
 </head>
-<body>
+<body class="mb-5">
 
 
 <!--jquery needed to select all checkboxes-->
