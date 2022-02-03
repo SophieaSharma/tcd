@@ -88,7 +88,7 @@ $today=date('Y-m-d');
                 </p>
                 <p class='text-uppercase my-3 text-success fs-5'>Profit : <?php echo $resultProfit; ?>%</p>
                 <div class="progress my-4" style="height: 25px;">
-                    <div class="progress-bar bg-success fs-5" role="progressbar" style="width: <?php echo $resultProfit; ?>%;" aria-valuenow="<?php echo $resultProfit; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $resultProfit; ?>% Profit</div>
+                    <div class="progress-bar bg-success fs-5" role="progressbar" style="width: <?php echo $resultProfit; ?>%;" aria-valuenow="<?php echo $resultProfit; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $resultProfit; ?>%</div>
                 </div>
 
           <?php
@@ -115,7 +115,7 @@ $today=date('Y-m-d');
                 </p>
                 <p class='text-uppercase my-3 text-danger fs-5'>Loss : <?php echo $resultLoss; ?>%</p>
                 <div class="progress my-4" style="height: 25px;">
-                    <div class="progress-bar bg-danger fs-5" role="progressbar" style="width: <?php echo $resultLoss; ?>%;" aria-valuenow="<?php echo $resultLoss; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $resultLoss; ?>% Loss</div>
+                    <div class="progress-bar bg-danger fs-5" role="progressbar" style="width: <?php echo $resultLoss; ?>%;" aria-valuenow="<?php echo $resultLoss; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $resultLoss; ?>%</div>
                 </div>
 
                 <?php
