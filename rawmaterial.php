@@ -93,7 +93,7 @@ if($_SESSION['modalTimes']==1){?>
 
         <!--date-->
         <div class="col-lg-8 border border-secondary bg-light mb-5 py-2">
-            <form action="rawmaterialEntries.php" method="post">
+            <form action="rawmaterialSpecificDateEntries.php" method="post">
                 <div class="mb-3">
                     <label for="date" class="form-label text-secondary fs-5">Date</label>
                     <input name="raw_materialEntriesDate" type="date" class="form-control" id="date" required>
