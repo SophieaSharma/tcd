@@ -9,7 +9,7 @@ GLOBAL $totalPriceSales;
 GLOBAL $today,$connection,$profit,$loss,$f_result,$ans;
 $today=date('Y-m-d');
 
-//calculations
+#calculations
 $report = $totalPriceSales - $total_price_of_all_items;
 if($totalPriceSales==0){
     $totalPriceSales=1;

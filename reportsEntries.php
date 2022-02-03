@@ -2,7 +2,7 @@
 require_once "errors.php";
 require_once "shortcuts/reportsEntriesDateShortcut.php";
 require_once "shortcuts/reportQueryFromSales.php";
-GLOBAL $today,$dateReportEntry,$connection;
+GLOBAL $today,$dateReportEntry,$connection,$totalPriceOfRawMaterial,$totalAmountPaid;
 $today=date('Y-m-d');
 ?>
 <!doctype html>
@@ -49,36 +49,89 @@ $today=date('Y-m-d');
 
             <?php
             require_once "SQL_queries/db_connection.php";
-            $query="SELECT * FROM report WHERE date='$dateReportEntry'";
-            $result=mysqli_query($connection,$query);
-            while ($row = mysqli_fetch_assoc($result)){
-            $date=$row['date'];
-            $date=strtotime($date);
-            $date=date('d-M-Y',$date);
-            $value=$row['value'];
-            $profit_or_loss=$row['profit_or_loss'];
-            ?>
-                <div class="fs-5">
-                Date : <?php echo $date; ?> <br>
-                <?php
-                if($profit_or_loss=="Profit"){
-                    echo  "<p class='text-uppercase my-3 text-success'>Profit : {$value}%</p>";
-                }elseif ($profit_or_loss=="Loss"){
-                    echo  "<p class='text-uppercase my-3 text-danger'>Loss : {$value}%</p>";
-                }
-                ?>
-            </div>
-                <div class="progress mt-3 mb-5" style="height: 22px;">
-                    <?php
-                    if($profit_or_loss=="Profit"){
-                        echo  "<div class='progress-bar bg-success fs-5' role='progressbar' style='width: {$value}%;' aria-valuenow='{$value}' aria-valuemin='0' aria-valuemax='100'>{$value}% Profit</div>";
-                    }elseif ($profit_or_loss=="Loss"){
-                        echo  "<div class='progress-bar bg-danger fs-5' role='progressbar' style='width: {$value}%;' aria-valuenow='{$value}' aria-valuemin='0' aria-valuemax='100'>{$value}% Loss</div>";
-                    }
-                    ?>
+            $queryForRaw="SELECT totalPrice FROM rawmaterial WHERE date='$dateReportEntry'";
+            $resultForRaw=mysqli_query($connection,$queryForRaw);
+            while ($row = mysqli_fetch_assoc($resultForRaw)){
+            $totalPrice=$row['totalPrice'];
+            $totalPriceOfRawMaterial+=$totalPrice;
+            }
 
+            $queryForSales="SELECT amount_paid FROM sales WHERE date='$dateReportEntry'";
+            $resultForSales=mysqli_query($connection,$queryForSales);
+            while ($row = mysqli_fetch_assoc($resultForSales)){
+                $amountPaid=$row['amount_paid'];
+                $totalAmountPaid+=$amountPaid;
+            }
+
+            //calculations
+
+            if($totalPriceOfRawMaterial<$totalAmountPaid){
+                //profit
+                $resultProfit=$totalAmountPaid-$totalPriceOfRawMaterial;
+
+                //if sales or raw material 0 to divide make the variable 1 to avoid error
+                if($totalAmountPaid==0){
+                    $totalAmountPaid=1;
+                }
+                if($totalPriceOfRawMaterial==0){
+                    $totalPriceOfRawMaterial=1;
+                }
+
+                $resultProfit=($resultProfit/$totalAmountPaid)*100;
+                $resultProfit=intval($resultProfit);
+                ?>
+                <p class='text-uppercase my-3 fs-5'>
+                    Date : <?php
+                    $dateReportEntry=strtotime($dateReportEntry);
+                    echo date('d-M-Y',$dateReportEntry);
+                    ?>
+                </p>
+                <p class='text-uppercase my-3 text-success fs-5'>Profit : <?php echo $resultProfit; ?>%</p>
+                <div class="progress my-4" style="height: 25px;">
+                    <div class="progress-bar bg-success fs-5" role="progressbar" style="width: <?php echo $resultProfit; ?>%;" aria-valuenow="<?php echo $resultProfit; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $resultProfit; ?>% Profit</div>
                 </div>
-         <?php } ?>
+
+          <?php
+            }else if($totalPriceOfRawMaterial>$totalAmountPaid){
+                //loss
+                $resultLoss=$totalPriceOfRawMaterial-$totalAmountPaid;
+
+                //if sales or raw material 0 to divide make the variable 1 to avoid error
+                if($totalAmountPaid==0){
+                    $totalAmountPaid=1;
+                }
+                if($totalPriceOfRawMaterial==0){
+                    $totalPriceOfRawMaterial=1;
+                }
+
+                $resultLoss=($resultLoss/$totalPriceOfRawMaterial)*100;
+                $resultLoss=intval($resultLoss);
+                echo $resultLoss;?>
+                <p class='text-uppercase my-3 fs-5'>
+                    Date : <?php
+                    $dateReportEntry=strtotime($dateReportEntry);
+                    echo date('d-M-Y',$dateReportEntry);
+                    ?>
+                </p>
+                <p class='text-uppercase my-3 text-danger fs-5'>Loss : <?php echo $resultLoss; ?>%</p>
+                <div class="progress my-4" style="height: 25px;">
+                    <div class="progress-bar bg-danger fs-5" role="progressbar" style="width: <?php echo $resultLoss; ?>%;" aria-valuenow="<?php echo $resultLoss; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $resultLoss; ?>% Loss</div>
+                </div>
+
+                <?php
+
+            }else{ //neutral ?>
+                <p class='text-uppercase my-3 fs-5'>
+                    Date : <?php
+                    $dateReportEntry=strtotime($dateReportEntry);
+                    echo date('d-M-Y',$dateReportEntry);
+                    ?>
+                </p>
+                <p class='text-uppercase my-3 text-secondary fs-5'>Neutral</p>
+                <div class="progress my-4" style="height: 25px;">
+                    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+           <?php } ?>
         </div>
         <!--data-->
 
